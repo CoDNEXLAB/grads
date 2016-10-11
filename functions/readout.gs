@@ -86,7 +86,7 @@ if modname = NAM & sector = WCAN
  'set prnopts %0.0f 214 1 u'
 endif
 if modname = NAM & sector = FLT
- 'set prnopts %0.0f 91 1 u'
+ 'set prnopts %0.0f 90 1 u'
 endif
 if modname = NAM & sector = AK
  'set prnopts %0.0f 585 1 u'

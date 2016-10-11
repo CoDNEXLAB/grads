@@ -32,10 +32,16 @@ if model = NAM & sector = US
  'define jskip = skip(VGRD10m,12,12)*2'
 endif
 if model = RAP
- 'define xskip = skip(UGRDprs,4,4)*2'
- 'define yskip = skip(VGRDprs,4,4)*2'
- 'define iskip = skip(UGRD10m,4,4)*2'
- 'define jskip = skip(VGRD10m,4,4)*2'
+ 'define xskip = skip(UGRDprs,8,8)*2'
+ 'define yskip = skip(VGRDprs,8,8)*2'
+ 'define iskip = skip(UGRD10m,8,8)*2'
+ 'define jskip = skip(VGRD10m,8,8)*2'
+endif
+if model = RAP & sector = US
+ 'define xskip = skip(UGRDprs,14,14)*2'
+ 'define yskip = skip(VGRDprs,14,14)*2'
+ 'define iskip = skip(UGRD10m,14,14)*2'
+ 'define jskip = skip(VGRD10m,14,14)*2'
 endif
 if model = HRRR
  'define xskip = skip(UGRDprs,20,20)*2'
