@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -35,8 +32,8 @@ endif
 prodname = modname sector _con_1kmhel_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs 0 1000 500 -kind white->white'
-'d TMP2m'
+'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
+'d TMP2m*0'
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs 50 500 10 -kind white-(0)->(0,0,176)-(8)->(72,76,248)-(0)->(0,176,0)-(8)->(72,252,72)-(0)->(176,176,0)-(8)->(248,252,72)-(0)->(176,0,0)-(8)->(248,76,72)-(0)->(176,176,176)-(8)->(235,235,235)'
 'd maskout(HLCY1000_0m,CAPEsfc-50)'
@@ -45,10 +42,10 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 level = strm
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 *start_readout
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
- 'd maskout(HLCY1000_0m,CAPEsfc-50)'
+ 'd HLCY1000_0m'
  dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout

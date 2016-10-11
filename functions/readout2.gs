@@ -83,7 +83,7 @@ if modname = NAM & sector = SW
  'set prnopts %0.2f 190 1 u'
 endif
 if modname = NAM & sector = FLT
- 'set prnopts %0.2f 90 1 u'
+ 'set prnopts %0.2f 91 1 u'
 endif
 if modname = NAM & sector = AK
  'set prnopts %0.2f 585 1 u'

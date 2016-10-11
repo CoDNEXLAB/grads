@@ -23,7 +23,7 @@ set datadir = "/home/data/models/hrrr"
 ###############################################
 #BEGIN SNAKE LOOP TO CHECK FOR AVAILABLE TIMES#
 ###############################################
-foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015)
+foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 016 017 018)
 	set filename = ${datadir}/${dtstr}${modtime}00F${FHour}.hrrr
 	set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
@@ -41,7 +41,7 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015)
 			@ count = $count + 1
 		end
 	endif
-	if ($FHour == 015) then
+	if ($FHour == 018) then
 		csh $Runner $modtime HRRR $FHour
 		php /home/scripts/models/blister.php HRRR $modtime $FHour
 		echo `date` ": ${modtime}Z HRRR Finished" >> /home/apache/atlas/data/forecast/text/hrrrtimes.txt

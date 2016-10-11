@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -29,11 +26,18 @@ endif
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 *give the image a product title
+
 'draw string 0.1 8.3 PType | Comp. RADAR (dBZ) | 10m Wind (kts) | College of DuPage NeXLaB'
+
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_ptype_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+
+'set gxout shade2'
+'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
+'d TMP2m*0'
 'run /home/scripts/grads/colorbars/color.gs 0 40 5 -kind white-(0)->(148,227,141)->darkgreen'
 'd maskout(REFCclm,CRAINsfc)'
 *plot the colorbar on the image
@@ -50,7 +54,14 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 level=surface
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'set cint 2'
-'run /home/scripts/grads/functions/isoheights.gs 'level
+if modname = RAP
+  'set gxout contour'
+  'set ccolor 99'
+  'set cthick 4'
+  'd MSLMAmsl /100'
+else
+  'run /home/scripts/grads/functions/isoheights.gs 'level
+endif
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'set string 0 l 1 0'
@@ -60,7 +71,9 @@ level=surface
 'draw string 5.35 .08 IP'
 'draw string 8 .08 ZR'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 *plot the colorbar on the image
 *'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1'
+
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

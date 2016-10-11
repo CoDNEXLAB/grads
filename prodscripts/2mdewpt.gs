@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -38,7 +35,15 @@ endif
 prodname = modname sector _sfc_dewp_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 level = surface
-'run /home/scripts/grads/functions/isodrosotherms.gs 'level
+if modname != RAP
+ 'run /home/scripts/grads/functions/isodrosotherms.gs 'level
+else
+ 't = TMP2m'
+ 'tc=(t-273.16)'
+ 'rh = RH2m'
+ 'td=tc-( (14.55+0.114*tc)*(1-0.01*rh) + pow((2.5+0.007*tc)*(1-0.01*rh),3) + (15.9+0.117*tc)*pow((1-0.01*rh),14) )'
+ 'd td*9/5+32'
+endif
 'set gxout contour'
 'set ccolor 4'
 'set cthick 2'
@@ -52,10 +57,11 @@ endif
 if modname = NAM4KM
  'd no4LFTX180_0mb-273.16'
 endif
+if modname = RAP
+ 'd no4LFTX180_0mb'
+endif
 if modname = NAM
  'd PLI30_0mb'
-else
- 'd no4LFTXsfc'
 endif
 'set cstyle 1'
 'set cthick 2'
@@ -69,19 +75,30 @@ endif
 if modname = NAM4KM
  'd no4LFTX180_0mb-273.16'
 endif
+if modname = RAP
+ 'd no4LFTX180_0mb'
+endif
 if modname = NAM
  'd PLI30_0mb'
-else
- 'd no4LFTXsfc'
 endif
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
-'run /home/scripts/grads/functions/dewp_stations.gs 'sector
+if modname != RAP
+ 'run /home/scripts/grads/functions/dewp_stations.gs 'sector
+else
+ 'run /home/scripts/grads/functions/rap_dewp_stations.gs 'sector
+endif
 *start_readout
 if modname = GFS | modname = NAM | modname = NAM4KM
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd (DPT2m-273.16)*9/5+32'
+ dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+endif
+if modname = RAP
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd td*9/5+32'
  dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
