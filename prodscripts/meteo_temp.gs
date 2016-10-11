@@ -10,7 +10,7 @@ function main(args)
  'run /home/scripts/grads/functions/meteodefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
-basedir = '/home/apache/atlas/data/forecast/GEFS/meteograms'
+basedir = '/home/apache/servername/data/forecast/GEFS/meteograms'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'

@@ -11,7 +11,7 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/atlas/gensini/exper/ccindex'
+basedir = '/home/apache/servername/gensini/exper/ccindex'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'

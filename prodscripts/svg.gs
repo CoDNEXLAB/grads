@@ -11,7 +11,7 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.svg'
 txtext = '.txt'
-basedir = '/home/apache/atlas/data/forecast'
+basedir = '/home/apache/servername/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
