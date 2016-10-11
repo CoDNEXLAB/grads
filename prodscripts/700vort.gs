@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -40,7 +37,19 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 *set level (set both!)
 level = 700
 'set lev 'level
-'d ABSVprs*100000'
+if modname = RAP
+ 'define coriol=2*7.29e-5*sin(lat*3.1415/180)'
+ 'define vort=hcurl(UGRDprs,VGRDprs)' 
+ 'd (coriol+vort)*100000'
+else
+ 'd ABSVprs*100000'
+endif
+'run /home/scripts/grads/colorbars/color.gs -6 60 1 -kind lightslategray->silver->white->green->yellow->orange->red->maroon->magenta->indigo->blue->darkturquoise'
+if modname RAP
+ 'd maskout((coriol+vort)*-100000,lat*-1)'
+else
+ 'd maskout(ABSVprs*-100000,lat*-1)'
+endif 
 'run /home/scripts/grads/functions/interstates.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'set cint 30'
@@ -50,6 +59,12 @@ if modname = GFS | modname = NAM
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd ABSVprs*100000'
+ dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+endif
+if modname = RAP
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd (coriol+vort)*100000'
  dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout

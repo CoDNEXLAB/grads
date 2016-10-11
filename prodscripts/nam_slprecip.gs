@@ -11,14 +11,11 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
 if modname = GFS | modname = NAM
  'set t 'fhour/3+1
 else
@@ -35,7 +32,7 @@ endif
 prodname = modname sector _prec_prec_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 *pick a colorbar
-*'set gxout shade2'
+'set gxout shade2'
 'run /home/scripts/grads/colorbars/color.gs -levs .01 .05 .1 .15 .25 .35 .5 .75 1 1.5 2 3 4 -kind black->dodgerblue->blue->lime->forestgreen->darkgreen->yellow->orange->orangered->red->deeppink->magenta->orchid->plum'
 'd APCPsfc/25.4'
 'define thick15 = (HGTprs(lev=500) - HGTprs(lev=1000))'
@@ -44,7 +41,7 @@ if sector != WLD
  'set cthick 4'
  'set cint 2'
  'set ccolor 5'
- 'd MSLETmsl/100'
+ 'd PRMSLmsl/100'
  'set cthick 2'
  'set lev 500'
  'set cint 60'

@@ -4,7 +4,7 @@ function height_var(args)
 'set ccolor 99'
 'set cthick 4'
 if level = surface
- 'd MSLETmsl/100'
+ 'd PRMSLmsl/100'
 else
  'd HGTprs'
 endif
