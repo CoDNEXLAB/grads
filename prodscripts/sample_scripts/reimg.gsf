@@ -1,0 +1,59 @@
+*
+* This gsUDF implements a wrapper for re() that interpolates to the same
+* domain as the dimension environment with with the number of points
+* specified on input. This is useful for creating a gridded field to be
+* turned into an image.
+*
+
+function reimg ( expr, nlon, nlat, opt, verbose )
+
+* Make sure we got all the arguments
+* ----------------------------------
+  if ( nlat='nlat' )
+       say
+       say 'This function interpolates *expr* to an output domain of size'
+       say '(nx,ny), using the dimension environment for the bounding box.'
+       say 'Usage:'
+       say '         d reimg(expr,nlon,nlat,[opt],[verbose])'
+       say 'where *opt* is the interpolation method: bl, bs or ba'
+       say ''
+       say 'Examples:'
+       say '         d reimg(ts,800,600)'
+       say '         d reimg(ts,800,600,bs)'
+       say '         d reimg(ts,800,600,,1)'
+       say ''
+      return
+  endif
+
+* Find bounding box
+* -----------------
+  'query dims'
+
+  line = sublin(result,2)
+  lon_beg = subwrd(line,6)
+  lon_end = subwrd(line,8)
+  line = sublin(result,3)
+  lat_beg = subwrd(line,6)
+  lat_end = subwrd(line,8)
+
+* Compute increments
+* ------------------
+  dlon = 0.99999 * ( lon_end - lon_beg ) / nlon
+  dlat = 0.99999 * ( lat_end - lat_beg ) / ( nlat - 1.0 )
+
+  if ( verbose = 'verbose' )
+    f = 're'
+  else
+    f = 're_'
+  endif
+
+  if ( opt='opt' | opt='' )
+    f = f'('expr','nlon',LINEAR,'lon_beg','dlon','nlat',LINEAR,'lat_beg','dlat')'
+  else
+    f = f'('expr','nlon',LINEAR,'lon_beg','dlon','nlat',LINEAR,'lat_beg','dlat','opt')'
+  endif
+
+*  say 'DOING ' f
+
+  return f
+

@@ -1,0 +1,231 @@
+#  sample2.gui - last revision: October 12, 1997
+#
+#  Sample widget script with tutorial comments. Modify it for
+#  your own taste and needs. Simplified version of "sample.gui".
+#
+#  How to invoke this script:
+#
+#  At startup. Set the enviroment variable GAGUI with the
+#  name of the script file, e.g., 
+#
+#  % setenv GAGUI sample.gui
+#
+#  At the GrADS command line prompt. Simply type
+#
+#  ga> gui sample.gui
+#
+#  Of course, you must have a version of GrADS built with
+#  Athena Widgets support.
+#
+#  --
+#   (c) 1997 by Arlindo da Silva
+#
+#   Permission is granted to any individual or institution to use,
+#   copy, or redistribute this software so long as it is not sold for
+#   profit, and provided this notice is retained. 
+#
+#  See also sample.gui, window.gui.
+#.........................................................................
+
+
+#  Most "exec" commands are supported
+#  ----------------------------------
+   set gxout shaded
+
+# This command creates a dropdown menu called " File ";
+# as usual, the first argument "file" is the name of the
+# widget
+# -------------------------------------------------------
+  MakeMenu ( file, "File" )
+
+# Once you make a memu, you create its items. For the first item:
+# --------------------------------------------------------------
+      MakeMenuItem(open,  file, "Open",             Load,    "open")
+
+# The parameters this particular item are:
+#     open    the name of the item widget
+#     file    the menu the item belongs to (see MakeMenu above)
+#     "Open"  This is the text it displays on the screen
+#     Load    this is the callback name, i.e., the widget invokes
+#             this function when pressed. This particular callback
+#             pops up a "file finder" widget, and after the user
+#             clicks on a file name it executes the grads command
+#             "open" (see last argument) on this file. A list
+#             of the other available callbacks can be found in the
+#             end of this file.
+#     "open"  Argument to be passed to the callback. In this 
+#             particular case, it is the GrADS command to be
+#             executed on the file.
+#  The definition of the other items in this menu follows.
+      MakeMenuItem(sdf,   file, "SDF Open",         Load,    "sdfopen")
+      MakeMenuItem(xdf,   file, "XDF Open",         Load,    "xdfopen")
+      MakeMenuItem(fsel,  file, "File Selection ",  FileSel, NULL )
+      MakeMenuItem(browse,file, "View Text File",   Browse,  NULL)
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(exec,  file, "Exec",             Load,    "exec")
+      MakeMenuItem(run,   file, "Run",              Load,    "run")
+      MakeMenuItem(gui,   file, "GUI",              Load,    "gui")
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(fresh, file, "Refresh",          Cmd,     "  ")
+      MakeMenuItem(init,  file, "Reinit",           Cmd,     "reinit")
+      MakeMenuItem(exit,  file, "Exit",             Cmd,     "quit")
+
+# A menu for gx metafile printing related commands
+# ------------------------------------------------
+  MakeMenu ( print, "Print" )
+      MakeMenuItem(printit, print, "Print",         Cmd,   "print")
+      MakeMenuItem(enable,  print, "Enable  Print", Load,  "enable print")
+      MakeMenuItem(disable, print, "Disable Print", Cmd,   "disable print")
+
+# A menu with assorted internal options
+# -------------------------------------
+  MakeMenu ( options, "Options" )
+      MakeMenuItem(shade,  options, "Shaded",      Cmd, "set gxout shaded" )
+      MakeMenuItem(cont,   options, "Contour",     Cmd, "set gxout contour" )
+      MakeMenuItem(grfill, options, "Grid Fill",   Cmd, "set gxout grfill" )
+      MakeMenuItem(grvals, options, "Grid Values", Cmd, "set gxout grid" )
+      MakeMenuItem(vec,    options, "Vector",      Cmd, "set gxout vector" )
+      MakeMenuItem(strm,   options, "Streamlines", Cmd, "set gxout stream" )
+      MakeMenuItem(bar,    options, "Bar Chart",   Cmd, "set gxout bar" )
+      MakeMenuItem(line,   options, "Line Plot",   Cmd, "set gxout line" )
+      MakeMenuItem(barb,   options, "Wind Barbs",  Cmd, "set gxout  barb" )
+      MakeMenuItem(junk,   options, "_______________",  NULL, NULL )
+      MakeMenuItem(ci,     options, "Contour Interval",  CmdStr, "set cint" )
+      MakeMenuItem(tit,    options, "Draw Title", CmdStr, "draw title " )
+      MakeMenuItem(cbar,   options, "Color Bar",  Cmd, "run cbarn" )
+
+
+# Creates simple buttons. Buttons work pretty much like menu items
+# but they do not belong to any menu and are directly clickable.
+# ------------------------------------------------------------------
+  MakeButton( clear,  "Clear",      Cmd,      "clear" )
+  MakeButton( quit,   "Quit",       Cmd,      "quit" )
+  MakeButton( prompt, "ga>",  CmdWin,  NULL )
+
+# A menu for defining GrADS dimensions. This is very crude right now.
+# I will be developing a specific callback with rubber bands
+# etc. for these functions. Stay tuned. 
+# ------------------------------------------------------------------
+  MakeMenu( dim, "Dim")
+      MakeMenuItem(lat,  dim, "Latitude",  CmdStr, "set lat " )
+      MakeMenuItem(lon,  dim, "Longitude", CmdStr, "set lon " )
+      MakeMenuItem(lev,  dim, "Level",     CmdStr, "set lev " )
+      MakeMenuItem(time, dim, "Time",      CmdStr, "set time " )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(x,    dim, "x",         CmdStr, "set x " )
+      MakeMenuItem(y,    dim, "y",         CmdStr, "set y " )
+      MakeMenuItem(z,    dim, "z",         CmdStr, "set z " )
+      MakeMenuItem(t,    dim, "t",         CmdStr, "set t " )
+
+# Frequently used buttons (and toggle)
+# -----------------------------------
+  MakeButton( var,  "Var",    VarSel,  NULL )
+  MakeToggle( hold, "Hold",   FALSE,  NULL, Toggle,  "hold" )
+  MakeButton( prev, " << ",   Display, "<<" )
+  MakeButton( play, "Display",   Display, "DISPLAY" )
+  MakeButton( next, " >> ",   Display, ">>" )
+  MakeButton( rein, "Reinit", Cmd,     "reinit")
+
+# Once you define buttons and menus you may want to enforce their
+# relative position. The very first button is always placed at the
+# upper lefthand corner.
+# ----------------------------------------------------------------
+  SetWidgetPos(print,   NO_CARE, NULL, PLACE_RIGHT, file )
+  SetWidgetPos(options, NO_CARE, NULL, PLACE_RIGHT, print )
+  SetWidgetPos(dim,     NO_CARE, NULL, PLACE_RIGHT, options )
+  SetWidgetPos(prompt,  NO_CARE, NULL, PLACE_RIGHT, dim )
+  SetWidgetPos(hold,    NO_CARE, NULL, PLACE_RIGHT, prompt )
+  SetWidgetPos(var,     NO_CARE, NULL, PLACE_RIGHT, hold )
+  SetWidgetPos(prev,    NO_CARE, NULL, PLACE_RIGHT, var )
+  SetWidgetPos(play,    NO_CARE, NULL, PLACE_RIGHT, prev )
+  SetWidgetPos(next,    NO_CARE, NULL, PLACE_RIGHT, play )
+  SetWidgetPos(clear,   NO_CARE, NULL, PLACE_RIGHT, next )
+  SetWidgetPos(rein,    NO_CARE, NULL, PLACE_RIGHT, clear )
+  SetWidgetPos(quit,    NO_CARE, NULL, PLACE_RIGHT, rein )
+
+
+# You can optionally select a font for ALL widgets
+# ------------------------------------------------
+#  GetFont(font,"-*-helvetica-bold-o-normal--*-*-*-*-*-*-*-*" )
+   GetFont(font,"-*-helvetica-bold-o-normal--12-*-*-*-*-*-*-*" )
+   AllWidgetFont(font)
+
+# In order to make your widgets appear on the screen you *must*
+# issue this command.
+# -------------------------------------------------------------
+  ShowDisplay()
+  
+# After your widgets appear on the screen, you can set the color 
+# of your widgets. The following colors are pre-defined:
+# white, back, red, green, blue, yellow.
+# --------------------------------------------------------------
+  GetNamedColor(gray,"grey")
+  GetNamedColor(Blue,"LightSkyBlue")
+  GetNamedColor(pink,"gold")         # pink is actually gold, get it?
+  AllFgColor(black)
+  AllBgColor(Blue)
+  SetBgColor(root,white)
+  SetFgColor(root,red)
+  SetFgColor(prompt,yellow)
+  SetBgColor(prompt,red)
+  SetBgColor(prev,pink)
+  SetBgColor(play,pink)
+  SetBgColor(next,pink)
+  SetBgColor(hold,gray)
+  SetBgColor(var,gray)
+  SetBgColor(clear,gray)
+  SetBgColor(rein,gray)
+  SetBgColor(quit,gray)
+
+
+# And you must call this function at the end of your first GUI script.
+# This instructs the X Toolkit to enter an infinite loop, monitoring
+# keyboard and mouse events. Repeating: you *must* call MainLoop().
+# -------------------------------------------------------------------
+  MainLoop()
+
+#........................................................................
+#
+# APPENDIX: Currently available callback functions
+#
+#     Browse    Opens a text file, such as a help file, on a separate
+#               window.
+#     Cmd       Executes a generic GrADS command
+#     CmdStr    Like Cmd, but the user is prompted for an additional
+#               string to be appended to the GrADS command.
+#     CmdWin    Invokes a window for GrADS command line interface.
+#               User can click on past commands from a list.
+#     CmdLine   Invokes the standard GrADS command line interface.
+#               When the command line is active the other widgets
+#               are not available (may be fixed in the future).
+#     Display   A generic callback for displaying the current variale
+#               (or expression) set with VarSel. The options are:
+#                  <<    decrements time and executes display
+#                 PLAY   starts animation from current to last time
+#                DISPLAY just executes display
+#                  >>    increments time and  executes display
+#               If the "hold" toggle state is OFF (the default),
+#               the screen is cleared before displaying.
+#     Edit      Like browse, but the user can edit the file. This simple
+#               text editor is integrated with GrADS, providing a very
+#               elementary Integrated Development Enviroment (IDE) for
+#               GrADS scripts. In particular, the script being edited
+#               can be executed by clicling on a button.
+#     FileSel   Pops up a scrollable list and asks the user to selected
+#               a file among the currently opened GrADS files (including
+#               SDFs). The selected file becomes the default.
+#     Load      Pops up a "file finder" widget, and after the user
+#               clicks on a file name it executes a GrADS command
+#               specified as the last argument.
+#     Toggle    Turn internal options ON/OFF. The only internal
+#               option currently supported is "hold". This callback is
+#               usually used with MakeToggle(), see example above.
+#     VarSel    Pops up a scrollable list and asks the user to selected
+#               a variaable from the default file. The user can also
+#               type a generic GrADS expression instead of selecting
+#               a single variable.
+#     NULL      Does not do anything, used for inactive buttons.
+#
+#........................................................................
+
+

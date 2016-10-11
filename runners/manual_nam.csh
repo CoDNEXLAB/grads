@@ -1,0 +1,31 @@
+#!/usr/bin/csh
+#csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 000
+#csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 003
+#csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 006
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 009
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 012
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 015
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 018
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 021
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 024
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 027
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 030
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 033
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 036
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 039
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 042
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 045
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 048
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 051
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 054
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 057
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 060
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 063
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 066
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 069
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 072
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 075
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 078
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 081
+csh /home/scripts/grads/runners/nam_runner.csh 00 NAM 084
+exit

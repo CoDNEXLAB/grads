@@ -1,0 +1,38 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Dewpoint temperature
+* --------------------
+  function dewpt(t,in_rh)
+
+     if (in_rh='in_rh'|in_rh='' )
+        say 'Purpose: Dewpoint temperature [K]'
+        say 'Usage:   display dewpt(t,rh)'
+        say '         t  = temperature [K]'
+        say '         rh = relative humidity  above ground [%]'
+        return
+     else
+        rh = in_rh
+     endif
+
+*    Define these to minimize I/O
+*    ----------------------------
+     'define xxxt  = ' t ' - 273.16'
+     'define xxxrh = ' rh
+
+     'define gsudf = xxxt+273.16-((14.55+0.114*xxxt)*(1-0.01*xxxrh)+pow((2.5+0.007*xxxt)*(1-0.01*xxxrh),3)+(15.9+0.117*xxxt)*pow((1-0.01*xxxrh),14))'
+
+*    Release defined variables
+*    -------------------------
+     'undefine xxxt'
+     'undefine xxxrh'
+
+     return 'gsudf'

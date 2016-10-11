@@ -1,0 +1,13 @@
+#
+# Example 1: Opening files, displaying variables, and quitting.
+#
+        MakeButton( open,    "Open",    Load,    "open" )
+        MakeButton( var,     "Var",     VarSel,  NULL )
+        MakeButton( display, "Display", Display, "display" )
+        MakeButton( quit,    "Quit",    Cmd,     "quit" )
+
+        SetWidgetPos(var,     NO_CARE, NULL, PLACE_RIGHT, open)
+        SetWidgetPos(display, NO_CARE, NULL, PLACE_RIGHT, var)
+        SetWidgetPos(quit,    NO_CARE, NULL, PLACE_RIGHT, display)
+
+        MainLoop()

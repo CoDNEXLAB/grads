@@ -1,0 +1,32 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Potential Instablity
+* --------------------
+  function epi(t850,rh850,t500,in_rh500)
+
+     if (in_rh500='in_rh500'|in_rh500='')
+        say 'Purpose: Calculate Potential Instability'
+        say 'Usage:   display epi(t850,rh850,t500,rh500)'
+        say '         t850 = temperature at 850 hPa [K]'
+        say '         rh850 = relative humidity at 850 hPa [%]'
+        say '         t500 = temperature at 500 hPa [K]'
+        say '         rh500 = relative humidity at 500 hPa [%]'
+        return
+     else
+        rh500 = in_rh500
+     endif
+
+     'define xxxxx = ept('t500','rh500',500)'
+     'define gsudf = xxxxx - ept('t850','rh850',850)'
+     'undefine xxxxx'
+
+     return 'gsudf'

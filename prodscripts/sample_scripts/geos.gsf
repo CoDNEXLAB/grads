@@ -1,0 +1,71 @@
+*
+* This gsUDF implements a wrapper for re() that interpolates to the
+* GEOS-5 domain with the number of points specified on input.
+*
+
+function geos ( expr, nlon, nlat, opt, verbose )
+
+* Shorthand
+* ---------
+  if ( nlon='a' ); nlon=72   ;  nlat=46  ; endif 
+  if ( nlon='b' ); nlon=144  ;  nlat=91  ; endif 
+  if ( nlon='c' ); nlon=288  ;  nlat=181 ; endif 
+  if ( nlon='d' ); nlon=540  ;  nlat=361 ; endif 
+  if ( nlon='e' ); nlon=1080 ;  nlat=721 ; endif 
+
+* Make sure we got all the arguments
+* ----------------------------------
+  if ( nlat='nlat' )
+       say ''
+       say 'Usage:'
+       say '         d geos(expr,nlon,nlat,[opt],[verbose])'
+       say
+       say 'This function interpolates *expr* to the GEOS-5 output domain of size'
+       say '(nlon,nlat), assuming a global GEOS-5 grid [180W,180E), [90S,90N].'
+       say ''
+       say 'where *opt* is the interpolation method: bl, bs or ba'
+       say ''
+       say 'Shorthand: '
+       say ''
+       say '      nlon                nlon    nlat'
+       say '      ----     means      ----    ----'
+       say '       a                    72      46'
+       say '       b                   144      91'
+       say '       c                   288     181'
+       say '       d                   540     361'
+       say '       e                  1080     721'
+       say ''
+       say 'Examples:'
+       say '         d geos(ts,144,91)'
+       say '         d geos(ts,b)'
+       say '         d geos(ts,288,181,bs)'
+       say '         d geos(ts,540,361,,1)'
+       say ''
+      return
+  endif
+
+* Global grid
+* -----------
+  dlon = 360. / nlon
+  dlat = 180. / (nlat - 1 )
+  lon_beg = -180.
+  lon_end = 180. - dlon
+  lat_beg = -90.0
+  lat_end = 90.0
+
+  if ( verbose = 'verbose' )
+    f = 're'
+  else
+    f = 're_'
+  endif
+
+  if ( opt='opt' | opt='' )
+    f = f'('expr','nlon',LINEAR,'lon_beg','dlon','nlat',LINEAR,'lat_beg','dlat')'
+  else
+    f = f'('expr','nlon',LINEAR,'lon_beg','dlon','nlat',LINEAR,'lat_beg','dlat','opt')'
+  endif
+
+*  say 'DOING ' f
+
+  return f
+

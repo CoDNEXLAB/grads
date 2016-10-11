@@ -1,0 +1,31 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* T-Storm initiation index
+* ------------------------
+  function tsindex(cape,in_cin)
+
+     if (in_cin='in_cin'|in_cin='' )
+        say 'Purpose: Likelihood of T-storm Initiation'
+        say '         < -1     unlikely'
+        say '         [-1,0)   possible'
+        say '         (0,1]    likely'
+        say '         > 1      very likely'
+        say 'Usage:   display tsindex(cape,cin)' 
+        say '         cape = 180-0 hPa above ground convective available potential energy [j/kg]'
+        say '         cin = 180-0 hPa above ground convective inhibition [j/kg]'
+        return
+     else
+        cin = in_cin
+     endif
+
+     return 'log(('cape'+0.0000001)*(-5*('cin'-0.0001)))/4'
+

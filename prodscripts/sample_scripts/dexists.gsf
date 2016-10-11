@@ -1,0 +1,23 @@
+*
+* GS Script interface to functions in the path.gex extension.
+*
+*       This script has been placed in the Public Domain.
+*
+
+function fexists(path)
+   'exists ' path
+   if rc
+     return
+   else
+     if ( answer = 'yes' )
+          if ( isdir(path) )
+               return 1
+          else
+               return 0
+          endif
+     else
+          return 0
+     endif
+   endif
+
+

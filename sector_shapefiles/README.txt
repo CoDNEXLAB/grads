@@ -1,0 +1,1 @@
+Shapefiles in this directory correspond to the CoD Meteorology model sectors.  They are point shapefiles that represent the areal extent of each geographic domain and grid spacing of the NAM 212 grid. Please ask Victor before deleting or modifying any file in this directory.  

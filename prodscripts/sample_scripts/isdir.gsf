@@ -1,0 +1,19 @@
+*
+* GS Script interface to functions in the path.gex extension.
+*
+*       This script has been placed in the Public Domain.
+*
+
+function isdir(path)
+   'isdir ' path
+   if rc
+     return
+   else
+     line = sublin(result,1)
+     answer = subwrd(line,1)
+     if ( answer = 'yes' ); return 1
+     else;                  return 0
+     endif
+   endif
+
+
