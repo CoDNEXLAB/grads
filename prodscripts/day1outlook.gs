@@ -25,4 +25,4 @@ function main(args)
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *generate the image
-'printim /home/apache/atlas/data/spc_dy1.png x800 y600'
+'printim /home/apache/servername/data/spc_dy1.png x800 y600'

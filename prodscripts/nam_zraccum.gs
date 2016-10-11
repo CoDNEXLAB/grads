@@ -11,7 +11,7 @@ function main(args)
 *GLOBAL VARIABLES
 txtext = '.txt'
 filext = '.png'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/servername/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
