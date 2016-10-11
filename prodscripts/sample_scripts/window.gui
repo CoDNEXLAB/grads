@@ -1,0 +1,236 @@
+#  window.gui - last revision: October 12, 1997
+#
+#  This script demonstrates how to create a separate GUI window.
+#
+#  Sample widget script for creating a separate window for the
+#  NCEP/NCAR Re-analysis CDROM.  Modify the first line ("chdir") 
+#  for the location of your CDROM drive.
+#
+#  How to invoke this script:
+#
+#  Start one of the more general purpose GUI scripts, say sample.gui,
+#  by entering at the command line:
+#
+#  ga-> gui sample.gui
+#
+#  The from the "File" menu, select GUI, and enter the name of this
+#  script (window,gui). A second window shall pop-up.
+#
+#  NOTES: 
+#
+#    1. Do not invoke this as your main GUI as it lacks many
+#       vital functions (such as a "QUIT" button).
+#
+#    2. Do note invoke this script from the "ncep.gui" script
+#       as to avoid widget naming conflicts.
+#
+#  --
+#   (c) 1997 by Arlindo da Silva
+#
+#   Permission is granted to any individual or institution to use,
+#   copy, or redistribute this software so long as it is not sold for
+#   profit, and provided this notice is retained. 
+#
+#.........................................................................
+
+
+#  Mofify this for the location of your CDROM
+#  Win32 Users: Use //d to indicate drive d:
+#  ------------------------------------------
+   chdir("//d/")    
+   
+#
+#  Create a separate window for this
+#  ---------------------------------
+   MakeWindow(ncepstuff,"NCEP/NCAR CDROM Window");
+
+
+# A "label" is an inactive widget which display some text, 
+# e.g., an informative  title. The first argument, "root"
+# in this case, is the name you give to the widget so that
+# you can refer to it later on
+# -------------------------------------------------------
+  MakeLabel(nceproot,"NCEP/NCAR Re-analysis CDROM")
+
+
+# CDROM specific menu's
+# ---------------------
+  MakeMenu(cc, "Climate")
+      MakeMenuItem(c1, cc, "Z u v T q ...", Open, "open climate/prflcl" )
+      MakeMenuItem(c2, cc, "Heat Fluxes", Open, "open climate/heatcl" )
+      MakeMenuItem(c3, cc, "Potential Vorticity", Open, "open climate/ipvcl" )
+
+  MakeMenu(mm, "Monthly")
+      MakeMenuItem(m1, mm, "Z u v T q ...",  Open, "open monthly/prfl" )
+      MakeMenuItem(m2, mm, "Potential Vorticity",  Open, "open monthly/ipv" )
+
+  MakeMenu(hd, "Z")
+      MakeMenuItem(xxx, hd, "  Daily",  NULL, NULL )
+      MakeMenuItem(xxx, hd, "_________",  NULL, NULL )
+      MakeMenuItem(hd5, hd, "Z  30 hPa", Open, "open daily/z30" )
+      MakeMenuItem(hd4, hd, "Z 200 hPa", Open, "open daily/z200" )
+      MakeMenuItem(hd3, hd, "Z 500 hPa", Open, "open daily/z500" )
+      MakeMenuItem(hd2, hd, "Z 700 hPa", Open, "open daily/z700" )
+      MakeMenuItem(hd1, hd, "Z 850 hPa", Open, "open daily/z850" )
+
+  MakeMenu(ud, "u")
+      MakeMenuItem(xxx, ud, "  Daily",  NULL, NULL )
+      MakeMenuItem(xxx, ud, "_________",  NULL, NULL )
+      MakeMenuItem(ud5, ud, "U  30 hPa", Open, "open daily/u30" )
+      MakeMenuItem(ud4, ud, "U 200 hPa", Open, "open daily/u200" )
+      MakeMenuItem(ud3, ud, "U 500 hPa", Open, "open daily/u500" )
+      MakeMenuItem(ud2, ud, "U 700 hPa", Open, "open daily/u700" )
+      MakeMenuItem(ud1, ud, "U 850 hPa", Open, "open daily/u850" )
+
+  MakeMenu(vd, "v")
+      MakeMenuItem(xxx, vd, "  Daily",  NULL, NULL )
+      MakeMenuItem(xxx, vd, "_________",  NULL, NULL )
+      MakeMenuItem(vd5, vd, "V  30 hPa", Open, "open daily/v30" )
+      MakeMenuItem(vd4, vd, "V 200 hPa", Open, "open daily/v200" )
+      MakeMenuItem(vd3, vd, "V 500 hPa", Open, "open daily/v500" )
+      MakeMenuItem(vd2, vd, "V 700 hPa", Open, "open daily/v700" )
+      MakeMenuItem(vd1, vd, "V 850 hPa", Open, "open daily/v850" )
+
+  MakeMenu(td, "T")
+      MakeMenuItem(xxx, td, "  Daily",  NULL, NULL )
+      MakeMenuItem(xxx, td, "_________",  NULL, NULL )
+      MakeMenuItem(td5, td, "T  30 hPa", Open, "open daily/t30" )
+      MakeMenuItem(td4, td, "T 200 hPa", Open, "open daily/t200" )
+      MakeMenuItem(td3, td, "T 500 hPa", Open, "open daily/t500" )
+      MakeMenuItem(td2, td, "T 700 hPa", Open, "open daily/t700" )
+      MakeMenuItem(td1, td, "T 850 hPa", Open, "open daily/t850" )
+      MakeMenuItem(td0, td, "T at 2m", Open, "open daily/t2m" )
+
+  MakeMenu(qd, "q")
+      MakeMenuItem(xxx, qd, "  Daily",  NULL, NULL )
+      MakeMenuItem(xxx, qd, "_________",  NULL, NULL )
+      MakeMenuItem(qd3, qd, "Q 500 hPa", Open, "open daily/q500" )
+      MakeMenuItem(qd2, qd, "Q 700 hPa", Open, "open daily/q700" )
+      MakeMenuItem(qd1, qd, "Q 850 hPa", Open, "open daily/q850" )
+      MakeMenuItem(qd0, qd, "Q at 2m", Open, "open daily/q2m" )
+
+  MakeMenu(sd, "Sfc")
+      MakeMenuItem(xxx,  sd, "     Daily",  NULL, NULL )
+      MakeMenuItem(xxx,  sd,"__________________",  NULL, NULL )
+      MakeMenuItem(sd1,  sd, "Sea Level Pressure",  Open, "open daily/mslp" )
+      MakeMenuItem(sd2,  sd, "10 meter u-wind",  Open, "open daily/u10m" )
+      MakeMenuItem(sd3,  sd, "10 meter v-wind",  Open, "open daily/v10m" )
+      MakeMenuItem(sd4,  sd, "Zonal stress",  Open, "open daily/uflx" )
+      MakeMenuItem(sd5,  sd, "Meridional stress", Open, "open daily/vflx" )
+      MakeMenuItem(xxx,  sd,"__________________",  NULL, NULL )
+      MakeMenuItem(sd6,  sd, "Precipitation",  Open, "open daily/prate" )
+      MakeMenuItem(sd7,  sd, "Latent Heat Flux",  Open, "open daily/lhtfl" )
+      MakeMenuItem(sd8,  sd, "Sensible Heat Flux",  Open, "open daily/" )
+      MakeMenuItem(xxx, sd,"__________________",  NULL, NULL )
+      MakeMenuItem(sd9, sd, "Shortwave  [down]",  Open, "open daily/dswrfsfc" )
+      MakeMenuItem(sda1, sd, "Longwave  [down]",  Open, "open daily/dlwrfsfc" )
+      MakeMenuItem(sda2, sd, "Shortwave [up]",  Open, "open daily/uswrfsfc" )
+      MakeMenuItem(sda3, sd, "Longwave  [up]",  Open, "open daily/ulwrfsfc" )
+
+  MakeButton( close,  "Close", CloseWindow,  NULL )
+
+  MakeMenu(hh, "Help")
+      MakeMenuItem(h1, hh, "About this Software", NULL, NULL )
+      MakeMenuItem(h2, hh, "About this CDROM", Browse, "read.ams")
+      MakeMenuItem(h3, hh, "BAMS Article", Browse, "paper/bamspapr.asc")
+
+
+# Once you define buttons and menus you may want to enforce their
+# relative position. The very first button is always placed at the
+# upper left corner.
+# ----------------------------------------------------------------
+
+  SetWidgetPos(cc, PLACE_UNDER, nceproot, NO_CARE,     NULL)
+  SetWidgetPos(mm, PLACE_UNDER, nceproot, PLACE_RIGHT, cc)
+  SetWidgetPos(hd, PLACE_UNDER, nceproot, PLACE_RIGHT, mm)
+  SetWidgetPos(ud, PLACE_UNDER, nceproot, PLACE_RIGHT, hd)
+  SetWidgetPos(vd, PLACE_UNDER, nceproot, PLACE_RIGHT, ud)
+  SetWidgetPos(td, PLACE_UNDER, nceproot, PLACE_RIGHT, vd)
+  SetWidgetPos(qd, PLACE_UNDER, nceproot, PLACE_RIGHT, td)
+  SetWidgetPos(sd, PLACE_UNDER, nceproot, PLACE_RIGHT, qd)
+  SetWidgetPos(close, PLACE_UNDER, nceproot, PLACE_RIGHT, sd)
+  SetWidgetPos(hh, PLACE_UNDER, nceproot, PLACE_RIGHT, close)
+
+# You can optionally select a font
+# --------------------------------
+  GetFont(ncepfont,"-*-helvetica-bold-o-normal--14-*-*-*-*-*-*-*" )
+  SetWidgetFont(nceproot,ncepfont)
+
+
+# In order to make your widgets appear on the screen you *must*
+# issue this command.
+# -------------------------------------------------------------
+  ShowDisplay()
+  
+
+# After your widgets appear on the screen, you can set the color 
+# of your widgets. The following colors are pre-defined:
+# white, back, red, green, blue, yellow.
+# --------------------------------------------------------------
+  GetNamedColor(Blue2,"LightSteelBlue")
+  GetNamedColor(grey,"grey")
+  SetFgColor(nceproot,red)
+  SetBgColor(cc,Blue2)
+  SetBgColor(mm,Blue2)
+  SetBgColor(hd,Blue2)
+  SetBgColor(ud,Blue2)
+  SetBgColor(vd,Blue2)
+  SetBgColor(td,Blue2)
+  SetBgColor(qd,Blue2)
+  SetBgColor(sd,Blue2)
+  SetBgColor(close,grey)
+  SetBgColor(hh,Blue2)
+
+# Note: Do not call MainLoop() when you have used MakeWindow()
+
+#........................................................................
+#
+# APPENDIX: Currently available callback functions
+#
+#     Browse    Opens a text file, such as a help file, on a separate
+#               window.
+#     Cmd       Executes a generic GrADS command
+#     CmdStr    Like Cmd, but the user is prompted for an additional
+#               string to be appended to the GrADS command.
+#     CmdWin    Invokes a window for GrADS command line interface.
+#               User can click on past commands from a list.
+#     CmdLine   Invokes the standard GrADS command line interface.
+#               When the command line is active the other widgets
+#               are not available (may be fixed in the future).
+# CloseWindow   Closes the current window (do not use for your primary
+#               window or you will get stuck).
+#     Display   A generic callback for displaying the current variable
+#               (or expression) set with VarSel. The options are:
+#                  <<    decrements time and executes display
+#                 PLAY   starts animation from current to last time
+#                DISPLAY just executes display
+#                  >>    increments time and  executes display
+#               If the "hold" toggle state is OFF (the default),
+#               the screen is cleared before displaying.
+#     Edit      Like browse, but the user can edit the file. This simple
+#               text editor is integrated with GrADS, providing a very
+#               elementary Integrated Development Enviroment (IDE) for
+#               GrADS scripts. In particular, the script being edited
+#               can be executed by clicking on a button (not
+#               implemented yet).
+#     FileSel   Pops up a scrollable list and asks the user to selected
+#               a file among the currently opened GrADS files (including
+#               SDFs). The selected file becomes the default.
+#     Load      Pops up a "file finder" widget, and after the user
+#               clicks on a file name it executes a GrADS command
+#               specified as the last argument. In case of "open" or 
+#               "sdfopen" the files becomes the default, and the
+#               user is asked to select a variable from this file.
+#     Open      Similar to Load, but the file name must be specified.
+#     Toggle    Turn internal options ON/OFF. The only internal
+#               option currently supported is "hold". This callback is
+#               usually used with MakeToggle(), see example above.
+#     VarSel    Pops up a scrollable list and asks the user to selected
+#               a variable from the default file. The user can also
+#               type a generic GrADS expression instead of selecting
+#               a single variable.
+#     NULL      Does not do anything, used for inactive buttons.
+#
+#........................................................................
+
+

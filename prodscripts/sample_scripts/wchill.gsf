@@ -1,0 +1,39 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Dewpoint temperature
+* --------------------
+  function wchill(t2m,u10m,in_v10m)
+
+     if (in_v10m='in_v10m'|in_v10m='')
+        say 'Purpose: Compute Wind Chill Temperature (New Formula)'
+        say 'Usage:   display wchill(t2m,u10m,in_v10m)'
+        say '         t2m = temperature at 2m [K]'
+        say '         u10m = zonal wind at 10m'
+        say '         v10m = meridional wind at 10m'
+        return
+     else
+        v10m = in_v10m
+     endif
+
+*   Define these to mnimize I/O
+*   ---------------------------
+    'define xxxt = ' t2m '- 273.16'
+    'define xxxw = mag('u10m','v10m')'
+
+    'define gsudf=273.16+13.12+(0.6215*xxxt)-(11.37*pow((xxxw*3.6),0.16))+(0.3965*xxxt*pow((xxxw*3.6),0.16))'
+
+*    Garbage collection
+*    ------------------
+    'undefine xxxt'
+    'undefine xxxw'
+
+     return 'gsudf'

@@ -1,0 +1,18 @@
+#
+# Example 2: Making a menu
+#
+        MakeMenu ( file, "File" )
+           MakeMenuItem(   open, file, "Open",     Load, "open")
+           MakeMenuItem(sdfopen, file, "SDF Open", Load, "sdfopen")
+
+        MakeButton( var,     "Var",     VarSel,  NULL )
+        MakeButton( display, "Display", Display, "display" )
+        MakeButton( quit,    "Quit",    Cmd,     "quit" )
+
+        SetWidgetPos(var,     NO_CARE, NULL, PLACE_RIGHT, file)
+        SetWidgetPos(display, NO_CARE, NULL, PLACE_RIGHT, var)
+        SetWidgetPos(quit,    NO_CARE, NULL, PLACE_RIGHT, display)
+
+        MainLoop()
+
+

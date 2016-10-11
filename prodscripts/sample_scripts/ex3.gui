@@ -1,0 +1,32 @@
+#
+# Example 3: Tinkering with colors
+#
+       MakeMenu ( file, "File" )
+          MakeMenuItem(   open, file, "Open",     Load, "open")
+          MakeMenuItem(sdfopen, file, "SDF Open", Load, "sdfopen")
+
+        MakeButton( var,     "Var",     VarSel,  NULL )
+        MakeButton( display, "Display", Display, "display" )
+        MakeButton( quit,    "Quit",    Cmd,     "quit" )
+
+        SetWidgetPos(var,     NO_CARE, NULL, PLACE_RIGHT, file)
+        SetWidgetPos(display, NO_CARE, NULL, PLACE_RIGHT, var)
+        SetWidgetPos(quit,    NO_CARE, NULL, PLACE_RIGHT, display)
+
+        ShowDisplay()
+
+        GetNamedColor(gray,"grey")
+        GetNamedColor(sblue,"LightSkyBlue")
+
+        SetBgColor(file,sblue)
+        SetBgColor(var,gray)
+        SetBgColor(display,gray)
+        SetBgColor(quit,red)
+        SetFgColor(var,yellow)
+        SetFgColor(display,yellow)
+        SetFgColor(quit,yellow)
+
+        MainLoop()
+
+
+

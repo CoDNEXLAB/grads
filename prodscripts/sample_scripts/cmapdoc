@@ -1,0 +1,121 @@
+Documentation for cmap.gs -- GrADS Color Table Script 
+
+(M. Fiorino) 
+
+Note: In the text below strings between the ' ' are GrADS command and
+strings between " " are UNIX commands or files names.
+
+This script allows you to interactively create and modify a color table. 
+
+I use the .gct file postfix to distinguish GrADS color tables from
+other GrADS files (e.g., .gs = GrADS scripts) and at the first
+invocation of cmap.gs, the a color table called "grads.gct" is
+created. I typically rename grads.gct to another file name (e.g.,
+nmc.gct) and then use that table in subsequent scripts.
+
+Let's create a color table. First fire up GrADS in landscape mode
+
+     grads -l
+
+resize your graphics window and at the GrADS terminal window type,
+
+     run cmap.gs
+
+The first thing the script will say is,
+
+     Enter the Number of Colors:
+
+Type in a number between 1-100, for example,
+
+     10
+
+You should then see on the graphics screen (--> explains what's what): 
+
+     GrADS color table for : grads.gct --> name of the color table file 
+     (10 boxes) --> boxes with color to edit 
+     1 2 3 4 5 6 7 8 9 10 --> number of the box 
+     1 --> color number being edited
+
+       ---      ---      ---
+
+        |        |        |
+
+        |        |        |
+
+        |        |        |          -->  sliders to control R G B
+
+        |        |        |
+
+        |        |        |
+
+        |        |        |
+
+        |0       |0       |0         -->  the value of R G B
+
+       ---      ---      ---
+
+     |--------|
+
+     | Save & |         -->  box to click to save and quit
+
+     |  Quit  |
+
+     |--------|
+
+To edit color #2, use your mouse and click on the box above number
+2. The color number will change to 2 and you're ready to edit. Click
+just to the left of the slider to change the value. The bottom part of
+the slider is 0 and the top is 255. Just play with each slider until
+you are happy with the color and go on to another color.  Repeat the
+"click to the left of the slider process" and when you are all done,
+click on the save and quit button. This will save your color table to
+the file "grads.gct". Here is what it will look something like:
+
+     1 225 174  91 
+     2 238 214 129 
+     3 163 233   0 
+     4   0   0  88 
+     5   0 201   0 
+     6   0 213 107 
+     7 240 192  69 
+     8 233 144 227 
+     9 221 192 109 
+    10 247   0   0
+
+To access these colors in GrADS use the colortab function provided at
+the end of doc. Here's how the "grads.gct" file color table is
+accessed in a GrADS script:
+
+     rc=colortab(grads)
+
+rc is a return code and equals the number of colors in the color table
+file "grads.gct", if the file was there and was readable. Note that
+the ".gct" in the file name is implicit. Even though the numbers are
+referenced 1-10 in cmap.gs, in GrADS the colors are numbered as
+21-30. The starting number of the color table is arbitrary; I chose 21
+to separate user-defined colors from the 0-15 GrADS default colors
+which cannot be changed.
+
+To use the colors try something like,
+
+     set gxout shaded
+     set clevs 1000 1004 1008 1016
+     set ccols 0 21 22 23 24
+
+Undoubtedly you will not be happy with your first color table. To edit
+it, just rerun cmap.gs, but use the file name as a command line
+parameter to cmap.gs, e.g.,
+
+     grads
+     run cmap.gs. grads
+
+The color table will be read in and you can now edit the colors and
+save it. However, cmap.gs will overwrite the file, so copy it to
+another file if you want to keep the original.
+
+
+Problems and questions: The colors do not come out right on a PC
+running Xvision during editing, but not when running GrADS. The
+problem is in the X server because when you have draw color 20 on the
+screen and then, set rgb 20 to a different color, it changes on the
+screen (the difference between pseudo and true color in X).

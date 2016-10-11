@@ -1,0 +1,59 @@
+*
+* This gsUDF implements a wrapper for re() that makes it behave 
+* more like the classic regrid2().
+*
+
+function regrid2 ( expr, dlon, dlat, opt, lon0, lat0 )
+
+* OK, let's re() handle the missing arguments
+* -------------------------------------------
+  if ( dlon='dlon' );  return 're('expr')'; endif
+
+* Defaults
+* --------
+  if ( dlat='dlat' ); dlat = dlon; endif
+  if ( opt='opt'   ); opt = 'ba' ; endif
+
+  opt = substr(opt,1,2)
+
+* Find defaut bounding box
+* -----------------------
+  'query dims'
+
+  line = sublin(result,2)
+  lon_beg = subwrd(line,6)
+  lon_end = subwrd(line,8)
+  line = sublin(result,3)
+  lat_beg = subwrd(line,6)
+  lat_end = subwrd(line,8)
+
+  if ( lon0='lon0' ); lon0 = lon_beg; endif
+  if ( lat0='lat0' ); lat0 = lat_beg; endif
+
+* Compute the long-hand parameters
+* Note: as in regrid2, keep wrapping the current dim enronment,
+* even if longitude wraps around.
+* -------------------------------------------------------------
+  if ( dlon <= 0 )
+       say 'regrid: invalid dlon=' dlon
+       return
+  else
+       nlon = 1 + math_nint((lon_end-lon_beg) / dlon)
+       say nlon ' ' lon_end ' '  lon0
+  endif
+  if ( dlat <= 0 )
+       say 'regrid: invalid dlat=' dlat
+       return
+  else
+       nlat = 1 + math_nint((lat_end-lat0)/dlat)
+  endif
+
+# For now assumes linear
+# ----------------------
+  f = 're('expr','nlon',LINEAR,'lon0','dlon','nlat',LINEAR,'lat0','dlat','opt')'
+  say f
+  return f
+
+
+
+  

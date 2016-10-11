@@ -1,0 +1,472 @@
+#  geos5.gui - last revision: 1 July 2011
+#
+#  GrADS Athena GUI script for accessing GEOS-5 datasets.
+#
+#  How to invoke this script:
+#
+#  At startup. Set the enviroment variable GAGUI with the
+#  name of the script file, e.g., 
+#
+#  % setenv GAGUI geos5.gui
+#
+#  At the GrADS command line prompt. Simply type
+#
+#  ga> gui geos5.gui
+#
+#  Of course, you must have a version of GrADS built with
+#  Athena Widgets support.
+#
+#  --
+#
+# This script file has been placed in the public domain.
+#
+#.........................................................................
+
+#  Most "exec" commands are supported
+#  ----------------------------------
+   set gxout shaded
+   
+#  Set this to see the script echoed on the screen
+#  -----------------------------------------------
+#   Debug(on)
+
+# A "label" is an inactive widget which display some text, 
+# e.g., an informative  title. The first argument, "root"
+# in this case, is the name you give to the widget so that
+# you can refer to it later on
+# -------------------------------------------------------
+  MakeLabel(root,"GEOS-5")
+  MakeLabel(mvt,"Forward Processing")
+
+  MakeLabel(dsets,"Available Datasets: ")
+
+###  MakeButton( date, "Date", CmdStr, "setenv YYYYMMDD " )
+
+# Assimilation
+# ----------------
+  MakeMenu ( gfs, " 2D Assim " )
+      MakeMenuItem(gcftit, gfs, "Meteorology  ",  NULL,    NULL )
+      MakeMenuItem(gcf001, gfs, "    Instantaneous ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst3_2d_asm_Nx")
+      MakeMenuItem(gcf002, gfs, "    Time Average  ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg1_2d_slv_Nx")
+      MakeMenuItem(gcf003, gfs, "    Surface Fluxes", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg1_2d_flx_Nx" )
+      MakeMenuItem(gcf004, gfs, "    Land Surface  ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg1_2d_lnd_Nx" )
+      MakeMenuItem(gcf005, gfs, "    Ocean Surface ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg1_2d_ocn_Nx")
+      MakeMenuItem(gcf006, gfs, "    Radiation     ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg1_2d_rad_Nx")
+
+      MakeMenuItem(gdftit, gfs, "Aerosol/Chemistry",  NULL,    NULL )
+      MakeMenuItem(gdf001, gfs, "    Hyperwall  ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst1_2d_hwl_Nx") 
+      MakeMenuItem(gdf002, gfs, "    Aerosol    ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_2d_aer_Nx") 
+      MakeMenuItem(gdf003, gfs, "    CO/CO2     ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_2d_chm_Nx") 
+      MakeMenuItem(gdf004, gfs, "    Tag Tracers", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_2d_tag_Nx") 
+
+# 3D Assimilation
+# ----------------
+  MakeMenu ( nam, " 3D Assim " )
+      MakeMenuItem(n1ftit, nam, "Meteorology: Pressure",  NULL,    NULL )
+      MakeMenuItem(n1f001, nam, "   Assimilation   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst3_3d_asm_Np")
+      MakeMenuItem(n1f002, nam, "   Clouds         ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_cld_Cp")
+      MakeMenuItem(n1f003, nam, "   Moist Processes", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_mst_Cp")
+      MakeMenuItem(n1f004, nam, "   Radiation      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_rad_Cp")
+      MakeMenuItem(n1f005, nam, "   Turbulence     ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_trb_Cp")
+      MakeMenuItem(n1f006, nam, "   d U  / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_udt_Cp")
+      MakeMenuItem(n1f007, nam, "   d T  / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_tdt_Cp")
+      MakeMenuItem(n1f008, nam, "   d Q  / dt      ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_qdt_Cp")
+      MakeMenuItem(n1f009, nam, "   d O3 / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_odt_Cp")
+
+      MakeMenuItem(n2ftit, nam, "Meteorology: Eta",  NULL,    NULL )
+      MakeMenuItem(n2f001, nam, "   Assimilation   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst3_3d_asm_Nv")
+      MakeMenuItem(n2f002, nam, "   Clouds         ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_cld_Nv")
+      MakeMenuItem(n2f003, nam, "   Moist Processes", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_mst_Nv")
+      MakeMenuItem(n2f004, nam, "   Radiation      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_rad_Nv")
+      MakeMenuItem(n2f005, nam, "   d U  / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_udt_Nv")
+      MakeMenuItem(n2f006, nam, "   d T  / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_tdt_Nv")
+      MakeMenuItem(n2f007, nam, "   d Q  / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_qdt_Nv")
+      MakeMenuItem(n2f008, nam, "   d O3 / dt      ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/tavg3_3d_odt_Nv")
+
+      MakeMenuItem(n3ftit, nam, "Aerosol/Chemistry: Eta ",  NULL,    NULL )
+      MakeMenuItem(n3f001, nam, "    Aerosol       ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst3_3d_aer_Nv")
+      MakeMenuItem(n3f002, nam, "    CO/CO2        ", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst3_3d_chm_Nv")
+      MakeMenuItem(n3f003, nam, "    CO Tag Tracers", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/inst3_3d_tag_Nv")
+
+# Forecast
+# --------
+  MakeMenu ( ruc, " Forecast " )
+      MakeMenuItem(r1ctit, ruc, "Meteorology",  NULL,    NULL )
+      MakeMenuItem(r1c002, ruc, "    Upper Level: P   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_3d_asm_Np.latest")
+      MakeMenuItem(r1c003, ruc, "    Upper Level: Eta ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_3d_asm_Nv.latest")
+      MakeMenuItem(r1c007, ruc, "    Single Level     ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/tavg1_2d_slv_Nx.latest")
+      MakeMenuItem(r1c001, ruc, "    Clouds/Precip    ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_2d_met_Nx.latest")
+      MakeMenuItem(r1c004, ruc, "    Surface Fluxes   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/tavg1_2d_flx_Nx.latest")
+      MakeMenuItem(r1c005, ruc, "    Land Surface     ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/tavg1_2d_lnd_Nx.latest")
+      MakeMenuItem(r1c006, ruc, "    Radiation        ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/tavg1_2d_rad_Nx.latest")
+      MakeMenuItem(r2ctit, ruc, "Aerosol/Chemistry",  NULL,    NULL )
+      MakeMenuItem(r2c001, ruc, "    Hyperwall", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst1_2d_hwl_Nx.latest")
+      MakeMenuItem(r2c002, ruc, "    Aerosol Mass", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_3d_aer_Np.latest")
+      MakeMenuItem(r2c004, ruc, "    Aerosol Extinction ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_3d_ext_Np.latest")
+      MakeMenuItem(r2c003, ruc, "    CO/CO2   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_3d_chm_Np.latest")
+      MakeMenuItem(r2c005, ruc, "    CO Tag Tracers", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/fcast/inst3_3d_tag_Np.latest")
+
+# Etc
+# ---
+  MakeMenu ( wave, " Etc " )
+      MakeMenuItem(nww3tit, wave, "QFED Biomass Emissions  ",  NULL,    NULL )
+      MakeMenuItem(nww001, wave, "    CO             ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/Emissions/QFED/NRT/qfed2.emis_co")
+      MakeMenuItem(nww002, wave, "    CO2            ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/Emissions/QFED/NRT/qfed2.emis_co2")
+      MakeMenuItem(nww003, wave, "    SO2            ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/Emissions/QFED/NRT/qfed2.emis_so2")
+      MakeMenuItem(nww004, wave, "    Black Carbon   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/Emissions/QFED/NRT/qfed2.emis_bc")
+      MakeMenuItem(nww005, wave, "    Organic Carbon ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/Emissions/QFED/NRT/qfed2.emis_oc")
+
+      MakeMenuItem(nahtit, wave, "Aerosol Retrievals: AM",  NULL,    NULL )
+      MakeMenuItem(nah001, wave, "    MISR", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/misr")
+      MakeMenuItem(nah002, wave, "    MODIS Land: Terra ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/modis-t_land")
+      MakeMenuItem(nah003, wave, "    MODIS Ocean: Terra", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/modis-t_ocean")
+      MakeMenuItem(nah004, wave, "    Deep Blue: Terra  ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/modis-t_blue_land")
+
+      MakeMenuItem(nphtit, wave, "Aerosol Retrievals: PM",  NULL,    NULL )
+      MakeMenuItem(nph001, wave, "    MODIS Land: Aqua  ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/modis-a_land")
+      MakeMenuItem(nph002, wave, "    MODIS Ocean: Aqua ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/modis-a_ocean")
+      MakeMenuItem(nph003, wave, "    Deep Blue: Aqua   ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/modis-a_blue_land")
+      MakeMenuItem(nph004, wave, "    OMI: Aura         ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/omi")
+      MakeMenuItem(nph005, wave, "    PARASOL: Land     ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/parasol_land")
+      MakeMenuItem(nph006, wave, "    PARASOL: Ocean    ", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/AeroObs/0.25_deg/parasol_ocean")
+
+      MakeMenuItem(wnatit, wave, "Neural Net Retrievals:",  NULL,    NULL )
+      MakeMenuItem(wna003, wave, "    MODIS Land: Terra", Open, "sdfopen http://opendap.nccs.nasa.gov:80/dods/GEOS-5/fp/0.25_deg/assim/modis-t_land")
+      MakeMenuItem(wna004, wave, "    MODIS Ocean: Terra", Open, "sdfopen http://opendap.gsfc.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/modis-t_ocean")
+      MakeMenuItem(wna001, wave, "    MODIS Land: Aqua", Open, "sdfopen http://opendap.nccs.nasa.gov:9090/dods/GEOS-5/fp/0.25_deg/assim/modis-a_land")
+      MakeMenuItem(wna002, wave, "    MODIS Ocean: Aqua", Open, "sdfopen http://opendap.nccs.nasa.gov:80/dods/GEOS-5/fp/0.25_deg/assim/modis-a_ocean")
+
+# File menu
+# ---------
+  MakeMenu ( file, " File " )
+
+# Once you make a memu, you create its items. For the first item:
+# --------------------------------------------------------------
+      MakeMenuItem(open,  file, "Open",             Load,    "open")
+      MakeMenuItem(sdf,   file, "SDF Open",         Load,    "sdfopen")
+      MakeMenuItem(xdf,   file, "XDF Open",         Load,    "xdfopen")
+      MakeMenuItem(fsel,  file, "File Selection ",  FileSel, NULL )
+      MakeMenuItem(browse,file, "View Text File",   Browse,  NULL)
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(exec,  file, "Exec",             Load,    "exec")
+      MakeMenuItem(run,   file, "Run",              Load,    "run")
+      MakeMenuItem(gui,   file, "GUI",              Load,    "gui")
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(fresh, file, "Refresh",          Cmd,     "  ")
+      MakeMenuItem(init,  file, "Reinit",           Cmd,     "reinit")
+      MakeMenuItem(exit,  file, "Exit",             Cmd,     "quit")
+
+
+# Enough debugging...
+# -------------------
+###  Debug(off)
+
+# A menu for gx metafile printing related commands
+# ------------------------------------------------
+  MakeMenu ( print, " Print " )
+      MakeMenuItem(png,     print, "PNG",             CmdStr, "gxyat geos5.png")
+      MakeMenuItem(eps,     print, "Encapsulated PS", CmdStr, "print geos5.eps")
+      MakeMenuItem(junk,    print, "_______________",  NULL, NULL )
+      MakeMenuItem(enable,  print, "Enable  Print", Load,  "enable print")
+      MakeMenuItem(printit, print, "Print",         Cmd,   "print")
+      MakeMenuItem(disable, print, "Disable Print", Cmd,   "disable print")
+
+# A menu with assorted internal options
+# -------------------------------------
+  MakeMenu ( options, "Options" )
+      MakeMenuItem(shade,  options, "Shaded",      Cmd, "set gxout shaded" )
+      MakeMenuItem(cont,   options, "Contour",     Cmd, "set gxout contour" )
+      MakeMenuItem(grfill, options, "Grid Fill",   Cmd, "set gxout grfill" )
+      MakeMenuItem(grvals, options, "Grid Values", Cmd, "set gxout grid" )
+      MakeMenuItem(vec,    options, "Vector",      Cmd, "set gxout vector" )
+      MakeMenuItem(strm,   options, "Streamlines", Cmd, "set gxout stream" )
+      MakeMenuItem(bar,    options, "Bar Chart",   Cmd, "set gxout bar" )
+      MakeMenuItem(line,   options, "Line Plot",   Cmd, "set gxout line" )
+      MakeMenuItem(barb,   options, "Wind Barbs",  Cmd, "set gxout  barb" )
+      MakeMenuItem(junk,   options, "_______________",  NULL, NULL )
+      MakeMenuItem(ci,     options, "Contour Interval",  CmdStr, "set cint" )
+      MakeMenuItem(tit,    options, "Draw Title", CmdStr, "draw title " )
+      MakeMenuItem(cbar,   options, "Color Bar",  Cmd, "run cbarn" )
+
+# A menu for defining GrADS dimensions. This is very crude right now.
+# I will be developing a specific callback with rubber bands
+# etc. for these functions. Stay tuned. 
+# ------------------------------------------------------------------
+  MakeMenu( dim, "Set Dim")
+      MakeMenuItem(zidim, dim, "Zoom in",  Cmd,    "zoomin %s"      )
+      MakeMenuItem(zodim, dim, "Zoom out", Cmd,    "zoomout -1 %s" )
+      MakeMenuItem(uzgdim, dim, "Global [0-360]",  Cmd, "unzoomc %s"  )
+      MakeMenuItem(uzddim, dim, "Global [180W-180E]", Cmd, "unzoom %s" )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(qdim, dim, "Query",     Cmd,    "query dims" )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(lat,  dim, "Latitude",  CmdStr, "set lat " )
+      MakeMenuItem(lon,  dim, "Longitude", CmdStr, "set lon " )
+      MakeMenuItem(lev,  dim, "Level",     CmdStr, "set lev " )
+      MakeMenuItem(time, dim, "Time",      CmdStr, "set time " )
+      MakeMenuItem(ens,  dim, "Ens",       CmdStr, "set ens  " )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(x,    dim, "x",         CmdStr, "set x " )
+      MakeMenuItem(y,    dim, "y",         CmdStr, "set y " )
+      MakeMenuItem(z,    dim, "z",         CmdStr, "set z " )
+      MakeMenuItem(t,    dim, "t",         CmdStr, "set t " )
+      MakeMenuItem(e,    dim, "e",         CmdStr, "set e " )
+
+# Vertical levels
+  MakeMenu( strat, "Strat")
+      MakeMenuItem(l01,  strat, "0.1 hPa",  Cmd, "set lev 0.1" )
+      MakeMenuItem(l03,  strat, "0.3 hPa",  Cmd, "set lev 0.3" )
+      MakeMenuItem(l04,  strat, "0.4 hPa",  Cmd, "set lev 0.4" )
+      MakeMenuItem(l05,  strat, "0.5 hPa",  Cmd, "set lev 0.5" )
+      MakeMenuItem(l07,  strat, "0.7 hPa",  Cmd, "set lev 0.7" )
+      MakeMenuItem(l1,   strat, "1 hPa",    Cmd, "set lev 1" )
+      MakeMenuItem(l2,   strat, "2 hPa",    Cmd, "set lev 2" )
+      MakeMenuItem(l3,   strat, "3 hPa",    Cmd, "set lev 3" )
+      MakeMenuItem(l4,   strat, "4 hPa",    Cmd, "set lev 4" )
+      MakeMenuItem(l5,   strat, "5 hPa",    Cmd, "set lev 5" )
+      MakeMenuItem(l7,   strat, "7 hPa",    Cmd, "set lev 7" )
+      MakeMenuItem(l10,  strat, "10 hPa",   Cmd, "set lev 10" )
+      MakeMenuItem(l20,  strat, "20 hPa",   Cmd, "set lev 20" )
+      MakeMenuItem(l30,  strat, "30 hPa",   Cmd, "set lev 30" )
+      MakeMenuItem(l40,  strat, "40 hPa",   Cmd, "set lev 40" )
+      MakeMenuItem(l50,  strat, "50 hPa",   Cmd, "set lev 50" )
+      MakeMenuItem(l70,  strat, "70 hPa",   Cmd, "set lev 70" )
+      MakeMenuItem(l100, strat, "100 hPa",  Cmd, "set lev 100" )
+      MakeMenuItem(l150, strat, "150 hPa",  Cmd, "set lev 150" )
+
+  MakeMenu( tropo, "Tropo")
+      MakeMenuItem(l200,  tropo, "200 hPa",  Cmd, "set lev 200" )
+      MakeMenuItem(l250,  tropo, "250 hPa",  Cmd, "set lev 250" )
+      MakeMenuItem(l300,  tropo, "300 hPa",  Cmd, "set lev 300" )
+      MakeMenuItem(l350,  tropo, "350 hPa",  Cmd, "set lev 350" )
+      MakeMenuItem(l400,  tropo, "400 hPa",  Cmd, "set lev 400" )
+      MakeMenuItem(l450,  tropo, "450 hPa",  Cmd, "set lev 450" )
+      MakeMenuItem(l500,  tropo, "500 hPa",  Cmd, "set lev 500" )
+      MakeMenuItem(l550,  tropo, "550 hPa",  Cmd, "set lev 550" )
+      MakeMenuItem(l600,  tropo, "600 hPa",  Cmd, "set lev 600" )
+      MakeMenuItem(l650,  tropo, "650 hPa",  Cmd, "set lev 650" )
+      MakeMenuItem(l700,  tropo, "700 hPa",  Cmd, "set lev 700" )
+      MakeMenuItem(l725,  tropo, "725 hPa",  Cmd, "set lev 725" )
+      MakeMenuItem(l750,  tropo, "750 hPa",  Cmd, "set lev 750" )
+      MakeMenuItem(l775,  tropo, "775 hPa",  Cmd, "set lev 775" )
+      MakeMenuItem(l800,  tropo, "800 hPa",  Cmd, "set lev 800" )
+      MakeMenuItem(l825,  tropo, "825 hPa",  Cmd, "set lev 825" )
+      MakeMenuItem(l850,  tropo, "850 hPa",  Cmd, "set lev 850" )
+      MakeMenuItem(l875,  tropo, "875 hPa",  Cmd, "set lev 875" )
+      MakeMenuItem(l900,  tropo, "900 hPa",  Cmd, "set lev 900" )
+      MakeMenuItem(l925,  tropo, "925 hPa",  Cmd, "set lev 925" )
+      MakeMenuItem(l950,  tropo, "950 hPa",  Cmd, "set lev 950" )
+      MakeMenuItem(l975,  tropo, "975 hPa",  Cmd, "set lev 975" )
+      MakeMenuItem(l999,  tropo, "1000 hPa", Cmd, "set lev 1000" )
+
+# Maps
+# ----
+  MakeMenu ( map, " Maps " )
+      MakeMenuItem(lres,  map, "Low Resolution",    Cmd, "set mpdset lowres")
+      MakeMenuItem(mres,  map, "Medium Resolution", Cmd, "set mpdset mres")
+      MakeMenuItem(hires, map, "High Resolution",   Cmd, "set mpdset hires")
+      MakeMenuItem(junk,  map, "_________", NULL,   NULL )
+      MakeMenuItem(mglo,  map, "Global",            Cmd, "region global")
+      MakeMenuItem(mcon,  map, "CONUS",             Cmd, "region conus")
+      MakeMenuItem(ms4i,  map, "SEAC4RS Inner",     Cmd, "region seac4rs_inner")
+      MakeMenuItem(ms4o,  map, "SEAC4RS Outer",     Cmd, "region seac4rs_outer")
+      MakeMenuItem(mpdx,  map, "PODEX",             Cmd, "region podex")
+      MakeMenuItem(mtcp,  map, "TCAP",              Cmd, "region tcap")
+
+# Creates simple buttons. Buttons work pretty much like menu items
+# but they do not belong to any menu and are directly clickable.
+# ------------------------------------------------------------------
+  MakeButton( cbarn,  "ColorBar", Cmd,    "run cbarn.gs" )
+  MakeButton( clear,  "Clear",    Cmd,    "clear" )
+  MakeButton( quit,   "Quit",     Cmd,    "quit" )
+  MakeButton( rein,   "Reinit",   Cmd,    "reinit")
+  MakeButton( prompt, "ga>",      CmdWin, NULL )
+
+# Buttons (and toggle) for displaying the default expression
+# ----------------------------------------------------------
+  MakeButton( var,  "Var",    VarSel,  NULL )
+  MakeToggle( hold, "Hold",   FALSE,  NULL, Toggle,  "hold" )
+  MakeButton( prev, " << ",   Display, "<<" )
+  MakeButton( play, "Display",   Display, "DISPLAY" )
+  MakeButton( next, " >> ",   Display, ">>" )
+
+# Once you define buttons and menus you need to enforce their
+# relative position. The very first button is always placed at the
+# upper left corner.
+# ----------------------------------------------------------------
+
+  SetWidgetPos(mvt, NO_CARE, NULL, PLACE_RIGHT, dsets )
+
+  # First row 
+  SetWidgetPos(dsets, PLACE_UNDER, root, NO_CARE, NULL)
+ # SetWidgetPos(date,  PLACE_UNDER, root, PLACE_RIGHT, dsets )
+  SetWidgetPos(gfs,   PLACE_UNDER, root, PLACE_RIGHT, dsets  )
+  SetWidgetPos(nam,   PLACE_UNDER, root, PLACE_RIGHT, gfs   )
+  SetWidgetPos(ruc,   PLACE_UNDER, root, PLACE_RIGHT, nam   )
+  SetWidgetPos(wave,  PLACE_UNDER, root, PLACE_RIGHT, ruc   )
+
+  # Second row 
+  SetWidgetPos(file,    PLACE_UNDER, dsets, NO_CARE, NULL)
+  SetWidgetPos(print,   PLACE_UNDER, dsets, PLACE_RIGHT, file )
+  SetWidgetPos(options, PLACE_UNDER, dsets, PLACE_RIGHT, print )
+  SetWidgetPos(dim,     PLACE_UNDER, dsets, PLACE_RIGHT, options )
+  SetWidgetPos(tropo,   PLACE_UNDER, dsets, PLACE_RIGHT, dim )
+  SetWidgetPos(strat,   PLACE_UNDER, dsets, PLACE_RIGHT, tropo )
+  SetWidgetPos(map,     PLACE_UNDER, dsets, PLACE_RIGHT, strat )
+  SetWidgetPos(prompt,  PLACE_UNDER, dsets, PLACE_RIGHT, map )
+
+  # Third row
+  SetWidgetPos(hold,  PLACE_UNDER, file, NO_CARE, NULL)
+  SetWidgetPos(var,   PLACE_UNDER, file, PLACE_RIGHT, hold )
+  SetWidgetPos(cbarn, PLACE_UNDER, file, PLACE_RIGHT, var )
+  SetWidgetPos(prev,  PLACE_UNDER, file, PLACE_RIGHT, cbarn )
+  SetWidgetPos(play,  PLACE_UNDER, file, PLACE_RIGHT, prev )
+  SetWidgetPos(next,  PLACE_UNDER, file, PLACE_RIGHT, play )
+  SetWidgetPos(clear, PLACE_UNDER, file, PLACE_RIGHT, next )
+  SetWidgetPos(rein,  PLACE_UNDER, file, PLACE_RIGHT, clear )
+  SetWidgetPos(quit,  PLACE_UNDER, file, PLACE_RIGHT, rein )
+
+
+# You can optionally select a font for ALL widgets
+# ------------------------------------------------
+# GetFont(dfont,"-*-helvetica-bold-o-normal--*-*-*-*-*-*-*-*" )
+  GetFont(dfont,"-*-helvetica-bold-o-normal--15-*-*-*-*-*-*-*" )
+  AllWidgetFont(dfont)
+
+# And select a font for an individual widget. Here is one example:
+# ---------------------------------------------------------------------
+  GetFont(tfont,"-*-helvetica-bold-o-normal--24-*-*-*-*-*-*-*" )
+  GetFont(lfont,"-*-helvetica-bold-o-normal--15-*-*-*-*-*-*-*" )
+  SetWidgetFont(root,tfont)
+  SetWidgetFont(mvt,tfont)
+  SetWidgetFont(dsets,lfont)
+
+# In order to make your widgets appear on the screen you *must*
+# issue this command.
+# -------------------------------------------------------------
+  ShowDisplay()
+  
+# After your widgets appear on the screen, you can set the color 
+# of your widgets. The following colors are pre-defined:
+# white, back, red, green, blue, yellow.
+# --------------------------------------------------------------
+  GetNamedColor(gray,"grey")
+  GetNamedColor(Blue,"LightSkyBlue")
+  GetNamedColor(Steel,"LightSteelBlue")
+  GetNamedColor(gold,"gold")     
+  AllFgColor(black)
+  AllBgColor(Blue)
+  SetBgColor(root,white)
+  SetFgColor(root,black)
+  SetBgColor(mvt,white)
+  SetFgColor(mvt,blue)
+  SetBgColor(dsets,white)
+  SetFgColor(dsets,red)
+#  SetBgColor(date,green)
+  SetFgColor(prompt,yellow)
+  SetBgColor(prompt,red)
+  SetBgColor(prev,gold)
+  SetBgColor(play,gold)
+  SetBgColor(next,gold)
+  SetBgColor(hold,gray)
+  SetBgColor(var,gray)
+  SetBgColor(clear,gray)
+  SetBgColor(rein,gray)
+  SetBgColor(cbarn,gray)
+  SetBgColor(quit,gold)
+
+# Special colors for GEOS5 open menus
+# -----------------------------------
+  SetBgColor(gfs,Steel)
+  SetBgColor(nam,Steel)
+  SetBgColor(ruc,Steel)
+  SetBgColor(wave,Steel)
+
+# Make some of the titles inside menus red
+# ----------------------------------------
+  SetFgColor(gcftit,red)
+  SetFgColor(gcatit,red)
+  SetFgColor(gdftit,red)
+  SetFgColor(gdatit,red)
+  SetFgColor(n1ftit,red)
+  SetFgColor(n2ftit,red)
+  SetFgColor(n3ftit,red)
+  SetFgColor(r1ctit,red)
+  SetFgColor(r2ctit,red)
+
+  SetFgColor(akwtit,red)
+  SetFgColor(enptit,red)
+  SetFgColor(nahtit,red)
+  SetFgColor(nphtit,red)
+  SetFgColor(nww3tit,red)
+  SetFgColor(wnatit,red)
+
+# Highlight some of the vertical levels
+# -------------------------------------
+  SetFgColor(l01,red)
+  SetFgColor(l1,red)
+  SetFgColor(l10,red)
+  SetFgColor(l50,red)
+  SetFgColor(l100,red)
+  SetFgColor(l200,red)
+  SetFgColor(l300,red)
+  SetFgColor(l400,red)
+  SetFgColor(l500,red)
+  SetFgColor(l700,red)
+  SetFgColor(l850,red)
+  SetFgColor(l925,red)
+  SetFgColor(l999,red)
+
+# And you must call this function at the end of your first GUI script.
+# This instructs the X Toolkit to enter an infinite loop, monitoring
+# keyboard and mouse events. Repeating: you *must* call MainLoop().
+# -------------------------------------------------------------------
+  MainLoop()
+
+#........................................................................
+#
+# APPENDIX: Currently available callback functions
+#
+#     Browse    Opens a text file, such as a help file, on a separate
+#               window.
+#     Cmd       Executes a generic GrADS command
+#     CmdStr    Like Cmd, but the user is prompted for an additional
+#               string to be appended to the GrADS command.
+#     CmdWin    Invokes a window for GrADS command line interface.
+#               User can click on past commands from a list.
+#     CmdLine   Invokes the standard GrADS command line interface.
+#               When the command line is active the other widgets
+#               are not available (may be fixed in the future).
+#     Display   A generic callback for displaying the current variable
+#               (or expression) set with VarSel. The options are:
+#                  <<    decrements time and executes display
+#                 PLAY   starts animation from current to last time
+#                DISPLAY just executes display
+#                  >>    increments time and  executes display
+#               If the "hold" toggle state is OFF (the default),
+#               the screen is cleared before displaying.
+#     Edit      Like browse, but the user can edit the file. This simple
+#               text editor is integrated with GrADS, providing a very
+#               elementary Integrated Development Enviroment (IDE) for
+#               GrADS scripts. In particular, the script being edited
+#               can be executed by clicking on a button (not
+#               implemented yet).
+#     FileSel   Pops up a scrollable list and asks the user to selected
+#               a file among the currently opened GrADS files (including
+#               SDFs). The selected file becomes the default.
+#     Load      Pops up a "file finder" widget, and after the user
+#               clicks on a file name it executes a GrADS command
+#               specified as the last argument.
+#     Open      Similar to Load, but the file name must be specified.
+#     Toggle    Turn internal options ON/OFF. The only internal
+#               option currently supported is "hold". This callback is
+#               usually used with MakeToggle(), see example above.
+#     VarSel    Pops up a scrollable list and asks the user to selected
+#               a variable from the default file. The user can also
+#               type a generic GrADS expression instead of selecting
+#               a single variable.
+#     NULL      Does not do anything, used for inactive buttons.
+#
+#........................................................................
+
+

@@ -1,0 +1,338 @@
+#  melrose.gui - last revision: Nov 20, 1997
+#
+#  Sample widget script for GEOS-1 files on Melrose.
+#
+#  How to invoke this script:
+#
+#  At startup. Set the enviroment variable GAGUI with the
+#  name of the script file, e.g., 
+#
+#  % setenv GAGUI melrose.gui
+#
+#  At the GrADS command line prompt. Simply type
+#
+#  ga> gui melrose.gui
+#
+#  Of course, you must have a version of GrADS built with
+#  Athena Widgets support.
+#
+#  (c) 1997 Arlindo da Silva   (dasilva@gsfc.nasa.gov)
+#
+#              *** Copy freely but DO NOT sell ***
+#
+#  See also sample.gui.
+#.........................................................................
+
+
+#  Most "exec" commands are supported
+#  ----------------------------------
+   set gxout shaded
+
+   
+# A "label" is an inactive widget which display some text, 
+# e.g., an informative  title. The first argument, "root"
+# in this case, is the name you give to the widget so that
+# you can refer to it later on
+# -------------------------------------------------------
+  MakeLabel(root,"GEOS-1 Multi-year Assimilation Files")
+
+# This command creates a dropdown menu called " File... "
+# as usual, the first argument "file" is the name of the
+# widget
+# -------------------------------------------------------
+  MakeMenu ( file, "File" )
+
+
+# Once you make a memu, you create its items. For the first item:
+# --------------------------------------------------------------
+      MakeMenuItem(open,  file, "Open",             Load,    "open")
+
+# The parameters this particular item are:
+#     open    the name of the item widget
+#     file    the menu the item belongs to (see MakeMenu above)
+#     "Open"  This is the text it displays on the screen
+#     Load    this is the callback name, i.e., the widget invokes
+#             this function when pressed. This particular callback
+#             pops up a "file finder" widget, and after the user
+#             clicks on a file name it executes the grads command
+#             "open" (see last argument) on this file. A list
+#             of the other available callbacks can be found in the
+#             end of this file.
+#     "open"  Argument to be passed to the callback. In this 
+#             particular case, it is the GrADS command to be
+#             executed on the file.
+#  The definition of the other items in this menu follows.
+      MakeMenuItem(sdf,   file, "SDF Open",         Load,    "sdfopen")
+      MakeMenuItem(xdf,   file, "XDF Open",         Load,    "xdfopen")
+      MakeMenuItem(fsel,  file, "File Selection ",  FileSel, NULL )
+      MakeMenuItem(browse,file, "View Text File",   Browse,  NULL)
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(exec,  file, "Exec",             Load,    "exec")
+      MakeMenuItem(run,   file, "Run",              Load,    "run")
+      MakeMenuItem(gui,   file, "GUI",              Load,    "gui")
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(fresh, file, "Refresh",          Cmd,     "  ")
+      MakeMenuItem(init,  file, "Reinit",           Cmd,     "reinit")
+      MakeMenuItem(exit,  file, "Exit",             Cmd,     "quit")
+
+
+# A menu for gx metafile printing related commands
+# ------------------------------------------------
+  MakeMenu ( print, "Print" )
+      MakeMenuItem(printit, print, "Print",         Cmd,   "print")
+      MakeMenuItem(enable,  print, "Enable  Print", Load,  "enable print")
+      MakeMenuItem(disable, print, "Disable Print", Cmd,   "disable print")
+
+# A menu with assorted internal options
+# -------------------------------------
+  MakeMenu ( options, "Options" )
+      MakeMenuItem(shade,  options, "Shaded",      Cmd, "set gxout shaded" )
+      MakeMenuItem(cont,   options, "Contour",     Cmd, "set gxout contour" )
+      MakeMenuItem(grfill, options, "Grid Fill",   Cmd, "set gxout grfill" )
+      MakeMenuItem(grvals, options, "Grid Values", Cmd, "set gxout grid" )
+      MakeMenuItem(vec,    options, "Vector",      Cmd, "set gxout vector" )
+      MakeMenuItem(strm,   options, "Streamlines", Cmd, "set gxout stream" )
+      MakeMenuItem(bar,    options, "Bar Chart",   Cmd, "set gxout bar" )
+      MakeMenuItem(line,   options, "Line Plot",   Cmd, "set gxout line" )
+      MakeMenuItem(barb,   options, "Wind Barbs",  Cmd, "set gxout  barb" )
+      MakeMenuItem(junk,   options, "_______________",  NULL, NULL )
+      MakeMenuItem(ci,     options, "Contour Interval",  CmdStr, "set cint" )
+      MakeMenuItem(tit,    options, "Draw Title", CmdStr, "draw title " )
+      MakeMenuItem(cbar,   options, "Color Bar",  Cmd, "run cbarn" )
+
+
+# Creates simple buttons. Buttons work pretty much like menu items
+# but they do not belong to any menu and are directly clickable.
+# ------------------------------------------------------------------
+  MakeButton( clear,  "Clear",      Cmd,      "clear" )
+  MakeButton( quit,   "Quit",       Cmd,      "quit" )
+  MakeButton( prompt, "ga>",  CmdWin,  NULL )
+
+# A menu for defining GrADS dimensions. This is very crude right now.
+# I will be developing a specific callback with rubber bands
+# etc. for these functions. Stay tuned. 
+# ------------------------------------------------------------------
+  MakeMenu( dim, "Dim")
+      MakeMenuItem(lat,  dim, "Latitude",  CmdStr, "set lat " )
+      MakeMenuItem(lon,  dim, "Longitude", CmdStr, "set lon " )
+      MakeMenuItem(lev,  dim, "Level",     CmdStr, "set lev " )
+      MakeMenuItem(time, dim, "Time",      CmdStr, "set time " )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(x,    dim, "x",         CmdStr, "set x " )
+      MakeMenuItem(y,    dim, "y",         CmdStr, "set y " )
+      MakeMenuItem(z,    dim, "z",         CmdStr, "set z " )
+      MakeMenuItem(t,    dim, "t",         CmdStr, "set t " )
+
+# Frequently used buttons (and toggle)
+# -----------------------------------
+  MakeButton( var,  "Var",    VarSel,  NULL )
+  MakeToggle( hold, "Hold",   FALSE,  NULL, Toggle,  "hold" )
+  MakeButton( prev, " << ",   Display, "<<" )
+  MakeButton( play, "Display",   Display, "DISPLAY" )
+  MakeButton( next, " >> ",   Display, ">>" )
+  MakeButton( rein, "Reinit", Cmd,     "reinit")
+
+
+# GEOS-1 menu's
+# -------------
+  MakeMenu(mm, "Monthly")
+      MakeMenuItem(xx, mm, "               Global Fields",  NULL, NULL )
+      MakeMenuItem(xx, mm, "_______________________________",  NULL, NULL )
+      MakeMenuItem(m1, mm, "Prognostics in Pressure",  Open, "open /monthly_means/prog.prs/prog.prs.all.tabl" )      
+      MakeMenuItem(m2, mm, "Prognostics in Sigma",  Open, "open /monthly_means/prog.sig/prog.sig.all.tabl" )      
+      MakeMenuItem(xx, mm, "_______________________________",  NULL, NULL )
+      MakeMenuItem(m3, mm, "Surface Diagnostics",  Open, "open /monthly_means/diag.sfc/diag.sfc.all.tabl" )      
+      MakeMenuItem(m4, mm, "Primary Diagnostics in Pressure",  Open, "open /monthly_means/diag.pri.prs/diag.pri.prs.all.tabl" )      
+      MakeMenuItem(m5, mm, "Primary Diagnostics in Sigma",  Open, "open /monthly_means/diag.pri.sig/diag.pri.sig.all.tabl )      
+      MakeMenuItem(m6, mm, "Secondary Diagnostics in Sigma",  Open, "open /monthly_means/diag.sec.sig/diag.sec.sig.all.tabl )
+      MakeMenuItem(xx, mm, "_______________________________",  NULL, NULL )
+      MakeMenuItem(m7, mm, "IAU in Sigma",  Open, "open /monthly_means/iau/iau.all.tabl" )      
+
+  MakeMenu(mz, "[Monthly]")
+      MakeMenuItem(xx, mz, "               Zonal Means",  NULL, NULL )
+      MakeMenuItem(xx, mz, "_______________________________",  NULL, NULL )
+      MakeMenuItem(z1, mz, "Prognostics in Pressure",  Open, "open /monthly_means/prog.prs/prog.prs.all.tablz" )      
+      MakeMenuItem(z2, mz, "Prognostics in Sigma",  Open, "open /monthly_means/prog.sig/prog.sig.all.tablz" )      
+      MakeMenuItem(xx, mz, "_______________________________",  NULL, NULL )
+      MakeMenuItem(z3, mz, "Surface Diagnostics",  Open, "open /monthly_means/diag.sfc/diag.sfc.all.tablz" )      
+      MakeMenuItem(z4, mz, "Primary Diagnostics in Pressure",  Open, "open /monthly_means/diag.pri.prs/diag.pri.prs.all.tablz" )      
+      MakeMenuItem(z5, mz, "Primary Diagnostics in Sigma",  Open, "open /monthly_means/diag.pri.sig/diag.pri.sig.all.tablz )      
+      MakeMenuItem(z6, mz, "Secondary Diagnostics in Sigma",  Open, "open /monthly_means/diag.sec.sig/diag.sec.sig.all.tablz )
+      MakeMenuItem(xx, mz, "_______________________________",  NULL, NULL )
+      MakeMenuItem(z7, mz, "IAU in Sigma",  Open, "open /monthly_means/iau/iau.all.tablz" )      
+
+  MakeMenu(tt, "Daily")
+      MakeMenuItem(xx, tt, "             Daily Means",  NULL, NULL )
+      MakeMenuItem(xx, tt, "__________________________",  NULL, NULL )
+      MakeMenuItem(tf, tt, "Evaporation", Open, "open /time_series/global/moisture_variables/e0054A.evap.all.tabl" )
+      MakeMenuItem(tg, tt, "Precipitation", Open, "open /time_series/global/moisture_variables/e0054A..allpreacc.tabl" )
+      MakeMenuItem(th, tt, "Convective Precip", Open, "open /time_series/global/moisture_variables/e0054A.precon.all.tabl" )
+      MakeMenuItem(ti, tt, "Total Precipitable Water", Open, "open /time_series/global/moisture_variables/e0054A.qint.all.tabl" )
+      MakeMenuItem(tj, tt, "Zonal Moisture Flux", Open, "open /time_series/global/moisture_variables/e0054A.vintuq.all.tabl" )
+      MakeMenuItem(tk, tt, "Meridional Moisture Flux", Open, "open /time_series/global/moisture_variables/e0054A.vintvq.all.tabl" )
+      MakeMenuItem(xx, tt, "__________________________",  NULL, NULL )
+      MakeMenuItem(t1, tt, "Sea Level Pressure", Open, "open /time_series/global/mass_wind_temp/e0054A.slp.all.tabl" )
+      MakeMenuItem(t2, tt, "Heights 500 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.z500.all.tabl" )
+      MakeMenuItem(xx, tt, "__________________________",  NULL, NULL )
+      MakeMenuItem(ta, tt, "Streamfunction 200 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.stf200.all.tabl" )
+      MakeMenuItem(tb, tt, "Streamfunction 850 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.stf850.all.tabl" )
+      MakeMenuItem(tc, tt, "Velocity Potential 200 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.velp200.all.tabl" )
+      MakeMenuItem(te, tt, "Velocity Potential 850 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.velp850.all.tabl" )
+      MakeMenuItem(xx, tt, "__________________________",  NULL, NULL )
+      MakeMenuItem(t6, tt, "U-Wind 200 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.u200.all.tabl" )
+      MakeMenuItem(t7, tt, "U-Wind 850 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.u850.all.tabl" )
+      MakeMenuItem(t8, tt, "V-Wind 200 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.v200.all.tabl" )
+      MakeMenuItem(t9, tt, "V-Wind 850 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.v850.all.tabl" )
+      MakeMenuItem(xx, tt, "__________________________",  NULL, NULL )
+      MakeMenuItem(t3, tt, "Temperature 700 hPa", Open, "open /time_series/global/mass_wind_temp/e0054A.t700.all.tabl" )
+      MakeMenuItem(t4, tt, "Temperature 10 meters", Open, "open /time_series/global/mass_wind_temp/e0054A.t10m.all.tabl" )
+      MakeMenuItem(t5, tt, "Temperature  2 meters", Open, "open /time_series/global/mass_wind_temp/e0054A.t2m.all.tabl" )
+
+
+  MakeMenu(vv, "Verif")
+      MakeMenuItem(vvv, vv, "Pathfinder", Open, "open /verification/Clouds_radiation/pathfinder/susskind_retrievals.y1985.y1990.tabl" )
+      MakeMenuItem(v2, vv, "NOAA OLR - 5 days", Open, "open /verification/Clouds_radiation/OLR/noaaolr/olr5.tabl" )
+      MakeMenuItem(v3, vv, "NOAA OLR - monthly", Open, "open /verification/Clouds_radiation/OLR/noaaolr/olrmon.tabl" )
+      MakeMenuItem(v4, vv, "ISCCP", Open, "open /verification/Clouds_radiation/isccp/isccp_grads.8307-9012.tabl" )
+      MakeMenuItem(v5, vv, "ERBE", Open, "open /verification/Clouds_radiation/erbe/erbe2x25.tabl" )
+      MakeMenuItem(v6, vv, "SRB", Open, "open /verification/Clouds_radiation/srb/srb2x25_83-91.tabl" )
+      MakeMenuItem(xx, vv, "__________________________",  NULL, NULL )
+
+
+#      MakeMenuItem(v, vv, "", Open, "open /verification/.tabl" )
+#      MakeMenuItem(v, vv, "", Open, "open /verification/.tabl" )
+#      MakeMenuItem(v, vv, "", Open, "open /verification/.tabl" )
+
+
+  MakeMenu(hh, "Help")
+      MakeMenuItem(h1, hh, "GrADS Manual", Cmd, "!xterm -geometry 80x50+314+50 -bg blue -fg yellow -e lynx ftp://niteroi.gsfc.nasa.gov/pub/win32/grads/WWW/grads.htm &")
+      MakeMenuItem(h2, hh, "GrADS with Athena Widgets", Cmd, "!netscape ftp://niteroi.gsfc.nasa.gov/pub/win32/grads/doc/gagui_intro.html &" )
+      MakeMenuItem(h3, hh, "What is New ...", Cmd, "!netscape http://kuala.llnl.gov/grads/GrADS-1.7_workshop_NCEP_9711/ &"
+      MakeMenuItem(h4, hh, "About GrADS...", Cmd, "!xterm -geometry 80x50+314+50 -bg blue -fg yellow -e lynx http://grads.iges.org/grads &")
+
+
+
+# Once you define buttons and menus you may want to enforce their
+# relative position. The very first button is always placed at the
+# upper left corner.
+# ----------------------------------------------------------------
+
+  # First row 
+  SetWidgetPos(file,    PLACE_UNDER, root, NO_CARE,     NULL)
+  SetWidgetPos(print,   PLACE_UNDER, root, PLACE_RIGHT, file )
+  SetWidgetPos(options, PLACE_UNDER, root, PLACE_RIGHT, print )
+  SetWidgetPos(dim,     PLACE_UNDER, root, PLACE_RIGHT, options )
+  SetWidgetPos(rein,    PLACE_UNDER, root, PLACE_RIGHT, dim )
+  SetWidgetPos(prompt,  PLACE_UNDER, root, PLACE_RIGHT, rein )
+
+  # Second row
+  SetWidgetPos(mm, PLACE_UNDER, file, NO_CARE,     NULL)
+  SetWidgetPos(mz, PLACE_UNDER, file, PLACE_RIGHT, mm)
+  SetWidgetPos(tt, PLACE_UNDER, file, PLACE_RIGHT, mz)
+  SetWidgetPos(vv, PLACE_UNDER, file, PLACE_RIGHT, tt)
+  SetWidgetPos(hh, PLACE_UNDER, file, PLACE_RIGHT, vv)
+
+  # third row
+  SetWidgetPos(hold,  PLACE_UNDER, mm, NO_CARE,     NULL)
+  SetWidgetPos(var,   PLACE_UNDER, mm, PLACE_RIGHT, hold )
+  SetWidgetPos(prev,  PLACE_UNDER, mm, PLACE_RIGHT, var )
+  SetWidgetPos(play,  PLACE_UNDER, mm, PLACE_RIGHT, prev )
+  SetWidgetPos(next,  PLACE_UNDER, mm, PLACE_RIGHT, play )
+  SetWidgetPos(clear, PLACE_UNDER, mm, PLACE_RIGHT, next )
+  SetWidgetPos(quit,  PLACE_UNDER, mm, PLACE_RIGHT, clear )
+
+
+# You can optionally select a font for ALL widgets
+# ------------------------------------------------
+  GetFont(font,"-*-helvetica-bold-o-normal--14-*-*-*-*-*-*-*" )
+  AllWidgetFont(font)
+
+  GetFont(myfont, "-*-times-bold-i-normal--17-*-*-*-*-*-*-*" )
+  SetWidgetFont(root,myfont)
+
+
+# In order to make your widgets appear on the screen you *must*
+# issue this command.
+# -------------------------------------------------------------
+  ShowDisplay()
+  
+
+# After your widgets appear on the screen, you can set the color 
+# of your widgets. The following colors are pre-defined:
+# white, back, red, green, blue, yellow.
+# --------------------------------------------------------------
+  GetNamedColor(gray,"grey")
+  GetNamedColor(Blue,"LightSkyBlue")
+  GetNamedColor(pink,"gold")         # pink is actually gold, get it?
+  AllFgColor(black)
+  AllBgColor(Blue)
+  SetBgColor(root,white)
+  SetFgColor(root,red)
+  SetFgColor(prompt,yellow)
+  SetBgColor(prompt,red)
+  SetBgColor(prev,pink)
+  SetBgColor(play,pink)
+  SetBgColor(next,pink)
+  SetBgColor(hold,gray)
+  SetBgColor(var,gray)
+  SetBgColor(clear,gray)
+  SetBgColor(rein,gray)
+  SetBgColor(quit,gray)
+
+# And you must call this function at the end of your first GUI script.
+# This instructs the X Toolkit to enter an infinite loop, monitoring
+# keyboard and mouse events. Repeating: you *must* call MainLoop().
+# -------------------------------------------------------------------
+  MainLoop()
+
+#........................................................................
+#
+# APPENDIX: Currently available callback functions
+#
+#     Browse    Opens a text file, such as a help file, on a separate
+#               window.
+#     Cmd       Executes a generic GrADS command
+#     CmdStr    Like Cmd, but the user is prompted for an additional
+#               string to be appended to the GrADS command.
+#     CmdWin    Invokes a window for GrADS command line interface.
+#               User can click on past commands from a list.
+#     CmdLine   Invokes the standard GrADS command line interface.
+#               When the command line is active the other widgets
+#               are not available (may be fixed in the future).
+# CloseWindow   Closes the current window (do not use for your primary
+#               window or you will get stuck).
+#     Display   A generic callback for displaying the current variable
+#               (or expression) set with VarSel. The options are:
+#                  <<    decrements time and executes display
+#                 PLAY   starts animation from current to last time
+#                DISPLAY just executes display
+#                  >>    increments time and  executes display
+#               If the "hold" toggle state is OFF (the default),
+#               the screen is cleared before displaying.
+#     Edit      Like browse, but the user can edit the file. This simple
+#               text editor is integrated with GrADS, providing a very
+#               elementary Integrated Development Enviroment (IDE) for
+#               GrADS scripts. In particular, the script being edited
+#               can be executed by clicking on a button (not
+#               implemented yet).
+#     FileSel   Pops up a scrollable list and asks the user to selected
+#               a file among the currently opened GrADS files (including
+#               SDFs). The selected file becomes the default.
+#     Load      Pops up a "file finder" widget, and after the user
+#               clicks on a file name it executes a GrADS command
+#               specified as the last argument. In case of "open" or 
+#               "sdfopen" the files becomes the default, and the
+#               user is asked to select a variable from this file.
+#     Open      Similar to Load, but the file name must be specified.
+#     Toggle    Turn internal options ON/OFF. The only internal
+#               option currently supported is "hold". This callback is
+#               usually used with MakeToggle(), see example above.
+#     VarSel    Pops up a scrollable list and asks the user to selected
+#               a variable from the default file. The user can also
+#               type a generic GrADS expression instead of selecting
+#               a single variable.
+#     NULL      Does not do anything, used for inactive buttons.
+#
+#........................................................................
+
+

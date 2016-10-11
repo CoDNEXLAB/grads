@@ -1,0 +1,44 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Dewpoint temperature
+* --------------------
+  function ttindex(t850,rh850,in_t500)
+
+     if (in_t500='in_t500'|in_t500='' )
+        say 'Purpose: Calculate Total Totals Index'
+        say 'Usage:   display ttindex(t500,t850,rh850)'
+        say '         t500 = temperature at 500 hPa [K]'
+        say '         t850 = temperature at 850 hPa [K]'
+        say '         rh850 = relative humidity at 850 hPa [%]'
+        return
+     else
+        t500 = in_t500
+     endif
+
+*    Define these to minimize I/O
+*    ----------------------------
+     'define xxxt850 = ' t850 '- 273.16'
+     'define xxxrh850 = ' rh850
+     'define xxxdewp850 = xxxt850+273.16-((14.55+0.114*xxxt850)*(1-0.01*xxxrh850)+pow((2.5+0.007*xxxt850)*(1-0.01*xxxrh850),3)+(15.9+0.117*xxxt850)*pow((1-0.01*xxxrh850),14))'
+
+     'define xxxt500 = ' t500
+
+     'define gsudf = xxxt850+273.16+xxxdewp850-(2*xxxt500)'
+
+*    Release defines
+*    ---------------
+     'undefine xxxt500'
+     'undefine xxxt850'
+     'undefine xxxrh850'
+     'undefine xxxdewp850'
+
+     return 'gsudf'

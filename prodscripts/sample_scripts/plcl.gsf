@@ -1,0 +1,43 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Pressure at LCL
+* ---------------
+  function plcl(t2m,rh2m,in_ps)
+
+     if (in_ps='in_ps'|in_ps='')
+        say 'Purpose: Pressure at Lifiting Condensation Level (LCL) [hPa] or [Pa]'
+        say 'Usage:   display plcl(t2m,rh2m,ps)'
+        say '         t2m = temperature at 2m [K]'
+        say '         rh2m = relative humidity at 2m [%]'
+        say '         ps = surface pressure [hPa] or [Pa]'
+        return
+     else
+        ps = in_ps 
+     endif
+
+*   Define these to mnimize I/O
+*   ---------------------------
+    'define xxxt = ' t2m '- 273.16'
+    'define xxxrh = ' rh2m
+    'define xxxdewp = xxxt+273.16-((14.55+0.114*xxxt)*(1-0.01*xxxrh)+pow((2.5+0.007*xxxt)*(1-0.01*xxxrh),3)+(15.9+0.117*xxxt)*pow((1-0.01*xxxrh),14))'
+    'define xxxtlcl=((1/(1/(xxxdewp-56)+log(((xxxt+273.16)/xxxdewp))/800))+56)'
+
+    'define gsudf = ('ps'*pow((xxxtlcl/(xxxt+273.16)),(7/2)))'
+
+*    Garbage collection
+*    ------------------
+    'undefine xxxt'
+    'undefine xxxrh'
+    'undefine xxxdewp'
+    'undefine xxxtlcl'
+
+     return 'gsudf'

@@ -1,0 +1,23 @@
+*
+* GS Script interface to functions in the path.gex extension.
+*
+*       This script has been placed in the Public Domain.
+*
+
+function wordexp(str)
+   'wordexp ' str
+   if rc
+     return
+   else
+     line = sublin(result,1)
+     n = subwrd(line,2)
+     flist = sublin(result,2) 
+     i = 3
+     while (i<n+2)
+        flist = flist ' ' sublin(result,i)
+        i = i + 1 
+     endwhile
+     return flist
+   endif
+
+

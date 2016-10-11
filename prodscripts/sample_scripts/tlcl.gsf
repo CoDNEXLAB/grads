@@ -1,0 +1,40 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Temperature at LCL
+* ------------------
+  function tlcl(t2m,in_rh2m)
+
+     if (in_rh2m='in_rh2m'|in_rh2m='')
+        say 'Purpose: Temperature at Lifiting Condensation Level (LCL) [K]'
+        say 'Usage:   display tlcl(t2m,rh2m)' 
+        say '         t2m = temperature at 2m [K]'
+        say '         rh2m = relative humidity at 2m [%]'
+        return
+     else
+        rh2m = in_rh2m 
+     endif
+
+*   Define these to mnimize I/O
+*   ---------------------------
+    'define xxxt = ' t2m '- 273.16'
+    'define xxxrh = ' rh2m
+    'define xxxdewp = xxxt+273.16-((14.55+0.114*xxxt)*(1-0.01*xxxrh)+pow((2.5+0.007*xxxt)*(1-0.01*xxxrh),3)+(15.9+0.117*xxxt)*pow((1-0.01*xxxrh),14))'
+
+    'define gsudf=((1/(1/(xxxdewp-56)+log(((xxxt+273.16)/xxxdewp))/800))+56)'
+
+*    Garbage collection
+*    ------------------
+    'undefine xxxt'
+    'undefine xxxrh'
+    'undefine xxxdewp'
+
+     return 'gsudf'

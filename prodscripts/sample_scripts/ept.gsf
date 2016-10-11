@@ -1,0 +1,52 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Equivalent Potential Temperature
+* --------------------------------
+  function ept(t,rh,in_p)
+
+     if (in_p='in_p'|in_p='')
+        say 'Purpose: Calculate Equivalent Potential Temperature [K]'
+        say 'Usage:   display ept(t,rh,p)' 
+        say '         t = temperature [K]'
+        say '         rh = relative humidity [%]'
+        say '         p = pressure [hPa]'
+        return
+     else
+        p = in_p
+     endif
+
+*    Define these to minimize I/O
+*    ----------------------------
+     'define xxxt = ' t '- 273.16'
+     'define xxxrh = ' rh
+
+     'define xxxdewp = xxxt-((14.55+0.114*xxxt)*(1-0.01*xxxrh)+pow((2.5+0.007*xxxt)*(1-0.01*xxxrh),3)+(15.9+0.117*xxxt)*pow((1-0.01*xxxrh),14))'
+
+     'define xxxvapr = 6.112*exp((17.67*xxxdewp)/(xxxdewp+243.5))'
+     'define xxxe    = xxxvapr*1.001+(('p')-100)/900*0.0034'
+     'define xxxw    = 0.62197*(xxxe/(('p')-xxxe))'
+     'define xxxte   = xxxt+273.16+(2260000*xxxw/1004)'
+
+     'define gsudf   = (xxxte*pow((1000/('p')),(287/1004)))'
+
+
+*    Release temporary variables
+*    ---------------------------
+     'undefine xxxt'
+     'undefine xxxrh'
+     'undefine xxxdewp'
+     'undefine xxxvapr'
+     'undefine xxxe'
+     'undefine xxxw'
+     'undefine xxxte'
+
+     return 'gsudf'

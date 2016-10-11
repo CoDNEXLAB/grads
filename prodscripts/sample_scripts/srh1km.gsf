@@ -1,0 +1,115 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Dewpoint temperature
+* --------------------
+  function srh1km(uVar,in_vVar)
+
+     if (in_vVar='in_vVar'|in_vVar='')
+        say 'Purpose: compute Storm-relative Helicity 0-1km'
+        say 'Usage:   display srh3km(uVar,vVar)'
+        say '         uVar = zonal wind variable name'
+        say '         vVar = meridional wind variable name'
+        say ' Wind variable must be defined at the following levels:'
+        say '   1000,950,900.850,800.750,700,650,600,550,500,450,400 '
+        say '         '
+        return
+     else
+        vVar = in_vVar
+     endif
+
+'define xxxu1000='uVar'(lev=1000)'
+'define xxxu950='uVar'(lev=950)'
+'define xxxu900='uVar'(lev=900)'
+'define xxxu850='uVar'(lev=850)'
+'define xxxu800='uVar'(lev=800)'
+'define xxxu750='uVar'(lev=750)'
+'define xxxu700='uVar'(lev=700)'
+'define xxxu650='uVar'(lev=650)'
+'define xxxu600='uVar'(lev=600)'
+'define xxxu550='uVar'(lev=550)'
+'define xxxu500='uVar'(lev=500)'
+'define xxxu450='uVar'(lev=450)'
+'define xxxu400='uVar'(lev=400)'
+
+'define xxxv1000='vVar'(lev=1000)'
+'define xxxv950='vVar'(lev=950)'
+'define xxxv900='vVar'(lev=900)'
+'define xxxv850='vVar'(lev=850)'
+'define xxxv800='vVar'(lev=800)'
+'define xxxv750='vVar'(lev=750)'
+'define xxxv700='vVar'(lev=700)'
+'define xxxv650='vVar'(lev=650)'
+'define xxxv600='vVar'(lev=600)'
+'define xxxv550='vVar'(lev=550)'
+'define xxxv500='vVar'(lev=500)'
+'define xxxv450='vVar'(lev=450)'
+'define xxxv400='vVar'(lev=400)'
+
+'define xxxumean=(xxxu1000+xxxu950+xxxu900+xxxu850+xxxu800+xxxu750+xxxu700+xxxu650+xxxu600+xxxu550+xxxu500+xxxu450+xxxu400)/13.0'
+'define xxxvmean=(xxxv1000+xxxv950+xxxv900+xxxv850+xxxv800+xxxv750+xxxv700+xxxv650+xxxv600+xxxv550+xxxv500+xxxv450+xxxv400)/13.0'
+'define xxxushear=xxxu500-xxxu1000'
+'define xxxvshear=xxxv500-xxxv1000'
+'define xxxshear=mag(xxxushear,xxxvshear)'
+'define xxxumotion=((xxxumean+(7.5/(xxxshear))*xxxvshear))'
+'define xxxvmotion=((xxxvmean-(7.5/(xxxshear))*xxxushear))'
+
+'define xxxsrh1=((xxxu950-xxxumotion)*(xxxv1000-xxxvmotion)-(xxxu1000-xxxumotion)*(xxxv950-xxxvmotion))'
+'define xxxsrh2=((xxxu900-xxxumotion)*(xxxv950-xxxvmotion)-(xxxu950-xxxumotion)*(xxxv900-xxxvmotion))'
+
+'define gsudf = xxxsrh1+xxxsrh2'
+
+* Garbage collection
+* ------------------
+'undefine xxxu1000'
+'undefine xxxu950'
+'undefine xxxu900'
+'undefine xxxu850'
+'undefine xxxu800'
+'undefine xxxu750'
+'undefine xxxu700'
+'undefine xxxu650'
+'undefine xxxu600'
+'undefine xxxu550'
+'undefine xxxu500'
+'undefine xxxu450'
+'undefine xxxu400'
+
+'undefine xxxv1000'
+'undefine xxxv950'
+'undefine xxxv900'
+'undefine xxxv850'
+'undefine xxxv800'
+'undefine xxxv750'
+'undefine xxxv700'
+'undefine xxxv650'
+'undefine xxxv600'
+'undefine xxxv550'
+'undefine xxxv500'
+'undefine xxxv450'
+'undefine xxxv400'
+
+'undefine xxxumean'
+'undefine xxxvmean'
+'undefine xxxushear'
+'undefine xxxvshear'
+'undefine xxxshear'
+'undefine xxxumotion'
+'undefine xxxvmotion'
+
+'undefine xxxsrh1'
+'undefine xxxsrh2'
+'undefine xxxsrh3'
+'undefine xxxsrh4'
+'undefine xxxsrh5'
+'undefine xxxsrh6'
+
+ return 'gsudf'

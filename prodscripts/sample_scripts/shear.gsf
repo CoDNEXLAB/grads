@@ -1,0 +1,26 @@
+*
+* This is a GrADS script library derived from code fragments by
+* Stefan Gofferje <stefan@saakeskus.fi> and posted on his site
+* http://www.saakeskus.fi/index.php?function=oth.
+*
+* These functions are designed to be implemented as a gsUDF.
+*
+*       This script has been placed in the Public Domain.
+*
+*----------------------------------------------------------------
+
+* Dewpoint temperature
+* --------------------
+  function shear(u1,v1,u2,in_v2)
+
+     if (in_v2='in_v2'|in_v2='')
+        say 'Purpose: compute Wind Shear'
+        say 'Usage:   display shear(u1,v1,u2,v2)' 
+        say '         (u1,v1) = first  (zonal,meridional) components'
+        say '         (u2,v2) = second (zonal,meridional) components'
+        return
+     else
+        v2 = in_v2
+     endif
+
+     return 'mag('u1'-'u2','v2'-'v2')'

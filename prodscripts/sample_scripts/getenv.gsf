@@ -1,0 +1,21 @@
+*
+* GS Script interface to functions in the path.gex extension.
+*
+*       This script has been placed in the Public Domain.
+*
+
+function getenv(var)
+   'getenv ' var
+   if rc
+     return
+   else
+     line = sublin(result,1)
+     value = subwrd(line,5)
+     if ( value='<undef>' )
+        return
+     else
+        return value
+     endif
+   endif
+
+

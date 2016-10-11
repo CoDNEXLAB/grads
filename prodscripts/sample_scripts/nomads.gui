@@ -1,0 +1,479 @@
+#  nomads.gui - last revision: 7 January 2009
+#
+#  GrADS Athena GUI script for accessing NOMADS datasets.
+#
+#  How to invoke this script:
+#
+#  At startup. Set the enviroment variable GAGUI with the
+#  name of the script file, e.g., 
+#
+#  % setenv GAGUI nomads.gui
+#
+#  At the GrADS command line prompt. Simply type
+#
+#  ga> gui nomads.gui
+#
+#  Of course, you must have a version of GrADS built with
+#  Athena Widgets support.
+#
+#  --
+#
+# This script file has been placed in the public domain.
+#
+#.........................................................................
+
+#  Most "exec" commands are supported
+#  ----------------------------------
+   set gxout shaded
+   
+#  Set this to see the script echoed on the screen
+#  -----------------------------------------------
+#   Debug(on)
+
+# A "label" is an inactive widget which display some text, 
+# e.g., an informative  title. The first argument, "root"
+# in this case, is the name you give to the widget so that
+# you can refer to it later on
+# -------------------------------------------------------
+  MakeLabel(root,"NOAA")
+  MakeLabel(mvt,"NOMADS Browser")
+
+  MakeLabel(dsets,"Available Datasets: ")
+
+  MakeButton( date, "Date", CmdStr, "setenv YYYYMMDD " )
+
+# Hourly open menu
+# ----------------
+  MakeMenu ( gfs, " GFS " )
+      MakeMenuItem(gcftit, gfs, "1.0x1.0 Forecast  ",  NULL,    NULL )
+      MakeMenuItem(gcf00z, gfs, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_00z")
+      MakeMenuItem(gcf06z, gfs, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_06z")
+      MakeMenuItem(gcf12z, gfs, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_12z")
+      MakeMenuItem(gcf18z, gfs, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_18z")
+      MakeMenuItem(gcatit, gfs, "1.0x1.0 Analysis  ",  NULL,    NULL )
+      MakeMenuItem(gca00z, gfs, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_00z_anl")
+      MakeMenuItem(gca06z, gfs, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_06z_anl")
+      MakeMenuItem(gca12z, gfs, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_12z_anl")
+      MakeMenuItem(gca18z, gfs, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs/gfs$YYYYMMDD/gfs_18z_anl")
+
+      MakeMenuItem(gdftit, gfs, "0.5x0.5 Forecast  ",  NULL,    NULL )
+      MakeMenuItem(gdf00z, gfs, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_00z")
+      MakeMenuItem(gdf06z, gfs, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_06z")
+      MakeMenuItem(gdf12z, gfs, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_12z")
+      MakeMenuItem(gdf18z, gfs, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_18z")
+      MakeMenuItem(gdatit, gfs, "0.5x0.5 Analysis  ",  NULL,    NULL )
+      MakeMenuItem(gda00z, gfs, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_00z_anl")
+      MakeMenuItem(gda06z, gfs, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_06z_anl")
+      MakeMenuItem(gda12z, gfs, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_12z_anl")
+      MakeMenuItem(gda18z, gfs, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/gfs_hd/gfs_hd$YYYYMMDD/gfs_hd_18z_anl")
+
+# Monthly open menu
+# ----------------
+  MakeMenu ( nam, " NAM " )
+      MakeMenuItem(n1ftit, nam, "1-Hourly Forecast  ",  NULL,    NULL )
+      MakeMenuItem(n1f00z, nam, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam1hr_00z")
+      MakeMenuItem(n1f06z, nam, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam1hr_06z")
+      MakeMenuItem(n1f12z, nam, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam1hr_12z")
+      MakeMenuItem(n1f18z, nam, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam1hr_18z")
+
+      MakeMenuItem(n3ftit, nam, "3-Hourly Forecast  ",  NULL,    NULL )
+      MakeMenuItem(n3f00z, nam, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam_00z")
+      MakeMenuItem(n3f06z, nam, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam_06z")
+      MakeMenuItem(n3f12z, nam, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam_12z")
+      MakeMenuItem(n3f18z, nam, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/nam/nam$YYYYMMDD/nam_18z")
+
+# Monthly Diurnal open menu
+# -------------------------
+  MakeMenu ( ruc, " RUC " )
+      MakeMenuItem(rucana, ruc, "Analysis", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/runc_anl")
+      MakeMenuItem(ructit, ruc, "Forecasts  ",  NULL,    NULL )
+      MakeMenuItem(ruc00z, ruc, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_00z")
+      MakeMenuItem(ruc01z, ruc, "    01Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_01z")
+      MakeMenuItem(ruc02z, ruc, "    02Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_02z")
+      MakeMenuItem(ruc03z, ruc, "    03Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_03z")
+      MakeMenuItem(ruc04z, ruc, "    04Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_04z")
+      MakeMenuItem(ruc05z, ruc, "    05Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_05z")
+      MakeMenuItem(ruc06z, ruc, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_06z")
+      MakeMenuItem(ruc07z, ruc, "    07Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_07z")
+      MakeMenuItem(ruc08z, ruc, "    08Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_08z")
+      MakeMenuItem(ruc09z, ruc, "    09Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_09z")
+      MakeMenuItem(ruc10z, ruc, "    10Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_10z")
+      MakeMenuItem(ruc11z, ruc, "    11Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_11z")
+      MakeMenuItem(ruc12z, ruc, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_12z")
+      MakeMenuItem(ruc13z, ruc, "    13Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_13z")
+      MakeMenuItem(ruc14z, ruc, "    14Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_14z")
+      MakeMenuItem(ruc15z, ruc, "    15Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_15z")
+      MakeMenuItem(ruc16z, ruc, "    16Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_16z")
+      MakeMenuItem(ruc17z, ruc, "    17Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_17z")
+      MakeMenuItem(ruc18z, ruc, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_18z")
+      MakeMenuItem(ruc19z, ruc, "    19Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_19z")
+      MakeMenuItem(ruc20z, ruc, "    20Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_20z")
+      MakeMenuItem(ruc21z, ruc, "    21Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_21z")
+      MakeMenuItem(ruc22z, ruc, "    22Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_22z")
+      MakeMenuItem(ruc23z, ruc, "    23Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/ruc/ruc$YYYYMMDD/ruc_23z")
+
+# Wind waves
+# ----------
+  MakeMenu ( wave, " WAVE " )
+      MakeMenuItem(nww3tit, wave, "Global",  NULL,    NULL )
+      MakeMenuItem(nww300z, wave, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nww3/nww3${YYYYMMDD}/nww3${YYYYMMDD}_00z")
+      MakeMenuItem(nww306z, wave, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nww3/nww3${YYYYMMDD}/nww3${YYYYMMDD}_06z")
+      MakeMenuItem(nww312z, wave, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nww3/nww3${YYYYMMDD}/nww3${YYYYMMDD}_12z")
+      MakeMenuItem(nww318z, wave, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nww3/nww3${YYYYMMDD}/nww3${YYYYMMDD}_18z")
+
+      MakeMenuItem(nahtit, wave, "Atlantic Hurricane",  NULL,    NULL )
+      MakeMenuItem(nah00z, wave, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nah/nah${YYYYMMDD}/nah_00z")
+      MakeMenuItem(nah06z, wave, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nah/nah${YYYYMMDD}/nah_06z")
+      MakeMenuItem(nah12z, wave, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nah/nah${YYYYMMDD}/nah_12z")
+      MakeMenuItem(nah18z, wave, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nah/nah${YYYYMMDD}/nah_18z")
+
+      MakeMenuItem(wnatit, wave, "Western North Atlantic",  NULL,    NULL )
+      MakeMenuItem(wna00z, wave, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/wna/wna${YYYYMMDD}/wna${YYYYMMDD}_00z")
+      MakeMenuItem(wna06z, wave, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/wna/wna${YYYYMMDD}/wna${YYYYMMDD}_06z")
+      MakeMenuItem(wna12z, wave, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/wna/wna${YYYYMMDD}/wna${YYYYMMDD}_12z")
+      MakeMenuItem(wna18z, wave, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/wna/wna${YYYYMMDD}/wna${YYYYMMDD}_18z")
+
+      MakeMenuItem(nphtit, wave, "Pacific Hurricane",  NULL,    NULL )
+      MakeMenuItem(nph00z, wave, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nph/nph${YYYYMMDD}/nph${YYYYMMDD}_00z")
+      MakeMenuItem(nph06z, wave, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nph/nph${YYYYMMDD}/nph${YYYYMMDD}_06z")
+      MakeMenuItem(nph12z, wave, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nph/nph${YYYYMMDD}/nph${YYYYMMDD}_12z")
+      MakeMenuItem(nph18z, wave, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/nph/nph${YYYYMMDD}/nph${YYYYMMDD}_18z")
+
+      MakeMenuItem(enptit, wave, "Eastern North Pacific",  NULL,    NULL )
+      MakeMenuItem(enp00z, wave, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/enp/enp${YYYYMMDD}/enp${YYYYMMDD}_00z")
+      MakeMenuItem(enp06z, wave, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/enp/enp${YYYYMMDD}/enp${YYYYMMDD}_06z")
+      MakeMenuItem(enp12z, wave, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/enp/enp${YYYYMMDD}/enp${YYYYMMDD}_12z")
+      MakeMenuItem(enp18z, wave, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/enp/enp${YYYYMMDD}/enp${YYYYMMDD}_18z")
+
+      MakeMenuItem(akwtit, wave, "Alaska Waters",  NULL,    NULL )
+      MakeMenuItem(akw00z, wave, "    00Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/akw/akw${YYYYMMDD}/akw${YYYYMMDD}_00z")
+      MakeMenuItem(akw06z, wave, "    06Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/akw/akw${YYYYMMDD}/akw${YYYYMMDD}_06z")
+      MakeMenuItem(akw12z, wave, "    12Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/akw/akw${YYYYMMDD}/akw${YYYYMMDD}_12z")
+      MakeMenuItem(akw18z, wave, "    18Z", Open, "@ sdfopen http://nomads.ncep.noaa.gov:9090/dods/wave/akw/akw${YYYYMMDD}/akw${YYYYMMDD}_18z")
+
+
+# File menu
+# ---------
+  MakeMenu ( file, " File " )
+
+# Once you make a memu, you create its items. For the first item:
+# --------------------------------------------------------------
+      MakeMenuItem(open,  file, "Open",             Load,    "open")
+      MakeMenuItem(sdf,   file, "SDF Open",         Load,    "sdfopen")
+      MakeMenuItem(xdf,   file, "XDF Open",         Load,    "xdfopen")
+      MakeMenuItem(fsel,  file, "File Selection ",  FileSel, NULL )
+      MakeMenuItem(browse,file, "View Text File",   Browse,  NULL)
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(exec,  file, "Exec",             Load,    "exec")
+      MakeMenuItem(run,   file, "Run",              Load,    "run")
+      MakeMenuItem(gui,   file, "GUI",              Load,    "gui")
+      MakeMenuItem(junk,  file, "_______________",  NULL,    NULL )
+      MakeMenuItem(fresh, file, "Refresh",          Cmd,     "  ")
+      MakeMenuItem(init,  file, "Reinit",           Cmd,     "reinit")
+      MakeMenuItem(exit,  file, "Exit",             Cmd,     "quit")
+
+
+# Enough debugging...
+# -------------------
+###  Debug(off)
+
+# A menu for gx metafile printing related commands
+# ------------------------------------------------
+  MakeMenu ( print, " Print " )
+      MakeMenuItem(png,     print, "PNG",             CmdStr, "gxyat nomads.png")
+      MakeMenuItem(eps,     print, "Encapsulated PS", CmdStr, "print nomads.eps")
+      MakeMenuItem(junk,    print, "_______________",  NULL, NULL )
+      MakeMenuItem(enable,  print, "Enable  Print", Load,  "enable print")
+      MakeMenuItem(printit, print, "Print",         Cmd,   "print")
+      MakeMenuItem(disable, print, "Disable Print", Cmd,   "disable print")
+
+# A menu with assorted internal options
+# -------------------------------------
+  MakeMenu ( options, "Options" )
+      MakeMenuItem(shade,  options, "Shaded",      Cmd, "set gxout shaded" )
+      MakeMenuItem(cont,   options, "Contour",     Cmd, "set gxout contour" )
+      MakeMenuItem(grfill, options, "Grid Fill",   Cmd, "set gxout grfill" )
+      MakeMenuItem(grvals, options, "Grid Values", Cmd, "set gxout grid" )
+      MakeMenuItem(vec,    options, "Vector",      Cmd, "set gxout vector" )
+      MakeMenuItem(strm,   options, "Streamlines", Cmd, "set gxout stream" )
+      MakeMenuItem(bar,    options, "Bar Chart",   Cmd, "set gxout bar" )
+      MakeMenuItem(line,   options, "Line Plot",   Cmd, "set gxout line" )
+      MakeMenuItem(barb,   options, "Wind Barbs",  Cmd, "set gxout  barb" )
+      MakeMenuItem(junk,   options, "_______________",  NULL, NULL )
+      MakeMenuItem(ci,     options, "Contour Interval",  CmdStr, "set cint" )
+      MakeMenuItem(tit,    options, "Draw Title", CmdStr, "draw title " )
+      MakeMenuItem(cbar,   options, "Color Bar",  Cmd, "run cbarn" )
+
+# A menu for defining GrADS dimensions. This is very crude right now.
+# I will be developing a specific callback with rubber bands
+# etc. for these functions. Stay tuned. 
+# ------------------------------------------------------------------
+  MakeMenu( dim, "Set Dim")
+      MakeMenuItem(zidim, dim, "Zoom in",  Cmd,    "zoomin %s"      )
+      MakeMenuItem(zodim, dim, "Zoom out", Cmd,    "zoomout -1 %s" )
+      MakeMenuItem(uzgdim, dim, "Global [0-360]",  Cmd, "unzoomc %s"  )
+      MakeMenuItem(uzddim, dim, "Global [180W-180E]", Cmd, "unzoom %s" )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(qdim, dim, "Query",     Cmd,    "query dims" )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(lat,  dim, "Latitude",  CmdStr, "set lat " )
+      MakeMenuItem(lon,  dim, "Longitude", CmdStr, "set lon " )
+      MakeMenuItem(lev,  dim, "Level",     CmdStr, "set lev " )
+      MakeMenuItem(time, dim, "Time",      CmdStr, "set time " )
+      MakeMenuItem(ens,  dim, "Ens",       CmdStr, "set ens  " )
+      MakeMenuItem(junk, dim, "_________", NULL,   NULL )
+      MakeMenuItem(x,    dim, "x",         CmdStr, "set x " )
+      MakeMenuItem(y,    dim, "y",         CmdStr, "set y " )
+      MakeMenuItem(z,    dim, "z",         CmdStr, "set z " )
+      MakeMenuItem(t,    dim, "t",         CmdStr, "set t " )
+      MakeMenuItem(e,    dim, "e",         CmdStr, "set e " )
+
+# Vertical levels
+  MakeMenu( strat, "Strat")
+      MakeMenuItem(l01,  strat, "0.1 hPa",  Cmd, "set lev 0.1" )
+      MakeMenuItem(l03,  strat, "0.3 hPa",  Cmd, "set lev 0.3" )
+      MakeMenuItem(l04,  strat, "0.4 hPa",  Cmd, "set lev 0.4" )
+      MakeMenuItem(l05,  strat, "0.5 hPa",  Cmd, "set lev 0.5" )
+      MakeMenuItem(l07,  strat, "0.7 hPa",  Cmd, "set lev 0.7" )
+      MakeMenuItem(l1,   strat, "1 hPa",    Cmd, "set lev 1" )
+      MakeMenuItem(l2,   strat, "2 hPa",    Cmd, "set lev 2" )
+      MakeMenuItem(l3,   strat, "3 hPa",    Cmd, "set lev 3" )
+      MakeMenuItem(l4,   strat, "4 hPa",    Cmd, "set lev 4" )
+      MakeMenuItem(l5,   strat, "5 hPa",    Cmd, "set lev 5" )
+      MakeMenuItem(l7,   strat, "7 hPa",    Cmd, "set lev 7" )
+      MakeMenuItem(l10,  strat, "10 hPa",   Cmd, "set lev 10" )
+      MakeMenuItem(l20,  strat, "20 hPa",   Cmd, "set lev 20" )
+      MakeMenuItem(l30,  strat, "30 hPa",   Cmd, "set lev 30" )
+      MakeMenuItem(l40,  strat, "40 hPa",   Cmd, "set lev 40" )
+      MakeMenuItem(l50,  strat, "50 hPa",   Cmd, "set lev 50" )
+      MakeMenuItem(l70,  strat, "70 hPa",   Cmd, "set lev 70" )
+      MakeMenuItem(l100, strat, "100 hPa",  Cmd, "set lev 100" )
+      MakeMenuItem(l150, strat, "150 hPa",  Cmd, "set lev 150" )
+
+  MakeMenu( tropo, "Tropo")
+      MakeMenuItem(l200,  tropo, "200 hPa",  Cmd, "set lev 200" )
+      MakeMenuItem(l250,  tropo, "250 hPa",  Cmd, "set lev 250" )
+      MakeMenuItem(l300,  tropo, "300 hPa",  Cmd, "set lev 300" )
+      MakeMenuItem(l350,  tropo, "350 hPa",  Cmd, "set lev 350" )
+      MakeMenuItem(l400,  tropo, "400 hPa",  Cmd, "set lev 400" )
+      MakeMenuItem(l450,  tropo, "450 hPa",  Cmd, "set lev 450" )
+      MakeMenuItem(l500,  tropo, "500 hPa",  Cmd, "set lev 500" )
+      MakeMenuItem(l550,  tropo, "550 hPa",  Cmd, "set lev 550" )
+      MakeMenuItem(l600,  tropo, "600 hPa",  Cmd, "set lev 600" )
+      MakeMenuItem(l650,  tropo, "650 hPa",  Cmd, "set lev 650" )
+      MakeMenuItem(l700,  tropo, "700 hPa",  Cmd, "set lev 700" )
+      MakeMenuItem(l725,  tropo, "725 hPa",  Cmd, "set lev 725" )
+      MakeMenuItem(l750,  tropo, "750 hPa",  Cmd, "set lev 750" )
+      MakeMenuItem(l775,  tropo, "775 hPa",  Cmd, "set lev 775" )
+      MakeMenuItem(l800,  tropo, "800 hPa",  Cmd, "set lev 800" )
+      MakeMenuItem(l825,  tropo, "825 hPa",  Cmd, "set lev 825" )
+      MakeMenuItem(l850,  tropo, "850 hPa",  Cmd, "set lev 850" )
+      MakeMenuItem(l875,  tropo, "875 hPa",  Cmd, "set lev 875" )
+      MakeMenuItem(l900,  tropo, "900 hPa",  Cmd, "set lev 900" )
+      MakeMenuItem(l925,  tropo, "925 hPa",  Cmd, "set lev 925" )
+      MakeMenuItem(l950,  tropo, "950 hPa",  Cmd, "set lev 950" )
+      MakeMenuItem(l975,  tropo, "975 hPa",  Cmd, "set lev 975" )
+      MakeMenuItem(l999,  tropo, "1000 hPa", Cmd, "set lev 1000" )
+
+# Maps
+# ----
+  MakeMenu ( map, " Maps " )
+      MakeMenuItem(lres,  map, "Low Resolution",    Cmd, "set mpdset lowres")
+      MakeMenuItem(mres,  map, "Medium Resolution", Cmd, "set mpdset mres")
+      MakeMenuItem(hires, map, "High Resolution",   Cmd, "set mpdset hires")
+
+# Creates simple buttons. Buttons work pretty much like menu items
+# but they do not belong to any menu and are directly clickable.
+# ------------------------------------------------------------------
+  MakeButton( cbarn,  "ColorBar", Cmd,    "run cbarn.gs" )
+  MakeButton( clear,  "Clear",    Cmd,    "clear" )
+  MakeButton( quit,   "Quit",     Cmd,    "quit" )
+  MakeButton( rein,   "Reinit",   Cmd,    "reinit")
+  MakeButton( prompt, "ga>",      CmdWin, NULL )
+
+# Buttons (and toggle) for displaying the default expression
+# ----------------------------------------------------------
+  MakeButton( var,  "Var",    VarSel,  NULL )
+  MakeToggle( hold, "Hold",   FALSE,  NULL, Toggle,  "hold" )
+  MakeButton( prev, " << ",   Display, "<<" )
+  MakeButton( play, "Display",   Display, "DISPLAY" )
+  MakeButton( next, " >> ",   Display, ">>" )
+
+# Once you define buttons and menus you need to enforce their
+# relative position. The very first button is always placed at the
+# upper left corner.
+# ----------------------------------------------------------------
+
+  SetWidgetPos(mvt, NO_CARE, NULL, PLACE_RIGHT, dsets )
+
+  # First row 
+  SetWidgetPos(dsets, PLACE_UNDER, root, NO_CARE, NULL)
+  SetWidgetPos(date,  PLACE_UNDER, root, PLACE_RIGHT, dsets )
+  SetWidgetPos(gfs,   PLACE_UNDER, root, PLACE_RIGHT, date  )
+  SetWidgetPos(nam,   PLACE_UNDER, root, PLACE_RIGHT, gfs   )
+  SetWidgetPos(ruc,   PLACE_UNDER, root, PLACE_RIGHT, nam   )
+  SetWidgetPos(wave,  PLACE_UNDER, root, PLACE_RIGHT, ruc   )
+
+  # Second row 
+  SetWidgetPos(file,    PLACE_UNDER, dsets, NO_CARE, NULL)
+  SetWidgetPos(print,   PLACE_UNDER, dsets, PLACE_RIGHT, file )
+  SetWidgetPos(options, PLACE_UNDER, dsets, PLACE_RIGHT, print )
+  SetWidgetPos(dim,     PLACE_UNDER, dsets, PLACE_RIGHT, options )
+  SetWidgetPos(tropo,   PLACE_UNDER, dsets, PLACE_RIGHT, dim )
+  SetWidgetPos(strat,   PLACE_UNDER, dsets, PLACE_RIGHT, tropo )
+  SetWidgetPos(map,     PLACE_UNDER, dsets, PLACE_RIGHT, strat )
+  SetWidgetPos(prompt,  PLACE_UNDER, dsets, PLACE_RIGHT, map )
+
+  # Third row
+  SetWidgetPos(hold,  PLACE_UNDER, file, NO_CARE, NULL)
+  SetWidgetPos(var,   PLACE_UNDER, file, PLACE_RIGHT, hold )
+  SetWidgetPos(cbarn, PLACE_UNDER, file, PLACE_RIGHT, var )
+  SetWidgetPos(prev,  PLACE_UNDER, file, PLACE_RIGHT, cbarn )
+  SetWidgetPos(play,  PLACE_UNDER, file, PLACE_RIGHT, prev )
+  SetWidgetPos(next,  PLACE_UNDER, file, PLACE_RIGHT, play )
+  SetWidgetPos(clear, PLACE_UNDER, file, PLACE_RIGHT, next )
+  SetWidgetPos(rein,  PLACE_UNDER, file, PLACE_RIGHT, clear )
+  SetWidgetPos(quit,  PLACE_UNDER, file, PLACE_RIGHT, rein )
+
+
+# You can optionally select a font for ALL widgets
+# ------------------------------------------------
+# GetFont(dfont,"-*-helvetica-bold-o-normal--*-*-*-*-*-*-*-*" )
+  GetFont(dfont,"-*-helvetica-bold-o-normal--15-*-*-*-*-*-*-*" )
+  AllWidgetFont(dfont)
+
+# And select a font for an individual widget. Here is one example:
+# ---------------------------------------------------------------------
+  GetFont(tfont,"-*-helvetica-bold-o-normal--24-*-*-*-*-*-*-*" )
+  GetFont(lfont,"-*-helvetica-bold-o-normal--15-*-*-*-*-*-*-*" )
+  SetWidgetFont(root,tfont)
+  SetWidgetFont(mvt,tfont)
+  SetWidgetFont(dsets,lfont)
+
+# In order to make your widgets appear on the screen you *must*
+# issue this command.
+# -------------------------------------------------------------
+  ShowDisplay()
+  
+# After your widgets appear on the screen, you can set the color 
+# of your widgets. The following colors are pre-defined:
+# white, back, red, green, blue, yellow.
+# --------------------------------------------------------------
+  GetNamedColor(gray,"grey")
+  GetNamedColor(Blue,"LightSkyBlue")
+  GetNamedColor(Steel,"LightSteelBlue")
+  GetNamedColor(gold,"gold")     
+  AllFgColor(black)
+  AllBgColor(Blue)
+  SetBgColor(root,white)
+  SetFgColor(root,black)
+  SetBgColor(mvt,white)
+  SetFgColor(mvt,blue)
+  SetBgColor(dsets,white)
+  SetFgColor(dsets,red)
+  SetBgColor(date,green)
+  SetFgColor(prompt,yellow)
+  SetBgColor(prompt,red)
+  SetBgColor(prev,gold)
+  SetBgColor(play,gold)
+  SetBgColor(next,gold)
+  SetBgColor(hold,gray)
+  SetBgColor(var,gray)
+  SetBgColor(clear,gray)
+  SetBgColor(rein,gray)
+  SetBgColor(cbarn,gray)
+  SetBgColor(quit,gold)
+
+# Special colors for NOMADS open menus
+# -----------------------------------
+  SetBgColor(gfs,Steel)
+  SetBgColor(nam,Steel)
+  SetBgColor(ruc,Steel)
+  SetBgColor(wave,Steel)
+
+# Make some of the titles inside menus red
+# ----------------------------------------
+  SetFgColor(gcftit,red)
+  SetFgColor(gcatit,red)
+  SetFgColor(gdftit,red)
+  SetFgColor(gdatit,red)
+  SetFgColor(n1ftit,red)
+  SetFgColor(n3ftit,red)
+  SetFgColor(ructit,red)
+
+  SetFgColor(akwtit,red)
+  SetFgColor(enptit,red)
+  SetFgColor(nahtit,red)
+  SetFgColor(nphtit,red)
+  SetFgColor(nww3tit,red)
+  SetFgColor(wnatit,red)
+
+# Highlight some of the vertical levels
+# -------------------------------------
+  SetFgColor(l01,red)
+  SetFgColor(l1,red)
+  SetFgColor(l10,red)
+  SetFgColor(l50,red)
+  SetFgColor(l100,red)
+  SetFgColor(l200,red)
+  SetFgColor(l300,red)
+  SetFgColor(l400,red)
+  SetFgColor(l500,red)
+  SetFgColor(l700,red)
+  SetFgColor(l850,red)
+  SetFgColor(l925,red)
+  SetFgColor(l999,red)
+
+# And you must call this function at the end of your first GUI script.
+# This instructs the X Toolkit to enter an infinite loop, monitoring
+# keyboard and mouse events. Repeating: you *must* call MainLoop().
+# -------------------------------------------------------------------
+  MainLoop()
+
+#........................................................................
+#
+# APPENDIX: Currently available callback functions
+#
+#     Browse    Opens a text file, such as a help file, on a separate
+#               window.
+#     Cmd       Executes a generic GrADS command
+#     CmdStr    Like Cmd, but the user is prompted for an additional
+#               string to be appended to the GrADS command.
+#     CmdWin    Invokes a window for GrADS command line interface.
+#               User can click on past commands from a list.
+#     CmdLine   Invokes the standard GrADS command line interface.
+#               When the command line is active the other widgets
+#               are not available (may be fixed in the future).
+#     Display   A generic callback for displaying the current variable
+#               (or expression) set with VarSel. The options are:
+#                  <<    decrements time and executes display
+#                 PLAY   starts animation from current to last time
+#                DISPLAY just executes display
+#                  >>    increments time and  executes display
+#               If the "hold" toggle state is OFF (the default),
+#               the screen is cleared before displaying.
+#     Edit      Like browse, but the user can edit the file. This simple
+#               text editor is integrated with GrADS, providing a very
+#               elementary Integrated Development Enviroment (IDE) for
+#               GrADS scripts. In particular, the script being edited
+#               can be executed by clicking on a button (not
+#               implemented yet).
+#     FileSel   Pops up a scrollable list and asks the user to selected
+#               a file among the currently opened GrADS files (including
+#               SDFs). The selected file becomes the default.
+#     Load      Pops up a "file finder" widget, and after the user
+#               clicks on a file name it executes a GrADS command
+#               specified as the last argument.
+#     Open      Similar to Load, but the file name must be specified.
+#     Toggle    Turn internal options ON/OFF. The only internal
+#               option currently supported is "hold". This callback is
+#               usually used with MakeToggle(), see example above.
+#     VarSel    Pops up a scrollable list and asks the user to selected
+#               a variable from the default file. The user can also
+#               type a generic GrADS expression instead of selecting
+#               a single variable.
+#     NULL      Does not do anything, used for inactive buttons.
+#
+#........................................................................
+
+

@@ -1,0 +1,15 @@
+*
+* GS Script interface to functions in the path.gex extension.
+*
+*       This script has been placed in the Public Domain.
+*
+
+function basename(path)
+   'basename ' path
+   if rc
+     return
+   else
+     return sublin(result,1)
+   endif
+
+
