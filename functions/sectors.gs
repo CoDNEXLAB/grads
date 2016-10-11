@@ -31,10 +31,6 @@ if sector = WCAN
  'set lat 45 59.2'
  'set lon -129 -105'
 endif
-if sector = CAN
- 'set lat 45 55'
- 'set lon -130 -110'
-endif
 if sector = MW
  'set lat 34.55 47'
  'set lon -101 -80'
@@ -69,7 +65,7 @@ if sector = PO
 endif
 if sector = AK
  'set lat 43 78'
- 'set lon -180 -121'
+ 'set lon 180 239'
 endif
 if sector = AUS
  'set lat -47 -3'
