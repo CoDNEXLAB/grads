@@ -11,14 +11,11 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/gensini/exper/ccindex'
+basedir = '/home/apache/atlas/gensini/exper/ccindex'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
 if modname = GFS | modname = NAM
  'set t 'fhour/3+1
 else

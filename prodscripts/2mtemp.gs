@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -35,7 +32,6 @@ endif
 'draw string 0.1 8.3 `42m Temp (`3.`4F) | 10m Wind (kts) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_temp_ fhour
-prodmslp = modname sector _sfc_pres_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 level = surface
 'run /home/scripts/grads/functions/isotherms.gs 'level
@@ -43,28 +39,29 @@ if sector != WLD
  'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
  'run /home/scripts/grads/functions/temp_stations.gs 'sector
  'set cint 2'
- 'run /home/scripts/grads/functions/isoheights.gs 'level
+ if modname = RAP
+  'set gxout contour'
+  'set ccolor 99'
+  'set cthick 4'
+  'd MSLMAmsl /100'
+ else
+  'run /home/scripts/grads/functions/isoheights.gs 'level
+ endif
  'run /home/scripts/grads/functions/counties.gs 'sector
 endif
 'run /home/scripts/grads/functions/states.gs 'sector
 ************************
 *shapefile output
-*'set shp -pt gfs_wcan'
+*'set shp -pt rap_wcan'
 *'set gxout shp'
-*'d TMP2m'
+*'d (TMP2m-273.16)*9/5+32'
 ************************
 *start_readout
-if modname = GFS | modname = NAM | modname = NAM4KM
+if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd (TMP2m-273.16)*9/5+32'
  dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
-endif
-if modname NAM
- 'set gxout print'
- 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
- 'd MSLETmsl/100'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodmslp%txtext,result)
 endif
 *end_readout
 ************************

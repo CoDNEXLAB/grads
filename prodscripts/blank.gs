@@ -11,14 +11,11 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
 if modname = GFS
  'set t 'fhour/3+1
 else
@@ -30,32 +27,25 @@ endif
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 3.5 8.3 `nFLT Map Select | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nFLT Map Select | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _blank_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 *pick a colorbar
-'run /home/scripts/grads/colorbars/color.gs 0 2000 100 -kind white->white'
+'run /home/scripts/grads/colorbars/color.gs 0 3 .1 -kind (white)->(244,242,215)-(4)->(95,196,95)-(0)->(48,174,48)-(0)->(8,78,8)-(0)->(97,163,175)-(3)->(19,44,43)-(0)->(102,102,154)-(3)->(49,35,104)-(0)->olive-(3)->yellow-(0)->tomato-(3)->magenta'
 'set gxout shade2'
-'set lev 500'
-'d TMPprs'
+'d PWATclm*-0.0393700787'
 *May have to get crafty here in the future if model is missing 0-6shear grib entry (e.g., 500 hPa wind - 10m wind)
-'set mpdraw off'
-'set line 99 1 1'
-'draw shp /home/scripts/grads/shapefiles/states.shp'
-'set rgb 94 0 0 255 150'
-'set line 94 1 1'
-'draw shp /home/scripts/grads/shapefiles/interstates.shp'
-'set rgb 98 0 0 0 40'
-'set line 98 1 1'
-'draw shp /home/scripts/grads/shapefiles/counties.shp'
-'set mpdraw on'
-'set mpdset hires'
-'set rgb 99 0 0 0'
-'set mpt 2 99 1 2'
-'set map 99'
-'set poli on'
-'draw map'
+'run /home/scripts/grads/functions/counties.gs 'sector
+'run /home/scripts/grads/functions/states.gs 'sector
+*start_readout
+if modname = GFS
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
+ 'd PWATclm*-0.0393700787'
+ dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+endif
+*end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *plot the colorbar on the image
 *'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'

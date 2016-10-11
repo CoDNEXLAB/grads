@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -51,15 +48,11 @@ if sector != WLD
  'set gxout stream'
  'set rgb 188 2 127 168 150'
  'set ccolor 188'
- if modname = NAM & sector = AK
-  'set strmden 1'
- else 
-  'set strmden 5'
- endif
+*'set streamden 1'
  'd UGRDprs;VGRDprs'
 endif
 *start_readout
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd RHprs'
