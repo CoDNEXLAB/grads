@@ -11,15 +11,12 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM
+if modname = GFS | modname = NAM | modname = GEM
  'set t 'fhour/3+1
 else
  'set t 'fhour+1
@@ -37,7 +34,11 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs 0 6000 100 -kind white-(0)->white-(0)->indigo-(7)->magenta-(0)->mediumblue-(8)->aqua-(0)->springgreen-(8)->olive-(0)->yellow-(8)->orange-(0)->maroon-(8)->red-(0)->dimgray->powderblue'
 'set gxout shade2'
-'d CAPE180_0mb'
+if modname = RAP
+ 'd CAPE255_0mb'
+else 
+ 'd CAPE180_0mb'
+endif
 *May have to get crafty here in the future if model is missing 0-6shear grib entry (e.g., 500 hPa wind - 10m wind)
 level = shear500
 'set lev 500'
@@ -48,6 +49,12 @@ if modname = GFS | modname = NAM | modname = NAM4KM
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd CAPE180_0mb'
+ dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+endif
+if modname = RAP
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd CAPE255_0mb'
  dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout

@@ -11,14 +11,11 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/climate/data/forecast'
+basedir = '/home/apache/atlas/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
 if modname = GFS | modname = NAM
  'set t 'fhour/3+1
 else
@@ -35,8 +32,8 @@ endif
 prodname = modname sector _prec_precacc_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs 0 1000 500 -kind white->white'
-'d TMP2m'
+'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
+'d TMP2m*0'
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
 if fhour = 003
@@ -49,7 +46,7 @@ endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/precip_stations.gs 'sector
 *start_readout
-if modname = NAM
+if modname = GFS | modname = NAM
  'set gxout print'
  'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
  'd paccum'
