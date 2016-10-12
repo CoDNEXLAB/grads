@@ -14,7 +14,7 @@ basedir = '/home/apache/servername/data/forecast/GEFS/meteograms'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
-'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
+'open /home/scripts/grads/grads_ctl/'modname'/'modinit''modname%ctlext
 *say 'open /home/data/models/grads_ctl/GEFS/'modinit''modname%ctlext
 'set t .5 65.5'
 *get some time parameters
