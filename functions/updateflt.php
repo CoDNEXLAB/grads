@@ -16,7 +16,6 @@ function updateFloater($latTop, $lonRight, $latBot, $lonLeft){
 	} catch (Exception $e) {
 		print("Error opening file: ".$sectorFile);
 		return $status;
-		#die();
 	}
 
 	# Look for our float sector segment:
@@ -58,8 +57,6 @@ function updateFloater($latTop, $lonRight, $latBot, $lonLeft){
 			$Readouts[2] = "/home/scripts/grads/functions/readout2.gs";
 
 			# Make the shapefiles:
-			// exec(escapeshellcmd($MakeShpScript), $output);
-			// print_r($output);
 			$modArr = ["NAM", "NAM4KM", "GFS"];
 			putenv("GADDIR=/home/ldm/grads-2.1.a2/data");
 			foreach ($modArr as $modName) {
@@ -70,9 +67,6 @@ function updateFloater($latTop, $lonRight, $latBot, $lonLeft){
 			exec("/usr/bin/python $ReadShpScript ".escapeshellarg($NAMshape), $NAMcols);
 			exec("/usr/bin/python $ReadShpScript ".escapeshellarg($NAM4KMshape), $NAM4KMcols);
 			exec("/usr/bin/python $ReadShpScript ".escapeshellarg($GFSshape), $GFScols);
-			// print($NAMcols[0]."\n");
-			// print($NAM4KMcols[0]."\n");
-			// print($GFScols[0]."\n");
 
 			# First Readout Script:
 			$ROfile = file($Readouts[0]);
@@ -123,17 +117,6 @@ function updateFloater($latTop, $lonRight, $latBot, $lonLeft){
 			print("Error dealing with shapefiles!");
 		}
 
-
-		# Send the new file to Atlas:
-		// try {
-		// 	exec("scp -P 31950 ".escapeshellarg($sectorFile)." ldm@atlas:".escapeshellarg($sectorFile),$out);
-		// 	#print_r($out);
-		// } catch (Exception $e) {
-		// 	print("Error sending file to Atlas: ".$sectorFile);
-		// 	return $status;
-		// 	#die();
-		// }
-
 		# Made it this far, that's a success!
 		$status = TRUE;
 	} else {
@@ -141,7 +124,6 @@ function updateFloater($latTop, $lonRight, $latBot, $lonLeft){
 		# I don't want to make automated changes now, bail out!
 		print("Error: '".$needle."' not found in ".$sectorFile);
 		return $status;
-		#die();		
 	}
 	return $status;
 }
