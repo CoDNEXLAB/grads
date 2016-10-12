@@ -15,7 +15,7 @@ basedir = '/home/apache/servername/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
-'open /home/data/models/grads_ctl/'modname'/'modinit''modname%ctlext
+'open /home/scripts/grads/grads_ctl/'modname'/'modinit''modname%ctlext
 'set t 'fhour+1
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
