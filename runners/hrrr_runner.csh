@@ -34,11 +34,11 @@ endsw
 if (($FHour == 000) || ($FHour == 001)) then
 	set dataFile = `find ${dataDir}/${modDir}/*${ModRunTime}00F${FHour}.* ! -name '*c' ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
-	perl /home/scripts/grads/functions/hrrr_g2ctl.pl ${ctlFile} > ${dataDir}/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl	
+	perl /home/scripts/grads/functions/hrrr_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl	
 endif
-gribmap -q -i ${dataDir}/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
+gribmap -q -i /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
 foreach Sector (CHI MW SGP CGP NGP OKC DEN SW NW SE MA NE FLT)
-	#mkdir -p /home/apache/atlas/data/forecast/${ModName}/${ModRunTime}/${Sector}
+	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}
 	grads -bxcl "run /home/scripts/grads/runners/hrrr_grads_prodlist.gs ${ModRunTime} ${ModName} ${FHour} ${Sector}" &
 end
 wait
