@@ -45,7 +45,7 @@ else
  'd ABSVprs*100000'
 endif
 'run /home/scripts/grads/colorbars/color.gs -6 60 1 -kind lightslategray->silver->white->green->yellow->orange->red->maroon->magenta->indigo->blue->darkturquoise'
-if modname RAP
+if modname = RAP
  'd maskout((coriol+vort)*-100000,lat*-1)'
 else
  'd maskout(ABSVprs*-100000,lat*-1)'
