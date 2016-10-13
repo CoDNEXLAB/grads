@@ -36,7 +36,7 @@ if (($FHour == 000) || ($FHour == 001)) then
 	perl /home/scripts/grads/functions/rap_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
 endif
 gribmap -q -i /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
-foreach Sector (MW SGP CGP NGP SW NW SE MA NE FLT)
+foreach Sector (MW US SGP CGP NGP SW NW SE MA NE FLT)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout
 	grads -bxcl "run /home/scripts/grads/runners/rap_grads_prodlist.gs ${ModRunTime} ${ModName} ${FHour} ${Sector}" &
 end
