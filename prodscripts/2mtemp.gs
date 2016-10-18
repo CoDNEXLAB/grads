@@ -39,14 +39,7 @@ if sector != WLD
  'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
  'run /home/scripts/grads/functions/temp_stations.gs 'sector
  'set cint 2'
- if modname = RAP
-  'set gxout contour'
-  'set ccolor 99'
-  'set cthick 4'
-  'd MSLMAmsl /100'
- else
-  'run /home/scripts/grads/functions/isoheights.gs 'level
- endif
+ 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
  'run /home/scripts/grads/functions/counties.gs 'sector
 endif
 'run /home/scripts/grads/functions/states.gs 'sector

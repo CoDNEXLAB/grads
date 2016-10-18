@@ -41,11 +41,11 @@ level = 250
 'run /home/scripts/grads/functions/states.gs 'sector
 if sector = WLD
  'set cint 120'
- 'run /home/scripts/grads/functions/isoheights.gs 'modname' 'level
+ 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 else
  'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
  'set cint 60'
- 'run /home/scripts/grads/functions/isoheights.gs 'modname' 'level
+ 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 endif
 *start_readout
 if modname = GFS | modname = NAM | modname = RAP
