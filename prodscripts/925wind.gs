@@ -41,7 +41,7 @@ level = 925
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'set cint 30'
-'run /home/scripts/grads/functions/isoheights.gs 'modname' 'level
+'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 *start_readout
 if modname = GFS | modname = NAM | modname = RAP
  'set gxout print'

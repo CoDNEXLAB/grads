@@ -39,7 +39,7 @@ level = 700
 'd F'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'set cint 30'
-'run /home/scripts/grads/functions/isoheights.gs 'level
+'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/states.gs 'sector
 *start_readout

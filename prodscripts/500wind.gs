@@ -40,7 +40,7 @@ level = 500
 'run /home/scripts/grads/functions/interstates.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'set cint 60'
-'run /home/scripts/grads/functions/isoheights.gs 'modname' 'level
+'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 if sector != WLD
  'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 endif

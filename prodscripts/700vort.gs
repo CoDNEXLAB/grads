@@ -53,7 +53,7 @@ endif
 'run /home/scripts/grads/functions/interstates.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'set cint 30'
-'run /home/scripts/grads/functions/isoheights.gs 'modname' 'level
+'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 *start_readout
 if modname = GFS | modname = NAM
  'set gxout print'
