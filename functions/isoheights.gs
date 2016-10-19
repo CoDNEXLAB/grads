@@ -12,6 +12,7 @@ if (level = surface & model = HRRR)
 endif
 if (level = surface & model != HRRR & model != RAP)
  'd MSLETmsl/100'
-else
+endif
+if (level != surface)
  'd HGTprs'
 endif
