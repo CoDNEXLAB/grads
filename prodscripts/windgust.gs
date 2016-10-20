@@ -11,7 +11,7 @@ function main(args)
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/atlas/data/forecast'
+basedir = '/home/apache/servername/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
@@ -34,13 +34,12 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs 0 75 2.5 -kind white->(200,200,200)->steelblue->thistle->purple->crimson->khaki->darkgoldenrod'
-
 'set gxout shade2'
 'd GUSTsfc*1.94384'
 'set gxout vector'
 'set rgb 94 0 0 0 60'
 'set ccolor 94'
- 'set line 94 1 1'
+'set line 94 1 1'
 if sector = OKC | sector = CHI | sector = DEN
  'define iskip = skip(UGRD10m,4,4)*1.94384'
  'define jskip = skip(VGRD10m,4,4)*1.94384'
