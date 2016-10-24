@@ -2195,3 +2195,7 @@ if sector = DEN
 *Flager
  'run /home/scripts/grads/functions/plotXYgust.gs -103.06 39.29'
 endif
+if sector = FLT
+*WXC
+ 'run /home/scripts/grads/functions/plotXYgust.gs -98.3136 40.9611'
+endif
