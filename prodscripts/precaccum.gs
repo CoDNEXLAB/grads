@@ -11,6 +11,7 @@ function main(args)
 *GLOBAL VARIABLES
 'set grads off'
 filext = '.png'
+txtext = '.txt'
 basedir = '/home/apache/servername/data/forecast'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
