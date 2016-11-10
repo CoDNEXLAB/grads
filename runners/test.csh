@@ -37,8 +37,8 @@ if (($FHour == 000) || ($FHour == 001)) then
 	#perl /home/scripts/grads/functions/nam4km_g2ctl.pl ${ctlFile} >  /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl	
 endif
 #gribmap -q -i /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
-foreach Sector (US)
-	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}
+foreach Sector (WLD)
+#	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}
 	grads -bxcl "run /home/scripts/grads/runners/test_prodlist.gs ${ModRunTime} ${ModName} ${FHour} ${Sector}" &
 end
 wait

@@ -22,20 +22,31 @@ else
  'set t 'fhour+1
 endif
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors.gs 'sector
+'set lat 20 57'
+'set lon -128 -65'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *pick a colorbar
-'run /home/scripts/grads/colorbars/color.gs 30 170 5 -kind black-(0)->darkgreen-(2)->lime-(0)->olive-(2)->yellow-(0)->maroon-(4)->red-(0)->darkmagenta-(4)->magenta-(0)->mediumblue-(4)->cyan-(0)->gray-(4)->white'
-*set level (set both!)
-'set lev 500'
-'define windspeed = mag(UGRDprs,VGRDprs)*2'
-'set gxout kml'
-'set kml full_rez'
-'d windspeed'
+*'run /home/scripts/grads/colorbars/color.gs -85 55 2.5 -kind magenta-(3)->red-(2)->orange-(2)->green-(2)->cyan-(2)->blue-(0)->white->black-(0)->maroon->tomato'
+*'set gxout shade2'
+*'d BRTMPtoa-273.15'
+* 'set gxout contour'
+* 'set ccolor 99'
+* 'set cthick 3'
+* 'set cint 2'
+* 'set gxout kml'
+* 'set kml -ln test15.kml'
+* 'd MSLETmsl/100'
+* 'c'
+'set grads off'
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs 30 170 5 -kind darkgreen-(2)->lime-(0)->olive-(2)->yellow-(0)->maroon-(4)->red-(0)->darkmagenta-(4)->magenta-(0)->mediumblue-(4)->cyan-(0)->gray-(4)->white'
-'d windspeed'
-'printim full_rez.png x2048 y1024 -t 0'
+'run /home/scripts/grads/colorbars/color.gs -50 203 1 -kind black->white'
+'d (TMP2m-273.16)*9/5+32'
+*'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
+'printim test_rgb.png x3000 y1500'
+*'run /home/scripts/grads/colorbars/color.gs 30 170 5 -kind darkgreen-(2)->lime-(0)->olive-(2)->yellow-(0)->maroon-(4)->red-(0)->darkmagenta-(4)->magenta-(0)->mediumblue-(4)->cyan-(0)->gray-(4)->white'
+*'d windspeed'
+*'printim 3.png x3000 y1500'
+*'printim 3svg.svg'
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *plot the colorbar on the image
