@@ -3,28 +3,28 @@ function gradsrunner(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
-*****'run /home/scripts/grads/prodscripts/250rh.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/250wind.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/500wind.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/500rh.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/500temp.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/500vvel.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/500vort.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/700wind.gs 'modinit' 'modname' 'fhour' 'sector
-*****'run /home/scripts/grads/prodscripts/700rh.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/700temp.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/700vvel.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/700vort.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/850wind.gs 'modinit' 'modname' 'fhour' 'sector
-*****'run /home/scripts/grads/prodscripts/850rh.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/850temp.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/850vvel.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/850tadv.gs 'modinit' 'modname' 'fhour' 'sector
-*****'run /home/scripts/grads/prodscripts/850dewp.gs 'modinit' 'modname' 'fhour' 'sector
-*****'run /home/scripts/grads/prodscripts/850thte.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/925wind.gs 'modinit' 'modname' 'fhour' 'sector
-*****'run /home/scripts/grads/prodscripts/925rh.gs 'modinit' 'modname' 'fhour' 'sector
-'run /home/scripts/grads/prodscripts/925temp.gs 'modinit' 'modname' 'fhour' 'sector
+'run /home/scripts/grads/prodscripts/250rh.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/250wind.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/500wind.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/500rh.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/500temp.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/500vvel.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/500vort.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/700wind.gs 'modinit' 'modname' 'fhour' 'sector
+* *****'run /home/scripts/grads/prodscripts/700rh.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/700temp.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/700vvel.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/700vort.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/850wind.gs 'modinit' 'modname' 'fhour' 'sector
+* *****'run /home/scripts/grads/prodscripts/850rh.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/850temp.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/850vvel.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/850tadv.gs 'modinit' 'modname' 'fhour' 'sector
+* *****'run /home/scripts/grads/prodscripts/850dewp.gs 'modinit' 'modname' 'fhour' 'sector
+* *****'run /home/scripts/grads/prodscripts/850thte.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/925wind.gs 'modinit' 'modname' 'fhour' 'sector
+* *****'run /home/scripts/grads/prodscripts/925rh.gs 'modinit' 'modname' 'fhour' 'sector
+* 'run /home/scripts/grads/prodscripts/925temp.gs 'modinit' 'modname' 'fhour' 'sector
 *****'run /home/scripts/grads/prodscripts/925thte.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/2mtemp.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/2mdewpt.gs 'modinit' 'modname' 'fhour' 'sector
