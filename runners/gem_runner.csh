@@ -18,7 +18,7 @@ if (($FHour == 000) || ($FHour == 003)) then
 	perl /home/scripts/grads/functions/gem_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
 endif
 gribmap -q -i /home/scripts/grads/grads_ctl/${ModName}/${ModRunTime}${ModName}.ctl
-foreach Sector (US MW SGP CGP NGP SW NW SE MA NE FLT WCAN)
+foreach Sector (US MW NGP NW NE WCAN)
 #foreach Sector (WCAN)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}
 	grads -bxcl "run /home/scripts/grads/runners/gem_grads_prodlist.gs ${ModRunTime} ${ModName} ${FHour} ${Sector}" &
