@@ -45,7 +45,7 @@ else
  'd ABSVprs*100000'
 endif
 'run /home/scripts/grads/colorbars/color.gs -6 60 1 -kind lightslategray->silver->white->green->yellow->orange->red->maroon->magenta->indigo->blue->darkturquoise'
-if modname RAP
+if modname = RAP
  'd maskout((coriol+vort)*-100000,lat*-1)'
 else
  'd maskout(ABSVprs*-100000,lat*-1)'
@@ -73,3 +73,4 @@ endif
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
+
