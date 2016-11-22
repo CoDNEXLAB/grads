@@ -58,7 +58,7 @@ endif
 *start_readout
 if modname = GFS
  'set gxout print'
- 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
  'd snaccum'
  dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
 endif
