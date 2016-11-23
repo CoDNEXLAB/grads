@@ -46,13 +46,13 @@ if modname = RAP
  'rh = RH2m'
  'td=tc-( (14.55+0.114*tc)*(1-0.01*rh) + pow((2.5+0.007*tc)*(1-0.01*rh),3) + (15.9+0.117*tc)*pow((1-0.01*rh),14) )'
 endif
-if modname = HRRR
- 'define stp = (CAPEsfc/1500)*((2000-HGTceil)/1000)*(HLCY1000_0m/150)*term4'
-endif
+*if modname = HRRR
+* 'define stp = (CAPEsfc/1500)*((2000-HGTceil)/1000)*(HLCY1000_0m/150)*term4'
+*endif
 if modname = RAP
  'define stp = (CAPEsfc/1500)*((2000-(125*(TMP2m-td)))/1000)*(HLCY1000_0m/150)*term4'
 endif
-if modname != RAP & modname != HRRR
+if modname != RAP
  'define stp = (CAPEsfc/1500)*((2000-(125*(TMP2m-DPT2m)))/1000)*(HLCY1000_0m/150)*term4'
 endif
 'd maskout(stp,CINsfc+75)'
@@ -61,7 +61,7 @@ level = surface
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/states.gs 'sector
 *start_readout
-if modname = NAM | modname = NAM4KM | modname = RAP
+if modname = NAM | modname = NAM4KM | modname = RAP | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
  'd stp'

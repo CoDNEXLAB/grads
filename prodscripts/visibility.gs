@@ -21,17 +21,12 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
-
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *give the image a product title
-
 'draw string 0.1 8.3 Surface Visibility (mi) | College of DuPage NeXLaB'
-
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_vis_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
-
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs 0 10 .25 -kind black->aqua->magenta->maroon->red->orange->yellow->lime->silver->white'
 'set gxout shade2'
@@ -40,10 +35,16 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/vis_stations.gs 'sector
+*start_readout
+if modname = HRRR
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd vis'
+ dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+endif
+*end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*plot the colorbar on the image
+*plt the colorbar on the image
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
-
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

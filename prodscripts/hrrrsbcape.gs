@@ -21,17 +21,12 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
-
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *give the image a product title
-
 'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 0-6km Vertical Shear (s`a-1`n) | College of DuPage NeXLaB'
-
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_sbcape_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
-
 *pick a colorbar
 *'run /home/scripts/grads/colorbars/color.gs 0 6000 100 -kind white-(0)->white-(0)->indigo->magenta->mediumblue->aqua->springgreen->olive->yellow->orange->maroon->red->dimgray->powderblue'
 'run /home/scripts/grads/colorbars/color.gs 0 6000 100 -kind white-(0)->white-(0)->indigo-(7)->magenta-(0)->mediumblue-(8)->aqua-(0)->springgreen-(8)->olive-(0)->yellow-(8)->orange-(0)->maroon-(8)->red-(0)->dimgray->powderblue'
@@ -42,12 +37,16 @@ level = shear06
 'set lev 0'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
-
 'run /home/scripts/grads/functions/states.gs 'sector
+if modname = HRRR
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd CAPEsfc'
+ dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+endif
+*end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *plot the colorbar on the image
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
-
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

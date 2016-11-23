@@ -42,7 +42,7 @@ endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *start_readout
-if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP
+if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  if modname = HRRR15
