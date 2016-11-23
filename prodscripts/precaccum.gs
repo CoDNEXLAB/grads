@@ -40,7 +40,7 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/precip_stations.gs 'sector
 *start_readout
-if modname = NAM4KM
+if modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
  'd paccum'

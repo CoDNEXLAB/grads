@@ -40,7 +40,7 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'run /home/scripts/grads/functions/redstates.gs 'sector
 'run /home/scripts/grads/functions/cloud_stations.gs 'sector
 *start_readout
-if modname = GFS | modname = NAM | modname = RAP
+if modname = GFS | modname = NAM | modname = RAP | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd cldcov'

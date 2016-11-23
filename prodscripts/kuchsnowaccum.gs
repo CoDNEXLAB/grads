@@ -55,7 +55,7 @@ endwhile
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/snow_stations.gs 'sector
 *start_readout
-if modname = NAM4KM
+if modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
  'd snaccum'

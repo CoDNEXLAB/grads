@@ -23,9 +23,7 @@ ctlext = '.ctl'
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *give the image a product title
-
 if modname = HRRR15
  'draw string 0.1 8.3 `nMax 2-5km Updraft Helicity Swath (m`a2`n s`a-2`n) | College of DuPage NeXLaB'
 else
@@ -48,7 +46,7 @@ endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *start_readout
-if modname = NAM4KM
+if modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd max(mxuphl5000_2000(offt+0),t=1,t='fhour')'
@@ -56,9 +54,7 @@ if modname = NAM4KM
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *plot the colorbar on the image
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 4 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
-
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

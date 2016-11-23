@@ -95,7 +95,7 @@ else
  'run /home/scripts/grads/functions/rap_dewp_stations.gs 'sector
 endif
 *start_readout
-if modname = GFS | modname = NAM | modname = NAM4KM
+if modname = GFS | modname = NAM | modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd (DPT2m-273.16)*9/5+32'

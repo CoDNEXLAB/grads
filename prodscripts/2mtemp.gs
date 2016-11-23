@@ -50,7 +50,7 @@ endif
 *'d (TMP2m-273.16)*9/5+32'
 ************************
 *start_readout
-if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP
+if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd (TMP2m-273.16)*9/5+32'

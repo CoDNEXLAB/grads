@@ -53,7 +53,7 @@ endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/gust_stations.gs 'sector
 *start_readout
-if modname = NAM4KM
+if modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd GUSTsfc*1.94384'
@@ -61,9 +61,7 @@ if modname = NAM4KM
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *plot the colorbar on the image
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
-
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
