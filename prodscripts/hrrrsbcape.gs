@@ -26,7 +26,7 @@ ctlext = '.ctl'
 
 *give the image a product title
 
-'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 0-6km Bulk Wind Diff. (kts) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 0-6km Vertical Shear (s`a-1`n) | College of DuPage NeXLaB'
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_sbcape_ fhour

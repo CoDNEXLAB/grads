@@ -114,10 +114,15 @@ endif
 if level = shear06
  'd maskout(sh6xskip,CAPEsfc-100);sh6yskip'
 endif
-if level = shear500
+if level = shear500 & model != RAP
  'define ushear = (xskip-iskip)'
  'define vshear = (yskip-jskip)'
  'd maskout(ushear,CAPE180_0mb-100);vshear'
+endif
+if level = shear500 & model = RAP
+ 'define ushear = (xskip-iskip)'
+ 'define vshear = (yskip-jskip)'
+ 'd maskout(ushear,CAPE255_0mb-100);vshear'
 endif
 if level = surface
  'd iskip;jskip'
