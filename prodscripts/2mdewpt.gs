@@ -63,6 +63,9 @@ endif
 if modname = NAM
  'd PLI30_0mb'
 endif
+if modname = GFS
+ 'd no4LFTXsfc'
+endif
 'set cstyle 1'
 'set cthick 2'
 'set ccolor 2'
@@ -80,6 +83,9 @@ if modname = RAP
 endif
 if modname = NAM
  'd PLI30_0mb'
+endif
+if modname = GFS
+ 'd no4LFTXsfc'
 endif
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
