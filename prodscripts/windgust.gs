@@ -21,13 +21,9 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
-
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *give the image a product title
-
 'draw string 0.1 8.3 10m Wind Gust (kts) | College of DuPage NeXLaB'
-
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_gust_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext

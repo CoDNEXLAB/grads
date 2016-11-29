@@ -16,6 +16,9 @@ basedir = '/home/apache/servername/data/forecast'
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/scripts/grads/grads_ctl/'modname'/'modinit''modname%ctlext
+if modname = NAMAK
+ modname = NAM
+endif
 if modname = GFS
  'set t 'fhour/3+1
 else
