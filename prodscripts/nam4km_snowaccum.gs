@@ -25,9 +25,9 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 Precipitation Accumulation (in.) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 Snowfall Accumulation (10:1 Ratio) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _prec_precacc_ fhour
+prodname = modname sector _prec_snow_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'set gxout shade2'
 'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
