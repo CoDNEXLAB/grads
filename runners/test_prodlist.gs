@@ -18,5 +18,5 @@ if fhour != 000
 * 'run /home/scripts/grads/prodscripts/snowaccum.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/nam4km_precaccum.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/zraccum.gs 'modinit' 'modname' 'fhour' 'sector
- 'run /home/scripts/grads/prodscripts/kuchsnowaccum.gs 'modinit' 'modname' 'fhour' 'sector
+ 'run /home/scripts/grads/prodscripts/shapefile.gs 'modinit' 'modname' 'fhour' 'sector
 endif
