@@ -265,8 +265,6 @@ if sector = MA
  'run /home/scripts/grads/functions/plotXYfzra.gs -71.80 42.26'
 *Manchester------------------NH
  'run /home/scripts/grads/functions/plotXYfzra.gs -71.45 42.99'
-*Whitefield
- 'run /home/scripts/grads/functions/plotXYfzra.gs -71.56 44.36'
 *Dover------------------NJ
  'run /home/scripts/grads/functions/plotXYfzra.gs -74.56 40.89'
 *Princeton
@@ -337,8 +335,6 @@ if sector = MA
  'run /home/scripts/grads/functions/plotXYfzra.gs -71.6 41.69'
 *Rutland------------------VT
  'run /home/scripts/grads/functions/plotXYfzra.gs -72.97 43.61'
-*Montpelier
- 'run /home/scripts/grads/functions/plotXYfzra.gs -72.58 44.26'
 *Plymouth
  'run /home/scripts/grads/functions/plotXYfzra.gs -71.69 43.75'
 endif
@@ -1167,7 +1163,25 @@ if sector = OKC
  'run /home/scripts/grads/functions/plotXYfzra.gs -98.5 33.8'
 endif
 if sector = SGP
-*Roswell
+*Tuscaloosa----AL
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -87.5 33.2 'fhour
+*Georgiana
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -86.74 31.63'
+*Demopolis
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -87.8 32.5'
+*Huntsville
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -86.5 34.7'
+*MuscleShoals
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -87.61 34.75'
+*Creola
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -88.0 30.92'
+*Newton
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -85.6 31.38'
+*Montgomery
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -86.2 32.3'
+*BMX
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -86.78 33.5'
+*Roswell-----
  'run /home/scripts/grads/functions/plotXYfzra.gs -104.43 33.44 'fhour
 *FortDavis
  'run /home/scripts/grads/functions/plotXYfzra.gs -103.89 30.57'
@@ -1247,14 +1261,34 @@ if sector = SGP
  'run /home/scripts/grads/functions/plotXYfzra.gs -101.8 33.5'
 *Tulsa
  'run /home/scripts/grads/functions/plotXYfzra.gs -95.8 36.2'
+*Lawrence----------------------KS
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -95.22 38.94'
+*Manhattan
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -96.57 39.16'
+*Salina
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -97.6 38.76'
+*Alton
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -98.9 39.4'
+*Wakeeney
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -99.87 39'
+*DDC
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -100 37.75'
+*Pratt
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -98.73 37.67'
 *ICT
  'run /home/scripts/grads/functions/plotXYfzra.gs -97.3 37.6'
-*SW Kansas
- 'run /home/scripts/grads/functions/plotXYfzra.gs -101.5 37.4'
-*Coldwater
- 'run /home/scripts/grads/functions/plotXYfzra.gs -99.3 37.26'
-*Parsons
- 'run /home/scripts/grads/functions/plotXYfzra.gs -95.16 37.27'
+*YatesCenter
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -95.8 37.85'
+*Ulysses
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -101.36 37.56'
+*Goodland
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -101.74 39.33'
+*Tribune
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -101.75 38.46'
+*ScottCity
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -100.9 38.46'
+*GreatBend
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -98.77 38.38'
 *Big Bend
  'run /home/scripts/grads/functions/plotXYfzra.gs -103.5 29.3'
 *Laredo
@@ -1406,8 +1440,6 @@ if sector = SE
  'run /home/scripts/grads/functions/plotXYfzra.gs -89.7 33.3'
 *VancleaveMS
  'run /home/scripts/grads/functions/plotXYfzra.gs -88.7 30.6'
-*Jonesboro
- 'run /home/scripts/grads/functions/plotXYfzra.gs -90.8 35.8'
 *Meridan
  'run /home/scripts/grads/functions/plotXYfzra.gs -88.7 32.4'
 *Clarksdale
@@ -1815,10 +1847,8 @@ if sector = NW
  'run /home/scripts/grads/functions/plotXYfzra.gs -120.57 40.38'
 endif
 if sector = SW
-*Modoc---------------------------------------------CA
- 'run /home/scripts/grads/functions/plotXYfzra.gs -120.57 41.48 'fhour
-*Humboldt
- 'run /home/scripts/grads/functions/plotXYfzra.gs -123.9 40.98'
+*Humboldt---------------------------------------------CA
+ 'run /home/scripts/grads/functions/plotXYfzra.gs -123.9 40.98 'fhour
 *Redding
  'run /home/scripts/grads/functions/plotXYfzra.gs -122.39 40.59'
 *Lassen

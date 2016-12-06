@@ -36,10 +36,10 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'd TMP2m*0'
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
-if fhour = 003
+if fhour = 003 | fhour = 006
  'define paccum = APCPsfc/25.4'
 endif
-if fhour = 006 | fhour = 012 | fhour = 018 | fhour = 024 | fhour = 033 | fhour = 036 | fhour = 042 | fhour = 048 | fhour = 054 | fhour = 060 | fhour = 066 | fhour = 072 | fhour = 078 | fhour = 084 | fhour = 090 | fhour = 096 | fhour = 102 | fhour = 108 | fhour = 114 | fhour = 120 | fhour = 126 | fhour = 132 | fhour = 138 | fhour = 144 | fhour = 150 | fhour = 156 | fhour = 162 | fhour = 168 | fhour = 174 | fhour = 180 | fhour = 186 | fhour = 192 | fhour = 198 | fhour = 204 | fhour = 210 | fhour = 216 | fhour = 222 | fhour = 228 | fhour = 234 | fhour = 240
+if fhour = 012 | fhour = 018 | fhour = 024 | fhour = 030 | fhour = 036 | fhour = 042 | fhour = 048 | fhour = 054 | fhour = 060 | fhour = 066 | fhour = 072 | fhour = 078 | fhour = 084 | fhour = 090 | fhour = 096 | fhour = 102 | fhour = 108 | fhour = 114 | fhour = 120 | fhour = 126 | fhour = 132 | fhour = 138 | fhour = 144 | fhour = 150 | fhour = 156 | fhour = 162 | fhour = 168 | fhour = 174 | fhour = 180 | fhour = 186 | fhour = 192 | fhour = 198 | fhour = 204 | fhour = 210 | fhour = 216 | fhour = 222 | fhour = 228 | fhour = 234 | fhour = 240
  'define paccum = sum((APCPsfc/25.4),t=1,t='fhour/3+1',2)'
 endif
 if fhour = 009 | fhour = 015 | fhour = 021 | fhour = 027 | fhour = 033 | fhour = 039 | fhour = 045 | fhour = 051 | fhour = 057 | fhour = 063 | fhour = 069 | fhour = 075 | fhour = 081 | fhour = 087 | fhour = 093 | fhour = 099 | fhour = 105 | fhour = 111 | fhour = 117 | fhour = 123 | fhour = 129 | fhour = 135 | fhour = 141 | fhour = 147 | fhour = 153 | fhour = 159 | fhour = 165 | fhour = 171 | fhour = 177 | fhour = 183 | fhour = 189 | fhour = 195 | fhour = 201 | fhour = 207 | fhour = 213 | fhour = 219 | fhour = 225 | fhour = 231 | fhour = 237 
