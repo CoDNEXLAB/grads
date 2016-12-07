@@ -50,7 +50,7 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 level=surface
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'set cint 2'
-'run /home/scripts/grads/functions/isoheights.gs 'level
+'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'set string 0 l 1 0'
