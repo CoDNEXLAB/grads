@@ -17,7 +17,14 @@ basedir = '/home/apache/servername/data/forecast'
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/scripts/grads/grads_ctl/'modname'/'modinit''modname%ctlext
-'set t 'fhour+1
+if modname = NAMAK
+ modname = NAM
+endif
+if modname = GFS | modname = NAM | modname = GEM
+ 'set t 'fhour/3+1
+else
+ 'set t 'fhour+1
+endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
@@ -32,21 +39,58 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs 0 1000 500 -kind white->white'
 'd TMP2m'
 'run /home/scripts/grads/colorbars/color.gs -levs 0 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
-count = 1
-while count <= fhour
- 'set t 'count+1
- 'define maxT = max(TMPprs,lev=925,lev=500)'
+
+if fhour = 001
+ 'define maxT = max(TMPprs,lev=1000,lev=500)'
  'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
  if maxT > 271.16
   'define ratio = 12 + 2*(271.16-finmaxT)'
  else
   'define ratio = 12 + (271.16-finmaxT)'
  endif
- 'define snowCurrent = APCPsfc * CSNOWsfc * ratio / 25.4 '
- if count = 1
-  'define snaccum = snowCurrent'
- else
-  'define snaccum = snaccum + snowCurrent'
+ 'define snaccum = APCPsfc * CSNOWsfc * ratio / 25.4 '
+endif
+count = 1
+while count <= fhour
+ 'set t 'count+1
+ if count = 1 | count = 4 | count = 7 | count = 10 | count = 13 | count = 16 | count = 19 | count = 22 | count = 25 | count = 28 | count = 31 | count = 34 | count = 39 | count = 42 | count = 45 | count = 48 | count = 51 | count = 54 | count = 57 | count = 60
+  'define maxT = max(TMPprs,lev=1000,lev=500)'
+  'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
+  if maxT > 271.16
+   'define ratio = 12 + 2*(271.16-finmaxT)'
+  else
+   'define ratio = 12 + (271.16-finmaxT)'
+  endif
+  'define sn01 = APCPsfc * CSNOWsfc * ratio / 25.4 '
+  if count = 1
+   'define snaccum = sn01'
+  else
+   'define snaccum = snaccum + sn01'
+  endif
+ endif
+ if count = 2 | count = 5 | count = 8 | count = 11 | count = 14 | count = 17 | count = 20 | count = 23 | count = 26 | count = 29 | count = 32 | count = 35
+  'define maxT = max(TMPprs,lev=1000,lev=500)'
+  'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
+  if maxT > 271.16
+   'define ratio = 12 + 2*(271.16-finmaxT)'
+  else
+   'define ratio = 12 + (271.16-finmaxT)'
+  endif
+  'define sn02 = APCPsfc * CSNOWsfc * ratio / 25.4 '
+  'define sncurrent = sn02 - sn01'
+  'define snaccum = snaccum + sncurrent'
+ endif
+ if count = 3 | count = 6 | count = 9 | count = 12 | count = 15 | count = 18 | count = 21 | count = 24 | count = 27 | count = 30 | count = 33 | count = 36
+  'define maxT = max(TMPprs,lev=1000,lev=500)'
+  'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
+  if maxT > 271.16
+   'define ratio = 12 + 2*(271.16-finmaxT)'
+  else
+   'define ratio = 12 + (271.16-finmaxT)'
+  endif
+  'define sn03 = APCPsfc * CSNOWsfc * ratio / 25.4 '
+  'define sncurrent = sn03 - sn02'
+  'define snaccum = snaccum + sncurrent'
  endif
  count = count + 1
 endwhile
@@ -55,7 +99,7 @@ endwhile
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/snow_stations.gs 'sector
 *start_readout
-if modname = HRRR
+if modname = NAM4KM
  'set gxout print'
  'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
  'd snaccum'
