@@ -36,7 +36,7 @@ count = 1
 while count <= fhour
  'set t 'count+1
  if count = 1 | count = 4 | count = 7 | count = 10 | count = 13 | count = 16 | count = 19 | count = 22 | count = 25 | count = 28 | count = 31 | count = 34 | count = 39 | count = 42 | count = 45 | count = 48 | count = 51 | count = 54 | count = 57 | count = 60
-  'define maxT = max(TMPprs,lev=1000,lev=500)'
+  'define maxT = max(TMPprs,lev=850,lev=500)'
   'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
   if maxT > 271.16
    'define ratio = 12 + 2*(271.16-finmaxT)'
@@ -51,7 +51,7 @@ while count <= fhour
   endif
  endif
  if count = 2 | count = 5 | count = 8 | count = 11 | count = 14 | count = 17 | count = 20 | count = 23 | count = 26 | count = 29 | count = 32 | count = 35
-  'define maxT = max(TMPprs,lev=1000,lev=500)'
+  'define maxT = max(TMPprs,lev=850,lev=500)'
   'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
   if maxT > 271.16
    'define ratio = 12 + 2*(271.16-finmaxT)'
@@ -63,7 +63,7 @@ while count <= fhour
   'define snaccum = snaccum + (pcurrent * CSNOWsfc * ratio / 25.4)'
  endif
  if count = 3 | count = 6 | count = 9 | count = 12 | count = 15 | count = 18 | count = 21 | count = 24 | count = 27 | count = 30 | count = 33 | count = 36
-  'define maxT = max(TMPprs,lev=1000,lev=500)'
+  'define maxT = max(TMPprs,lev=850,lev=500)'
   'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
   if maxT > 271.16
    'define ratio = 12 + 2*(271.16-finmaxT)'
