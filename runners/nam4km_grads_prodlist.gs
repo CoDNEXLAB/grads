@@ -17,5 +17,5 @@ if fhour != 000
  'run /home/scripts/grads/prodscripts/uphlcy_swath.gs 'modinit' 'modname' 'fhour' 'sector
  'run /home/scripts/grads/prodscripts/nam4km_kuchsnowaccum.gs 'modinit' 'modname' 'fhour' 'sector
  'run /home/scripts/grads/prodscripts/nam4km_precaccum.gs 'modinit' 'modname' 'fhour' 'sector
-* 'run /home/scripts/grads/prodscripts/nam4km_zraccum.gs 'modinit' 'modname' 'fhour' 'sector
+ 'run /home/scripts/grads/prodscripts/nam4km_zraccum.gs 'modinit' 'modname' 'fhour' 'sector
 endif
