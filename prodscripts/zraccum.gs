@@ -33,7 +33,7 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'd TMP2m'
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 -kind white->gray->indigo->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
-'define fzraccum = sum((APCPsfc*CFRZRsfc),t=1,t='fhour+1')/25.4'
+'define fzraccum = sum((APCPsfc*CFRZRsfc/25.4),t=1,t='fhour+1',1)'
 'd fzraccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
