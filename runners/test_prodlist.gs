@@ -16,7 +16,7 @@ function gradsrunner(args)
 if fhour != 000
 * 'run /home/scripts/grads/prodscripts/uphlcy_swath.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/snowaccum.gs 'modinit' 'modname' 'fhour' 'sector
- 'run /home/scripts/grads/prodscripts/gfs_kuchsnowaccum.gs 'modinit' 'modname' 'fhour' 'sector
+ 'run /home/scripts/grads/prodscripts/ptype.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/zraccum.gs 'modinit' 'modname' 'fhour' 'sector
 * 'run /home/scripts/grads/prodscripts/shapefile.gs 'modinit' 'modname' 'fhour' 'sector
 endif

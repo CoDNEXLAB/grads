@@ -16,6 +16,6 @@ trace = 'T'
 if v2 >= 0.1
  'draw string 'xval' 'yval' 'math_format(fmt,v2)
 endif
-if v2 < 0.1 & v2 > 0
- 'draw string 'xval' 'yval' 'trace
-endif
+*if v2 < 0.1 & v2 > 0.05
+* 'draw string 'xval' 'yval' 'trace
+*endif
