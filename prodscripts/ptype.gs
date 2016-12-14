@@ -30,7 +30,7 @@ endif
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 PType | Comp. RADAR (dBZ) | 1000-500 Thickness (dam) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 PType | 1000-500mb Thickness (dam) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_ptype_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
@@ -50,7 +50,11 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs 0 40 5 -kind (111,111,111,0)-(0)->lightpink->indigo'
 'd REFCclm*CFRZRsfc'
 'run /home/scripts/grads/functions/pltzrcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
-'define thick15 = (HGTprs(lev=500) - HGTprs(lev=1000))'
+if modname = HRRR
+ 'define thick15 = HGT500mb - HGT1000mb'
+else
+ 'define thick15 = (HGTprs(lev=500) - HGTprs(lev=1000))'
+endif
 'set gxout contour'
 'set cint 6'
 'set ccolor 2'
