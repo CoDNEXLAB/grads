@@ -35,12 +35,15 @@ filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
 count = 1
 while count <= fhour
  'set t 'count+1
- 'define maxT = max(TMPprs,lev=850,lev=500)'
+ 'define maxT = max(TMPprs,lev=1000,lev=500)'
  'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
  if maxT > 271.16
   'define ratio = 12 + 2*(271.16-finmaxT)'
  else
   'define ratio = 12 + (271.16-finmaxT)'
+ endif
+ if ratio <= 0
+  'define ratio = 10'
  endif
  'define snowCurrent = APCPsfc * CSNOWsfc * ratio / 25.4 '
  if count = 1
