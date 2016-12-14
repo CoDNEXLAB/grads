@@ -29,33 +29,41 @@ endif
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *give the image a product title
-
-'draw string 0.1 8.3 PType | Comp. RADAR (dBZ) | 10m Wind (kts) | College of DuPage NeXLaB'
-
+'draw string 0.1 8.3 PType | Comp. RADAR (dBZ) | 1000-500 Thickness (dam) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_ptype_ fhour
 filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
-
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
-'d TMP2m*0'
-'run /home/scripts/grads/colorbars/color.gs 10 50 5 -kind white-(0)->(148,227,141)->darkgreen'
-'d maskout(REFCclm,CRAINsfc)'
+'run /home/scripts/grads/colorbars/color.gs 1 2000 100 -kind white->white'
+'d TMP2m'
+'run /home/scripts/grads/colorbars/color.gs 0 40 5 -kind (111,111,111,0)-(0)->(148,227,141)->darkgreen'
+'d REFCclm*CRAINsfc'
 *plot the colorbar on the image
 'run /home/scripts/grads/functions/pltraincolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
-'run /home/scripts/grads/colorbars/color.gs 10 50 5 -kind white-(0)->lightblue->navy'
-'d maskout(REFCclm,CSNOWsfc-0.5)'
+'run /home/scripts/grads/colorbars/color.gs 0 40 5 -kind (111,111,111,0)-(0)->lightblue->navy'
+'d REFCclm*CSNOWsfc'
 'run /home/scripts/grads/functions/pltsnowcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
-'run /home/scripts/grads/colorbars/color.gs 10 50 5 -kind white-(0)->lightpink->maroon'
-'d maskout(REFCclm,CICEPsfc-0.5)'
+'run /home/scripts/grads/colorbars/color.gs 0 40 5 -kind (111,111,111,0)-(0)->lightpink->maroon'
+'d REFCclm*CICEPsfc'
 'run /home/scripts/grads/functions/pltipcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
-'run /home/scripts/grads/colorbars/color.gs 10 50 5 -kind white-(0)->lightpink->indigo'
-'d maskout(REFCclm,CFRZRsfc-0.5)'
-'run /home/scripts/grads/functions/pltzrcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99' 
+'run /home/scripts/grads/colorbars/color.gs 0 40 5 -kind (111,111,111,0)-(0)->lightpink->indigo'
+'d REFCclm*CFRZRsfc'
+'run /home/scripts/grads/functions/pltzrcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
+'define thick15 = (HGTprs(lev=500) - HGTprs(lev=1000))'
+'set gxout contour'
+'set cint 6'
+'set ccolor 2'
+'set cstyle 2'
+'set black 0 540'
+'d thick15/10'
+'set cint 6'
+'set ccolor 4'
+'set cstyle 2'
+'set black 546 1000'
+'d thick15/10'
 level=surface
-'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
+*'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'set cint 2'
 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 'run /home/scripts/grads/functions/counties.gs 'sector
@@ -67,9 +75,7 @@ level=surface
 'draw string 5.35 .08 IP'
 'draw string 8 .08 ZR'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 *plot the colorbar on the image
 *'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1'
-
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
