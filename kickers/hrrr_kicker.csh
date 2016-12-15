@@ -16,8 +16,10 @@ set modtime = $1
 set Runner = "/home/scripts/grads/runners/hrrr_runner.csh"
 if (`date -u +%H` < $modtime) then
 	set dtstr = `date -u --date="yesterday" +%y%m%d`
+	set dateForDir = `date -u --date="yesterday" +%Y%m%d`${modtime}
 else
 	set dtstr = `date -u +%y%m%d`
+	set dateForDir = `date -u +%Y%m%d`${modtime}
 endif
 set datadir = "/home/data/models/hrrr"
 ###############################################
@@ -42,18 +44,18 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 		end
 	endif
 	if ($FHour == 018) then
-		csh $Runner $modtime HRRR $FHour
-		php /home/scripts/models/blister.php HRRR $modtime $FHour
+		csh $Runner $dateForDir $modtime HRRR $FHour
+		php /home/scripts/models/blister.php HRRR $dateForDir $FHour
 		echo `date` ": ${modtime}Z HRRR Finished" >> /home/apache/atlas/data/forecast/text/hrrrtimes.txt
 	else
 		if ($FHour == 000) then
 			echo `date` ": ${modtime}Z HRRR Starting" >> /home/apache/atlas/data/forecast/text/hrrrtimes.txt
-			csh $Runner $modtime HRRR $FHour
+			csh $Runner $dateForDir $modtime HRRR $FHour
 			perl /home/scripts/models/newclearmodeldir.pl $modtime HRRR
 		else
-			csh $Runner $modtime HRRR $FHour
+			csh $Runner $dateForDir $modtime HRRR $FHour
 		endif			
-		php /home/scripts/models/blister.php HRRR $modtime $FHour
+		php /home/scripts/models/blister.php HRRR $dateForDir $FHour
 	endif
 end	
 exit

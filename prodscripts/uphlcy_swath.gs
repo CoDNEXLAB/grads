@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -31,7 +32,7 @@ else
 endif
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_uphlysw_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
 'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
 'd TMP2m*0'
@@ -50,7 +51,7 @@ if modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd max(mxuphl5000_2000(offt+0),t=1,t='fhour')'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -14,8 +14,10 @@ set modtime = $1
 set Runner = "/home/scripts/grads/runners/rap_runner.csh"
 if (`date -u +%H` < $modtime) then
 	set dtstr = `date -u --date="yesterday" +%y%m%d`
+	set dateForDir = `date -u --date="yesterday" +%Y%m%d`${modtime}
 else
 	set dtstr = `date -u +%y%m%d`
+	set dateForDir = `date -u +%Y%m%d`${modtime}
 endif
 set datadir = "/home/data/models/rap"
 ###############################################
@@ -48,20 +50,20 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	endif
 	if ($FHour == 021) then
 		nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
-		csh $Runner $modtime RAP $FHour
-		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $modtime $FHour
+		csh $Runner $dateForDir $modtime RAP $FHour
+		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $dateForDir $FHour
 		echo `date` ": ${modtime}Z RAP Finished" >> /home/apache/atlas/data/forecast/text/raptimes.txt
 	else
 		if ($FHour == 000) then
 			echo `date` ": ${modtime}Z RAP Starting" >> /home/apache/atlas/data/forecast/text/raptimes.txt
 			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
-			csh $Runner $modtime RAP $FHour
+			csh $Runner $dateForDir $modtime RAP $FHour
 			perl /home/scripts/models/newclearmodeldir.pl $modtime RAP
 		else
 			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
-			csh $Runner $modtime RAP $FHour
+			csh $Runner $dateForDir $modtime RAP $FHour
 		endif			
-		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $modtime $FHour
+		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $dateForDir $FHour
 	endif
 end	
 exit

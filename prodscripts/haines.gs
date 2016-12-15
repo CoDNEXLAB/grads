@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -34,7 +35,7 @@ endif
 'd HINDEXsfc'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_haines_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 level = surface
 'run /home/scripts/grads/functions/counties.gs 'sector
 'set cint 2'

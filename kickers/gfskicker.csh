@@ -15,6 +15,7 @@ set Runner = "/home/scripts/grads/runners/gfs_runner.csh"
 csh /home/scripts/grads/kickers/gfsdownloader.csh $ModRunTime &
 #DATE VARIABLE formatted YYYYMMDD
 set dtstr = `date -u +%Y%m%d`
+set dateForDir = `date -u +%Y%m%d`${ModRunTime}
 #STRING VARIABLE FORMATTED YYMMDD
 set filstr = `date -u +%y%m%d`
 #MANUAL OVERRIDE OF DATE AND TIME STRING
@@ -43,17 +44,17 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 	if ($FHour == 000) then
 		echo `date` ": ${ModRunTime}Z GFS Starting" >> /home/apache/climate/data/forecast/text/gfstimes.txt
         python /home/scripts/stats/modtimes/gfs.py
-		csh $Runner $ModRunTime GFS $FHour
+		csh $Runner $dateForDir $ModRunTime GFS $FHour
 		perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime GFS
 		
 	else if ($FHour == 384) then
-		csh $Runner $ModRunTime GFS $FHour
+		csh $Runner $dateForDir $ModRunTime GFS $FHour
 		echo `date` ": ${ModRunTime}Z GFS Finished" >> /home/apache/climate/data/forecast/text/gfstimes.txt
         python /home/scripts/stats/modtimes/gfs.py
 	else
-		csh $Runner $ModRunTime GFS $FHour
+		csh $Runner $dateForDir $ModRunTime GFS $FHour
 	endif
-	php /home/scripts/models/blister.php GFS $ModRunTime $FHour
+	php /home/scripts/models/blister.php GFS $dateForDir $FHour
 end
 wait
 #Added by DaveBB on 20151016 for monitoring download speeds from the wget downloader script.  This data will be used for graphing the download speeds over time
