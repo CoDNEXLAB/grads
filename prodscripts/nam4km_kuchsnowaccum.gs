@@ -44,9 +44,7 @@ while count <= fhour
   else
    'define ratio = 12 + (271.16-finmaxT)'
   endif
-  if ratio <= 0
-   'define ratio = 10'
-  endif
+  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
   'define prec01 = APCPsfc'
   if count = 1
    'define snaccum = prec01 * CSNOWsfc * ratio / 25.4'
@@ -62,9 +60,7 @@ while count <= fhour
   else
    'define ratio = 12 + (271.16-finmaxT)'
   endif
-  if ratio <= 0
-   'define ratio = 10'
-  endif
+  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
   'define prec02 = APCPsfc'
   'define pcurrent = prec02 - prec01'
   'define snaccum = snaccum + (pcurrent * CSNOWsfc * ratio / 25.4)'
@@ -77,9 +73,7 @@ while count <= fhour
   else
    'define ratio = 12 + (271.16-finmaxT)'
   endif
-  if ratio <= 0
-   'define ratio = 10'
-  endif
+  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
   'define prec03 = APCPsfc'
   'define pcurrent = prec03 - prec02'
   'define snaccum = snaccum + (pcurrent * CSNOWsfc * ratio / 25.4)'

@@ -42,6 +42,8 @@ if modname = HRRR15
 else
  'd REFCclm'
 endif
+level = surface
+'run /home/scripts/grads/functions/windvector.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
