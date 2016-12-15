@@ -3,6 +3,7 @@ function gradsrunner(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
 'run /home/scripts/grads/prodscripts/250rh.gs 'modinit' 'modname' 'fhour' 'sector
 'run /home/scripts/grads/prodscripts/250wind.gs 'modinit' 'modname' 'fhour' 'sector
 'run /home/scripts/grads/prodscripts/500wind.gs 'modinit' 'modname' 'fhour' 'sector

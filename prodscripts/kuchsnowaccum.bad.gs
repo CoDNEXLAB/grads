@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 'set grads off'
@@ -30,7 +31,7 @@ ctlext = '.ctl'
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_kuchsnow_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
 'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
 'd TMP2m*0'

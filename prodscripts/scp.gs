@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -33,7 +34,7 @@ endif
 'draw string 0.1 8.3 Supercell Composite | 500:850mb Crossover | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_scp_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs .25 .5 1 2 4 7 10 15 20 25 30 35 -kind white->(210,210,210)->(50,255,31)->(151,253,23)->(252,245,15)->(251,128,7)->(249,5,0)->(249,0,80)->(249,0,167)->(245,0,249)->(158,0,249)->(180,100,225)->cyan'
 'set gxout shade2'
@@ -53,7 +54,7 @@ if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP | modname = 
  'set gxout print'
  'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
  'd scp'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

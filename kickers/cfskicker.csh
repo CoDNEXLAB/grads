@@ -27,8 +27,10 @@ set filstr = `date -u +%y%m%d`
 # Get dir name (in place of runtime):
 if ($ModRunTime == 18) then
 	set InitDate = `date -d "-1 day" +"%b %d %Y"`
+	set dateForDir = `date -u --date="yesterday" +%Y%m%d`${ModRunTime}
 else
 	set InitDate = `date +"%b %d %Y"`
+	set dateForDir = `date -u +%Y%m%d`${ModRunTime}
 endif
 set InitDate = `date -d "${InitDate} + ${ModRunTime} hours"  +%Y%m%d%H`
 #BEGIN LOOP
@@ -43,14 +45,14 @@ foreach FHour (000 006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 0
 	#process
 	if ($FHour == 000) then
 		echo `date` ": ${ModRunTime}Z CFS Starting" >> /home/apache/climate/data/forecast/text/cfstimes.txt
-		csh $Runner $ModRunTime $FHour $InitDate
+		csh $Runner $dateForDir $ModRunTime CFS $FHour
 		
 	else if ($FHour == 798) then
-		csh $Runner $ModRunTime $FHour $InitDate
+		csh $Runner $dateForDir $ModRunTime CFS $FHour
 		echo `date` ": ${ModRunTime}Z CFS Finished" >> /home/apache/climate/data/forecast/text/cfstimes.txt
 	else
-		csh $Runner $ModRunTime $FHour $InitDate
+		csh $Runner $dateForDir $ModRunTime CFS $FHour
 	endif
-	php /home/scripts/models/blister.php CFS $InitDate $FHour
+	php /home/scripts/models/blister.php CFS $dateForDir $FHour
 end
 wait

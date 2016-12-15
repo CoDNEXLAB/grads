@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -33,7 +34,7 @@ endif
 'draw string 0.1 8.3 500mb Vertical Velocity (-ub s`a-1`n) | Height (m) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _500_vvel_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -12 50 1 -kind lightslategray->silver->white->green->yellow->orange->red->maroon->magenta->indigo->blue->darkturquoise'
@@ -50,7 +51,7 @@ if modname = GFS | modname = NAM | modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd VVELprs*-10'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

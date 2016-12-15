@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -45,7 +46,7 @@ level=surface
 'd wbc*9/5+32'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_wetblb_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/states.gs 'sector
@@ -64,7 +65,7 @@ if modname = GFS | modname = NAM | modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd wbc*9/5+32'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

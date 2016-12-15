@@ -12,6 +12,7 @@ set Runner = "/home/scripts/grads/runners/nam4km_runner.csh"
 csh /home/scripts/grads/kickers/conusnestdownloader.csh $ModRunTime &
 #DATE VARIABLE formatted YYYYMMDD
 set dtstr = `date -u +%Y%m%d`
+set dateForDir = `date -u +%Y%m%d`${ModRunTime}
 #STRING VARIABLE FORMATTED YYMMDD
 set filstr = `date -u +%y%m%d`
 #MANUAL OVERRIDE OF DATE AND TIME STRING
@@ -31,17 +32,17 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 	if ($FHour == 00) then
 		echo `date` ": ${ModRunTime}Z NAM4KM Starting" >> /home/apache/climate/data/forecast/text/nam4kmtimes.txt
 		python /home/scripts/stats/modtimes/nam4km.py
-		csh $Runner $ModRunTime NAM4KM 0$FHour
+		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 		perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime NAM4KM
 		
 	else if ($FHour == 60) then
-		csh $Runner $ModRunTime NAM4KM 0$FHour
+		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 		echo `date` ": ${ModRunTime}Z NAM4KM Finished" >> /home/apache/climate/data/forecast/text/nam4kmtimes.txt
 		python /home/scripts/stats/modtimes/nam4km.py
 	else
-		csh $Runner $ModRunTime NAM4KM 0$FHour
+		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 	endif
 	#perl /home/scripts/models/blister.pl $ModRunTime NAM4KM $FHour 87
-	php /home/scripts/models/blister.php NAM4KM $ModRunTime $FHour
+	php /home/scripts/models/blister.php NAM4KM $dateForDir $FHour
 end
 wait

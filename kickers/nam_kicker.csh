@@ -14,8 +14,10 @@ set modtime = $1
 set Runner = "/home/scripts/grads/runners/nam_runner.csh"
 if (`date -u +%H` < $modtime) then
 	set dtstr = `date -u --date="yesterday" +%y%m%d`
+	set dateForDir = `date -u --date="yesterday" +%Y%m%d`${modtime}
 else
 	set dtstr = `date -u +%y%m%d`
+	set dateForDir = `date -u +%Y%m%d`${modtime}
 endif
 set datadir = "/home/data/models/nam_218"
 ###############################################
@@ -48,8 +50,8 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 	endif
 	if ($FHour == 084) then
 		nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
-		csh $Runner $modtime NAM $FHour
-		php /home/scripts/models/blister.php NAM $modtime $FHour
+		csh $Runner $dateForDir $modtime NAM $FHour
+		php /home/scripts/models/blister.php NAM $dateForDir $FHour
 		echo `date` ": ${modtime}Z NAM Finished" >> /home/apache/climate/data/forecast/text/namtimes.txt
 			python /home/scripts/stats/modtimes/nam.py
 	else
@@ -57,13 +59,13 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 			echo `date` ": ${modtime}Z NAM Starting" >> /home/apache/climate/data/forecast/text/namtimes.txt
 			python /home/scripts/stats/modtimes/nam.py
 			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
-			csh $Runner $modtime NAM $FHour
+			csh $Runner $dateForDir $modtime NAM $FHour
 			perl /home/scripts/models/clearmodeldirpng.pl $modtime NAM
 		else
 			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
-			csh $Runner $modtime NAM $FHour
+			csh $Runner $dateForDir $modtime NAM $FHour
 		endif			
-		php /home/scripts/models/blister.php NAM $modtime $FHour
+		php /home/scripts/models/blister.php NAM $dateForDir $FHour
 	endif
 end	
 exit

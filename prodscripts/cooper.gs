@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -48,7 +49,7 @@ level = 850
 'define windspeed = mag(UGRDprs,VGRDprs)*2'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_thetae_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs 0 27 .5 -kind white-(0)->white-(0)->lightgray-(3)->limegreen-(3)->yellow->goldenrod->red->maroon->magenta->darkmagenta->powderblue->deepskyblue'
 'set gxout shade2'

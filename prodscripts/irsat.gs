@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -30,7 +31,7 @@ ctlext = '.ctl'
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_irsat_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -85 55 2.5 -kind magenta-(3)->red-(2)->orange-(2)->green-(2)->cyan-(2)->blue-(0)->white->black-(0)->maroon->tomato'
 'set gxout shade2'
@@ -42,7 +43,7 @@ if modname = NAM4KM
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd BRTMPtoa-273.15'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

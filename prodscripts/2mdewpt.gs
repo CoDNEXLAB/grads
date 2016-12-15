@@ -7,6 +7,7 @@ function main(args)
  modname=subwrd(args,2)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
+ runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
@@ -36,7 +37,7 @@ endif
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_dewp_ fhour
-filename = basedir'/'modname'/'modinit'/'sector'/'prodname%filext
+filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 level = surface
 if modname != RAP
  'run /home/scripts/grads/functions/isodrosotherms.gs 'level
@@ -102,13 +103,13 @@ if modname = GFS | modname = NAM | modname = NAM4KM | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd (DPT2m-273.16)*9/5+32'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 if modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd td*9/5+32'
- dummy=write(basedir'/'modname'/'modinit'/'sector'/readout/'prodname%txtext,result)
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
