@@ -50,9 +50,7 @@ while count <= fhour/3
  else
   'define ratio = 12 + (271.16-finmaxT)'
  endif
- if ratio <= 0
-   'define ratio = 10'
-  endif
+ 'define ratio = const(maskout(ratio,ratio+1),10,-u)'
  'define snowCurrent = APCPsfc * CSNOWsfc * ratio / 25.4 '
  if count = 1
   'define snaccum = snowCurrent'

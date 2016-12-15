@@ -47,7 +47,7 @@ level = 850
 'run /home/scripts/grads/functions/counties.gs 'sector
 'set cint 30'
 'run /home/scripts/grads/functions/isoheights.gs 'level
-'run /home/scripts/grads/functions/windvector.gs 'sector' 'modname' 'level
+'run /home/scripts/grads/functions/redwindvector.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/states.gs 'sector
 *start_readout
 if modname = GFS | modname = NAM | modname = RAP

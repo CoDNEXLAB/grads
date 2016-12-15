@@ -3,7 +3,7 @@ function barb_spacing(args)
  model=subwrd(args,2)
  level=subwrd(args,3)
 'set gxout vector'
-'set rgb 94 0 0 0 60'
+'set rgb 94 255 0 0 120'
 'set ccolor 94'
 'set line 94 1 1'
 if model = GFS
