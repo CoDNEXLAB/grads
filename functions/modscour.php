@@ -25,7 +25,7 @@ switch ($modName) {
 $numRunsToKeep = 3*$runsPerDay;
 
 # Get a list of all model run directories:
-$baseDir = "/home/apache/climate/data/forecast/$modName";
+$baseDir = "/home/apache/servername/data/forecast/$modName";
 $subDirs = glob($baseDir."/*",GLOB_ONLYDIR);
 rsort($subDirs);
 
