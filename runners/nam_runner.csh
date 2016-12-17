@@ -44,7 +44,7 @@ perl /home/scripts/grads/functions/mpi_gribmap.pl -i /home/scripts/grads/grads_c
 foreach Sector (US MW SGP CGP NGP SW NW SE MA NE FLT WCAN AK)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout
 	if ($Sector == AK) then
-		grads -bxcl "run /home/scripts/grads/runners/namak_grads_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
+		grads -bxcl "run /home/scripts/grads/runners/namak_grads_prodlist.gs ${ModInit} NAMAK ${FHour} ${Sector} ${ModRunTime}" &
 	else
 		grads -bxcl "run /home/scripts/grads/runners/nam_grads_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
 	endif
