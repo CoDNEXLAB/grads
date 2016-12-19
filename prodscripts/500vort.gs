@@ -45,12 +45,18 @@ if modname = RAP
  'define coriol=2*7.29e-5*sin(lat*3.1415/180)'
  'define vort=hcurl(UGRDprs,VGRDprs)' 
  'd (coriol+vort)*100000'
+endif
+if modname = NAM
+ 'd ABSV500mb*100000'
 else
  'd ABSVprs*100000'
 endif
 'run /home/scripts/grads/colorbars/color.gs -6 60 1 -kind lightslategray->silver->white->green->yellow->orange->red->maroon->magenta->indigo->blue->darkturquoise'
 if modname = RAP
  'd maskout((coriol+vort)*-100000,lat*-1)'
+endif
+if modname = NAM
+ 'd maskout(ABSV500mb*-100000,lat*-1)'
 else
  'd maskout(ABSVprs*-100000,lat*-1)'
 endif 
@@ -59,10 +65,16 @@ endif
 'set cint 60'
 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
 *start_readout
-if modname = GFS | modname = NAM
+if modname = GFS
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd ABSVprs*100000'
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
+endif
+if modname = NAM
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd ABSV500mb*100000'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 if modname = RAP
