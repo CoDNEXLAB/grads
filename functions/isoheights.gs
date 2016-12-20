@@ -16,4 +16,7 @@ endif
 if (level != surface)
  'd HGTprs'
 endif
+if (model = CFS & level != surface)
+ 'd HGT 'level' mb'
+endif
 
