@@ -18,6 +18,6 @@ if fhour != 000
 * 'run /home/scripts/grads/prodscripts/uphlcy_swath.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 * 'run /home/scripts/grads/prodscripts/snowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 * 'run /home/scripts/grads/prodscripts/new_wind.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
- 'run /home/scripts/grads/prodscripts/zraccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+ 'run /home/scripts/grads/prodscripts/test_accum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 * 'run /home/scripts/grads/prodscripts/shapefile.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 endif
