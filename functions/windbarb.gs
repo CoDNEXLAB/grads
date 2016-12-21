@@ -111,7 +111,11 @@ if model = HRRR & sector = OKC | sector = CHI | sector = DEN
  'define sh6xskip = skip(VUCSH0_6000m,10,10)*2'
  'define sh6yskip = skip(VVCSH0_6000m,10,10)*2'
 endif
-if model = CFS & level != surface
+if model = CFS
+ 'define xskip = skip(UGRD 'level' mb,2,2)*2'
+ 'define yskip = skip(VGRD 'level' mb,2,2)*2'
+endif
+if model = CFS & sector != US
  'define xskip = skip(UGRD 'level' mb,3,3)*2'
  'define yskip = skip(VGRD 'level' mb,3,3)*2'
 endif

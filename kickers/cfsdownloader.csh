@@ -34,8 +34,6 @@ foreach FHour (000 006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 0
 	set count = 0
 	set filesize = 0
 	set ftime = ( `date -d "${InitDate} +${FHour} hours" +%Y%m%d%H` )
-	#set ftime = ( `$dtstr +%Y%m%d%H -d "-14 hours +${FHour} hours" +%Y%m%d%H` 
-	#print ftime
 	while (($filesize < 444) && ($count < 75))
 		wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_cfs_pgb.pl?file=pgbf${ftime}.01.${dtstr}${ModRunTime}.grb2&lev_3000-0_m_above_ground=on&lev_500_mb=on&lev_850_mb=on&lev_mean_sea_level=on&lev_surface=on&var_CAPE=on&var_HGT=on&var_HLCY=on&var_PRMSL=on&var_TMP=on&var_UGRD=on&var_VGRD=on&var_CIN=on&var_HGT=on&lev_2_m_above_ground=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fcfs.${dtstr}%2F${ModRunTime}%2F6hrly_grib_01" -O ${filepathname}
 		set filesize = `stat -c %s ${filepathname}`

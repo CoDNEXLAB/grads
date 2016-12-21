@@ -25,6 +25,9 @@ if modname = GFS | modname = NAM | modname = GEM
 else
  'set t 'fhour+1
 endif
+if modname = CFS
+ 'set t 'fhour/6+1
+endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
@@ -70,7 +73,9 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *'d CAPEsfc'
 *May have to get crafty here in the future if model is missing 0-6shear grib entry (e.g., 500 hPa wind - 10m wind)
 level = surface
-'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
+if modname != CFS
+ 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
+endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *start_readout
