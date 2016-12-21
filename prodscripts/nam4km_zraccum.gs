@@ -34,7 +34,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
 'd TMP2m*0'
 *pick a colorbar
-'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
+'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 -kind white->gray->orchid->mediumvioletred->orange->yellow'
 count = 1
 while count <= fhour
  'set t 'count+1
@@ -72,6 +72,6 @@ endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *plot the colorbar on the image
-'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 3 -fh .1 -fw .1 -lc 99 -fc 99'
+'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 1 -fh .1 -fw .1 -lc 99 -fc 99'
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

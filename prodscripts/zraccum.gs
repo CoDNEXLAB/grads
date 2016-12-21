@@ -33,7 +33,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs 0 1000 500 -kind white->white'
 'd TMP2m'
 *pick a colorbar
-'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 -kind white->gray->indigo->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
+'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 -kind white->gray->orchid->mediumvioletred->orange->yellow'
 'define fzraccum = sum((APCPsfc*CFRZRsfc/25.4),t=1,t='fhour+1',1)'
 'd fzraccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
@@ -49,6 +49,6 @@ endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *plot the colorbar on the image
-'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
+'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 1 -fh .1 -fw .1 -lc 99 -fc 99'
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
