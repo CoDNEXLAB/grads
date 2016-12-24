@@ -1,16 +1,16 @@
-dset /home/data/models/hrrr/1612231900F%f3.hrrr
-index /home/data/models/hrrr/1612231900F000.hrrr.idx
+dset /home/data/models/hrrr/1612241200F%f3.hrrr
+index /home/data/models/hrrr/1612241200F000.hrrr.idx
 undef 9.999E+20
-title /home/data/models/hrrr/1612231900F000.hrrr
+title /home/data/models/hrrr/1612241200F000.hrrr
 * produced by g2ctl v0.0.9
-* command line options: /home/data/models/hrrr/1612231900F%f3.hrrr
-* griddef=5:5782716:(2145 x 1377):grid_template=30:winds(grid): Lambert Conformal: (2145 x 1377) input WE:SN output WE:SN res 56 Lat1 20.191999 Lon1 238.445999 LoV 265.000000 LatD 25.000000 Latin1 25.000000 Latin2 25.000000 LatSP 0.000000 LonSP 0.000
+* command line options: /home/data/models/hrrr/1612241200F%f3.hrrr
+* griddef=5:6055926:(2145 x 1377):grid_template=30:winds(grid): Lambert Conformal: (2145 x 1377) input WE:SN output WE:SN res 56 Lat1 20.191999 Lon1 238.445999 LoV 265.000000 LatD 25.000000 Latin1 25.000000 Latin2 25.000000 LatSP 0.000000 LonSP 0.000
 dtype grib2
 options template
 pdef 2145 1377 lccr 20.191999 -121.554001 1 1 25.000000 25.000000 -95 2539.703000 2539.703000
 xdef 2814 linear -130.103387 0.0246001009814572
 ydef 1413 linear 20.196426 0.0230882090909091
-tdef 19 linear 19Z23dec2016 1hr
+tdef 19 linear 12Z24dec2016 1hr
 * PROFILE hPa
 zdef 5 levels 100000 92500 85000 70000 50000
 options pascals
@@ -34,15 +34,15 @@ DZDTsg500_800  0,104,0.5,0.8   0,2,9,0 ** 0.5-0.8 sigma layer Vertical Velocity 
 GUSTsfc   0,1,0   0,2,22 ** surface Wind Speed (Gust) [m/s]
 HCDChcll   0,234,0   0,6,5 ** high cloud layer High Cloud Cover [%]
 HGTsfc   0,1,0   0,3,5 ** surface Geopotential Height [gpm]
-HGT1000mb   0,100,100000   0,3,5 ** 1000 mb Geopotential Height [gpm]
-HGT500mb   0,100,50000   0,3,5 ** 500 mb Geopotential Height [gpm]
 HGT700mb   0,100,70000   0,3,5 ** 700 mb Geopotential Height [gpm]
+HGT500mb   0,100,50000   0,3,5 ** 500 mb Geopotential Height [gpm]
 HGT850mb   0,100,85000   0,3,5 ** 850 mb Geopotential Height [gpm]
+HGT1000mb   0,100,100000   0,3,5 ** 1000 mb Geopotential Height [gpm]
 HGTceil   0,215,0   0,3,5 ** cloud ceiling Geopotential Height [gpm]
 HGTclt   0,3,0   0,3,5 ** cloud top Geopotential Height [gpm]
 HGTadcl   0,5,0   0,3,5 ** level of adiabatic condensation from sfc Geopotential Height [gpm]
-HLCY3000_0m  0,103,3000,0   0,7,8 ** 3000-0 m above ground Storm Relative Helicity [m^2/s^2]
 HLCY1000_0m  0,103,1000,0   0,7,8 ** 1000-0 m above ground Storm Relative Helicity [m^2/s^2]
+HLCY3000_0m  0,103,3000,0   0,7,8 ** 3000-0 m above ground Storm Relative Helicity [m^2/s^2]
 HPBLsfc   0,1,0   0,3,18 ** surface Planetary Boundary Layer Height [m]
 LCDClcll   0,214,0   0,6,3 ** low cloud layer Low Cloud Cover [%]
 LFTXl100_100  0,100,50000,100000   0,7,10 ** 500-1000 mb Surface Lifted Index [K]
@@ -69,15 +69,15 @@ UGRD80m   0,103,80   0,2,2 ** 80 m above ground U-Component of Wind [m/s]
 UGRD10m   0,103,10   0,2,2 ** 10 m above ground U-Component of Wind [m/s]
 USTM0_6000m  0,103,0,6000   0,2,27 ** 0-6000 m above ground U-Component Storm Motion [m/s]
 VGRDprs    5,100  0,2,3 ** (1000 925 850 700 500) V-Component of Wind [m/s]
-VGRD80m   0,103,80   0,2,3 ** 80 m above ground V-Component of Wind [m/s]
 VGRD10m   0,103,10   0,2,3 ** 10 m above ground V-Component of Wind [m/s]
+VGRD80m   0,103,80   0,2,3 ** 80 m above ground V-Component of Wind [m/s]
 VILclm   0,10,0   0,15,3 ** entire atmosphere Vertically-Integrated Liquid Water [kg/m^2]
 VISsfc   0,1,0   0,19,0 ** surface Visibility [m]
 VSTM0_6000m  0,103,0,6000   0,2,28 ** 0-6000 m above ground V-Component Storm Motion [m/s]
-VUCSH0_6000m  0,103,0,6000   0,2,15 ** 0-6000 m above ground Vertical U-Component Shear [1/s]
 VUCSH0_1000m  0,103,0,1000   0,2,15 ** 0-1000 m above ground Vertical U-Component Shear [1/s]
-VVCSH0_6000m  0,103,0,6000   0,2,16 ** 0-6000 m above ground Vertical V-Component Shear [1/s]
+VUCSH0_6000m  0,103,0,6000   0,2,15 ** 0-6000 m above ground Vertical U-Component Shear [1/s]
 VVCSH0_1000m  0,103,0,1000   0,2,16 ** 0-1000 m above ground Vertical V-Component Shear [1/s]
+VVCSH0_6000m  0,103,0,6000   0,2,16 ** 0-6000 m above ground Vertical V-Component Shear [1/s]
 WEASDsfc   0,1,0   0,1,13,1 ** surface Water Equivalent of Accumulated Snow Depth [kg/m^2]
 WIND10m   0,103,10   0,2,1,2 ** 10 m above ground Wind Speed [m/s]
 ENDVARS
