@@ -1,16 +1,16 @@
-dset /home/data/models/nam_conus_nest/1612210000F%f3.nam4km
-index /home/data/models/nam_conus_nest/1612210000F000.nam4km.idx
+dset /home/data/models/nam_conus_nest/1612240000F%f3.nam4km
+index /home/data/models/nam_conus_nest/1612240000F000.nam4km.idx
 undef 9.999E+20
-title /home/data/models/nam_conus_nest/1612210000F000.nam4km
+title /home/data/models/nam_conus_nest/1612240000F000.nam4km
 * produced by g2ctl v0.0.9
-* command line options: /home/data/models/nam_conus_nest/1612210000F%f3.nam4km
-* griddef=5:2783117:(1473 x 1025):grid_template=30:winds(grid): Lambert Conformal: (1473 x 1025) input WE:SN output WE:SN res 8 Lat1 12.190000 Lon1 226.541000 LoV 265.000000 LatD 25.000000 Latin1 25.000000 Latin2 25.000000 LatSP 0.000000 LonSP 0.0000
+* command line options: /home/data/models/nam_conus_nest/1612240000F%f3.nam4km
+* griddef=5:2739259:(1473 x 1025):grid_template=30:winds(grid): Lambert Conformal: (1473 x 1025) input WE:SN output WE:SN res 8 Lat1 12.190000 Lon1 226.541000 LoV 265.000000 LatD 25.000000 Latin1 25.000000 Latin2 25.000000 LatSP 0.000000 LonSP 0.0000
 dtype grib2
 options template
 pdef 1473 1025 lccr 12.190000 -133.459 1 1 25.000000 25.000000 -95 5079.000000 5079.000000
 xdef 2191 linear -152.852997 0.0472378093784381
 ydef 1063 linear 12.202469 0.0461727272727273
-tdef 61 linear 00Z21dec2016 1hr
+tdef 61 linear 00Z24dec2016 1hr
 * PROFILE hPa
 zdef 3 levels 100000 85000 50000
 options pascals
