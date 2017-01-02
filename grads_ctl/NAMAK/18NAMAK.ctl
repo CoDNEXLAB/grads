@@ -1,9 +1,9 @@
-dset /home/data/models/nam_242/1612231800F%f3.nam242
-index /home/data/models/nam_242/1612231800F000.nam242.idx
+dset /home/data/models/nam_242/1701011800F%f3.nam242
+index /home/data/models/nam_242/1701011800F000.nam242.idx
 undef 9.999E+20
-title /home/data/models/nam_242/1612231800F000.nam242
+title /home/data/models/nam_242/1701011800F000.nam242
 * produced by alt_g2ctl v0.9.999, use alt_gmp to make idx file
-* command line options: -nthreads 32 /home/data/models/nam_242/1612231800F%f3.nam242
+* command line options: -nthreads 32 /home/data/models/nam_242/1701011800F%f3.nam242
 * alt_gmp options: update=0
 * alt_gmp options: nthreads=32
 * alt_gmp options: big=0
@@ -16,7 +16,7 @@ options template
 pdef 553 425 nps 376.636356220591 481.792610892044 225.000000 11.25
 xdef 1517 linear 143.597746 0.10126582278481
 ydef 532 linear 30.050040 0.101313148775895
-tdef 30 linear 18Z23dec2016 3hr
+tdef 30 linear 18Z01jan2017 3hr
 zdef 29 levels 1000 975 950 925 900 875 850 825 800 775 750 725 700 675 650 625 600 575 550 525 500 450 400 350 300 250 200 150 100
 vars 70
 ABSV1000mb 0 0 "ABSV:1000 mb" * ABSV:1000 mb

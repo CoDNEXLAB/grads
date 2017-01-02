@@ -1,9 +1,9 @@
-dset /home/data/models/cfs/1612210000F%f3.cfs
-index /home/data/models/cfs/1612210000F000.cfs.idx
+dset /home/data/models/cfs/1701020000F%f3.cfs
+index /home/data/models/cfs/1701020000F000.cfs.idx
 undef 9.999E+20
-title /home/data/models/cfs/1612210000F000.cfs
+title /home/data/models/cfs/1701020000F000.cfs
 * produced by alt_g2ctl v0.9.999, use alt_gmp to make idx file
-* command line options: -nthreads 32 /home/data/models/cfs/1612210000F%f3.cfs
+* command line options: -nthreads 32 /home/data/models/cfs/1701020000F%f3.cfs
 * alt_gmp options: update=0
 * alt_gmp options: nthreads=32
 * alt_gmp options: big=0
@@ -15,7 +15,7 @@ dtype grib2
 options template
 ydef 181 linear -90.000000 1
 xdef 360 linear 0.000000 1.000000
-tdef 134 linear 00Z21dec2016 6hr
+tdef 134 linear 00Z02jan2017 6hr
 zdef 1 levels 1
 vars 12
 CAPEsfc 0 0 "CAPE:surface" * CAPE:surface
