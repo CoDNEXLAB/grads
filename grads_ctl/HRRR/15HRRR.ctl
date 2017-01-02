@@ -14,8 +14,9 @@ tdef 19 linear 15Z02jan2017 1hr
 * PROFILE hPa
 zdef 5 levels 100000 92500 85000 70000 50000
 options pascals
-vars 63
+vars 65
 no4LFTX180_0mb  0,108,18000,0   0,7,193 ** 180-0 mb above ground Best (4 layer) Lifted Index [K]
+APCPsfc   0,1,0   0,1,8,1 ** surface Total Precipitation [kg/m^2]
 CAPEsfc   0,1,0   0,7,6 ** surface Convective Available Potential Energy [J/kg]
 CAPE90_0mb  0,108,9000,0   0,7,6 ** 90-0 mb above ground Convective Available Potential Energy [J/kg]
 CAPE255_0mb  0,108,25500,0   0,7,6 ** 255-0 mb above ground Convective Available Potential Energy [J/kg]
@@ -77,5 +78,6 @@ VUCSH0_6000m  0,103,0,6000   0,2,15 ** 0-6000 m above ground Vertical U-Componen
 VUCSH0_1000m  0,103,0,1000   0,2,15 ** 0-1000 m above ground Vertical U-Component Shear [1/s]
 VVCSH0_6000m  0,103,0,6000   0,2,16 ** 0-6000 m above ground Vertical V-Component Shear [1/s]
 VVCSH0_1000m  0,103,0,1000   0,2,16 ** 0-1000 m above ground Vertical V-Component Shear [1/s]
+WEASDsfc   0,1,0   0,1,13,1 ** surface Water Equivalent of Accumulated Snow Depth [kg/m^2]
 WIND10m   0,103,10   0,2,1,2 ** 10 m above ground Wind Speed [m/s]
 ENDVARS
