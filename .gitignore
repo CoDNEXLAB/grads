@@ -1,5 +1,1 @@
-#The uncommented directory below is to ignore locally modified grads .ctl files created during the g2ctl process for reading by gribmap.
-#When using the runner scripts, .ctl files will be locally written to /home/scripts/grads/grads_ctl
-#So, directories such as /home/scripts/grads/grads_ctl/HRRR | /home/scripts/grads/grads_ctl/NAM | ...... must exist on the local machine.
-#http://cola.gmu.edu/grads/gadoc/descriptorfile.html
-grads_ctl/
+/grads_ctl
