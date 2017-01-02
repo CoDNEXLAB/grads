@@ -1,9 +1,9 @@
-dset /home/data/models/gfs_004/1612240600F%f3.gfs004
-index /home/data/models/gfs_004/1612240600F000.gfs004.idx
+dset /home/data/models/gfs_004/1701020600F%f3.gfs004
+index /home/data/models/gfs_004/1701020600F000.gfs004.idx
 undef 9.999E+20
-title /home/data/models/gfs_004/1612240600F000.gfs004
+title /home/data/models/gfs_004/1701020600F000.gfs004
 * produced by alt_g2ctl v0.9.999, use alt_gmp to make idx file
-* command line options: -nthreads 32 /home/data/models/gfs_004/1612240600F%f3.gfs004
+* command line options: -nthreads 32 /home/data/models/gfs_004/1701020600F%f3.gfs004
 * alt_gmp options: update=0
 * alt_gmp options: nthreads=32
 * alt_gmp options: big=0
@@ -15,7 +15,7 @@ dtype grib2
 options template
 ydef 361 linear -90.000000 0.5
 xdef 720 linear 0.000000 0.500000
-tdef 129 linear 06Z24dec2016 3hr
+tdef 129 linear 06Z02jan2017 3hr
 zdef 31 levels 1000 975 950 925 900 850 800 750 700 650 600 550 500 450 400 350 300 250 200 150 100 70 50 30 20 10 7 5 3 2 1
 vars 184
 ABSVprs 26 0 "ABSV:%s mb" * profile ABSV:%s mb
