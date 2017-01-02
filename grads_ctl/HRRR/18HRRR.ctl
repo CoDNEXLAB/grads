@@ -1,16 +1,16 @@
-dset /home/data/models/hrrr/1701011800F%f3.hrrr
-index /home/data/models/hrrr/1701011800F000.hrrr.idx
+dset /home/data/models/hrrr/1701021800F%f3.hrrr
+index /home/data/models/hrrr/1701021800F000.hrrr.idx
 undef 9.999E+20
-title /home/data/models/hrrr/1701011800F000.hrrr
+title /home/data/models/hrrr/1701021800F000.hrrr
 * produced by g2ctl v0.0.9
-* command line options: /home/data/models/hrrr/1701011800F%f3.hrrr
-* griddef=5:5821740:(2145 x 1377):grid_template=30:winds(grid): Lambert Conformal: (2145 x 1377) input WE:SN output WE:SN res 56 Lat1 20.191999 Lon1 238.445999 LoV 265.000000 LatD 25.000000 Latin1 25.000000 Latin2 25.000000 LatSP 0.000000 LonSP 0.000
+* command line options: /home/data/models/hrrr/1701021800F%f3.hrrr
+* griddef=5:5902192:(2145 x 1377):grid_template=30:winds(grid): Lambert Conformal: (2145 x 1377) input WE:SN output WE:SN res 56 Lat1 20.191999 Lon1 238.445999 LoV 265.000000 LatD 25.000000 Latin1 25.000000 Latin2 25.000000 LatSP 0.000000 LonSP 0.000
 dtype grib2
 options template
 pdef 2145 1377 lccr 20.191999 -121.554001 1 1 25.000000 25.000000 -95 2539.703000 2539.703000
 xdef 2814 linear -130.103387 0.0246001009814572
 ydef 1413 linear 20.196426 0.0230882090909091
-tdef 19 linear 18Z01jan2017 1hr
+tdef 19 linear 18Z02jan2017 1hr
 * PROFILE hPa
 zdef 5 levels 100000 92500 85000 70000 50000
 options pascals

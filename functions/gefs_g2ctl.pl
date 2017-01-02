@@ -32,13 +32,13 @@
 #
 # requires grads 2.0a3+ - thinned grid update
 #
-$version="0.1.1";
+$version="0.0.9";
 use POSIX;
 use Math::Trig qw(deg2rad rad2deg);
 
 
 # ***** if wgrib2 is not on path, add it here
-$wgrib2='wgrib2';
+$wgrib2='/usr/local/bin/wgrib2';
 # $wgrib2='/export/cpc-lw-webisuzak/wd51we/bin.lnx64/wgrib2';
 # $wgrib2='/export/cpc-lw-webisuzak/wd51we/grib2/wgrib2/wgrib2';
 
@@ -59,7 +59,7 @@ $pdef_nearest=1;
 $raw="no";
 $thinned_grid_msg=0;
 $time_info=0;
-$old_ens_name=1;
+$old_ens_name=0;
 
 # set pdef_offset = 0 for old code, 1 for new code
 $pdef_offset=0;
@@ -379,19 +379,13 @@ print "* command line options: @ARGV\n";
 
 
 # ------------------- grid -----------------------
-$griddef = `$wgrib2 $wflag \"$file\" -one_line -d 1 -nxny -grid -vector_dir`;
-
-$griddef =~ / stagger *(\d*) /;
-$stagger=$1 or $stagger=0;
-if ($stagger ne 0) {
-   print STDERR "Staggered grids are not supported (stagger=$stagger)\n";
-   exit 8;
-} 
-
+$griddef = `$wgrib2 $wflag \"$file\" -one_line -d 5 -nxny -grid -vector_dir`;
+$_=$griddef;
 
 $_ = $griddef;
 $_ =~ s/^[^(]*//;
 $_ =~ s/:.*//;
+
 /\((\S*) x -*(\d*)\)/;
 $nx=$1;
 $ny=$2;
@@ -870,7 +864,6 @@ elsif (/ rotated lat-lon grid/) {
       $lon0 = $1;
       $lon1 = $2;
       $dlon = $3;
-      if ($lon0 > 180.0) { $lon0 -= 360.0; }
 
       /rotated lat-lon grid:\((\S*) x (\S*)\)/;
       $nx = $1;
@@ -1197,7 +1190,7 @@ sub tdef {
    else { 
       if ($ntime == 1) {
          if ($timestep) { $dt=$timestep }
-         else { $dt="1mo"; }
+         else { $dt="1hr"; }
       }
       elsif ( ($minute != $minute1) || ($hour != $hour1)) {
          $tmp= (&jday($year1,$mo1,$day1) - &jday($year,$mo,$day)) * 24 * 60 + ($hour1 - $hour)*60 
@@ -1235,8 +1228,8 @@ sub tdef {
    if ($calendar eq "365") {
        print "options 365_day_calendar\n";
    }
-   if ($minute == 0) { print "tdef $n linear ${hour}Z$day$month$year $dt\n"; }
-   else { print "tdef $n linear ${hour}:${minute}Z$day$month$year $dt\n"; }
+   if ($minute == 0) { print "tdef 65 linear ${hour}Z$day$month$year 6hr\n"; }
+   else { print "tdef 65 linear ${hour}:${minute}Z$day$month$year 6hr\n"; }
    $tdef_n = $n;
 }
 
