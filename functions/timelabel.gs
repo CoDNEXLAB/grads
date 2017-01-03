@@ -32,7 +32,7 @@ if modname != HRRR15 | fhour = 0 | fhour = 4 | fhour = 8 | fhour = 12 | fhour = 
   pvdow = SUN
  endif
  'set string 99 l 1 0'
- if modname = NAM | modname = GFS | modname = RAP | modname = CFS
+ if modname = NAM | modname = GFS | modname = RAP | modname = CFS | modname = GEFS
   'draw string 7.1 8.3 'modinit'Z 'modname' | F'fhour' Valid: 'vhour'Z 'pvdow' 'vmonth' 'vday' 'vyear
  endif
  if modname = HRRR
