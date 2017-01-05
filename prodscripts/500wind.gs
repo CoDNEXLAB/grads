@@ -28,6 +28,9 @@ endif
 if modname = CFS
  'set t 'fhour/6+1
 endif
+if modname = ECMWF
+ 'set t 'fhour/24+1
+endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
