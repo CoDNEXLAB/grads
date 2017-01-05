@@ -115,6 +115,10 @@ if model = CFS
  'define xskip = skip(UGRD 'level' mb,2,2)*2'
  'define yskip = skip(VGRD 'level' mb,2,2)*2'
 endif
+if model = ECMWF
+ 'define xskip = skip(UGRD 'level' mb,3,3)*2'
+ 'define yskip = skip(VGRD 'level' mb,3,3)*2'
+endif
 if model = CFS & sector != US
  'define xskip = skip(UGRD 'level' mb,3,3)*2'
  'define yskip = skip(VGRD 'level' mb,3,3)*2'

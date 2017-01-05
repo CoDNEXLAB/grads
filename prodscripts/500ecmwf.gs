@@ -17,58 +17,38 @@ basedir = '/home/apache/servername/data/forecast'
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/scripts/grads/grads_ctl/'modname'/'modinit''modname%ctlext
-if modname = NAMAK
- modname = NAM
-endif
-if modname = GFS | modname = NAM | modname = GEM
- 'set t 'fhour/3+1
-else
- 'set t 'fhour+1
-endif
-if modname = CFS
- 'set t 'fhour/6+1
-endif
-if modname = ECMWF
- 'set t 'fhour/24+1
-endif
+'set t 'fhour/24+1
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
 'run /home/scripts/grads/functions/sectors.gs 'sector
-'run /home/scripts/grads/colorbars/color.gs -30 42 2 -kind darkseagreen->dimgray->lightsteelblue->magenta->mediumblue->cyan->green->yellow->orange->red->maroon->magenta->white'
-'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `4850mb Temp (`3.`4C) | Wind (kts) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 500mb Geopotential Height (gpm) | MSLP (mb) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _850_temp_ fhour
+prodname = modname sector _500_spd_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
-level = 850
-'set lev 'level
-if modname = CFS | modname = ECMWF
- 'd (TMP850mb-273.16)'
- 'set gxout contour'
- 'set ccolor 100'
- 'set cthick 6'
- 'set cint 1'
- 'set cmax 0'
- 'set cmin 0'
- 'set cstyle 3'
- 'd (TMP850mb-273.16)'
-else
- 'run /home/scripts/grads/functions/isotherms.gs 'level
-endif
-'run /home/scripts/grads/functions/counties.gs 'sector
-'set cint 30'
-'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
-if sector != WLD
- 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
-endif
+*pick a colorbar
+*'run /home/scripts/grads/colorbars/color.gs 30 170 5 -kind white-(0)->darkgreen-(2)->lime-(0)->olive-(2)->yellow-(0)->maroon-(4)->red-(0)->darkmagenta-(4)->magenta-(0)->mediumblue-(4)->cyan-(0)->gray-(4)->white'
+*set level (set both!)
+*level = 500
+*'set lev 'level
+'set gxout contour'
+'set cint 60'
+'set ccolor 99'
+'set cthick 4'
+'d HGT500mb'
+'set cint 2'
+'set cthick 1'
+'set ccolor 2'
+'d smth9(PRESmsl/100)'
+'run /home/scripts/grads/functions/interstates.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
+*start_readout
 if modname = GFS | modname = NAM | modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
- 'd (TMPprs-273.16)'
+ 'd windspeed'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
