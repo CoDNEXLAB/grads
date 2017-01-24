@@ -5,4 +5,4 @@ function gradsrunner(args)
  sector=subwrd(args,4)
  runtime=subwrd(args,5)
 'run /home/scripts/grads/prodscripts/cape_ens.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
-'run /home/scripts/grads/prodscripts/ehi_ens.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+*'run /home/scripts/grads/prodscripts/ehi_ens.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
