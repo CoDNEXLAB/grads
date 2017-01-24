@@ -13,7 +13,6 @@ function main(args)
 filext = '.png'
 txtext = '.txt'
 basedir = '/home/apache/servername/data/forecast'
-'set hershey on'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
@@ -22,7 +21,7 @@ ctlext = '.ctl'
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors.gs 'sector
+'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 `nProb. SBCAPE>1000 J kg`a-1`n | Avg. 500mb Wind (kts.) | College of DuPage NeXLaB'
@@ -37,8 +36,8 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
 'set e 1 20'
 'define cape1000 = const( const( maskout( CAPEsfc, CAPEsfc - 1000), 1), 0.0, -u)'
-'set e 1'
 'define prob1000 = 100*ave(cape1000, e=1, e=20)'
+'set e 1'
 'd prob1000'
 'set gxout contour'
 'set ccolor 99'
