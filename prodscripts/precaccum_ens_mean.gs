@@ -24,46 +24,19 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `n500mb Height (gpm) Spaghetti Plot | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nMean Precipitation Accumulation (in.) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _500_hghtens_ fhour
+prodname = modname sector _prec_meanprec_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
+*pick a colorbar
+'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs -levs 0 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
-'set gxout contour'
-'set clab off'
-e = 1
-while (e<=20)
- 'set e 'e
- 'set cthick 4'
- 'set ccolor 4'
- 'set clevs 5520'
- 'd HGT500mb'
- 'set ccolor 3'
- 'set clevs 5760'
- 'd HGT500mb'
- 'set ccolor 2'
- 'set clevs 5880'
- 'd HGT500mb'
- e=e+1
-endwhile
-'set e 21'
-'set ccolor 99'
-'set cstyle 7'
-'set cthick 12'
-'set clevs 5520'
-'d HGT500mb'
-'set clevs 5760'
-'set ccolor 99'
-'set cstyle 7'
-'set cthick 12'
-'d HGT500mb'
-'set clevs 5880'
-'set ccolor 99'
-'set cstyle 7'
-'set cthick 12'
-'d HGT500mb'
-
+if fhour = 006
+ 'define paccum = ave(APCPsfc/25.4, e=1, e=20)'
+else
+ 'define paccum = sum(ave(APCPsfc/25.4, e=1, e=20),t=1,t='fhour/6+1',1)'
+endif
+'d paccum'
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 0 -edge triangle -fc 0'
