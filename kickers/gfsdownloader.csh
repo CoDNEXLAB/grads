@@ -34,7 +34,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 	#decode
 	#/home/ldm/decoders/dcgrib2 /home/data/gempak/model/gfs0.5deg/${dtstr}${ModRunTime}f${FHour}_gfs.gem < ${filepathname}
 	# WGRIB2 SUBSET FOR WXP FORECAST SOUNDINGS
-	nice +10 /usr/local/bin/wgrib2 ${filepathname} -small_grib -140:-55 17:60 ${filepathname}c
+	#nice +10 /usr/local/bin/wgrib2 ${filepathname} -small_grib -140:-55 17:60 ${filepathname}c
 	echo ${filstr}/${ModRunTime}00F${FHour} > /home/apache/climate/data/forecast/text/gfs0.5status.txt
 	echo ${FHour} >> /home/apache/climate/data/forecast/text/gfs0.5status.txt
 end
