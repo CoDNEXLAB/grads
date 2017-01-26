@@ -58,11 +58,11 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 		if ($FHour == 000) then
 			echo `date` ": ${modtime}Z NAM Starting" >> /home/apache/climate/data/forecast/text/namtimes.txt
 			python /home/scripts/stats/modtimes/nam.py
-			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
+			#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 			csh $Runner $dateForDir $modtime NAM $FHour
 			perl /home/scripts/models/clearmodeldirpng.pl $modtime NAM
 		else
-			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
+			#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 			csh $Runner $dateForDir $modtime NAM $FHour
 		endif			
 		php /home/scripts/models/blister.php NAM $dateForDir $FHour
