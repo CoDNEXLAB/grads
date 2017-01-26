@@ -56,11 +56,11 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	else
 		if ($FHour == 000) then
 			echo `date` ": ${modtime}Z RAP Starting" >> /home/apache/atlas/data/forecast/text/raptimes.txt
-			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
+			#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 			csh $Runner $dateForDir $modtime RAP $FHour
 			perl /home/scripts/models/newclearmodeldir.pl $modtime RAP
 		else
-			nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
+			#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 			csh $Runner $dateForDir $modtime RAP $FHour
 		endif			
 		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $dateForDir $FHour
