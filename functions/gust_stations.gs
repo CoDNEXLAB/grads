@@ -2225,6 +2225,92 @@ if sector = DEN
 *Flager
  'run /home/scripts/grads/functions/plotXYgust.gs -103.06 39.29'
 endif
+if sector = US
+*COD
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -88.07 41.84'
+*ATL
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -84.4 33.8'
+*OKC
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -97.5 35.4'
+*AMA
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -101.7 35.2'
+*DEN
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -104.67 39.85'
+*Lincoln
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -96.66 40.77'
+*IND
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -86.28 39.72'
+*RAP
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -103.18 44.05'
+*GGW
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -106.62 48.21'
+*LZK
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -92.2 34.7'
+*GrandRapids
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -85.59 43'
+*Madison
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -89.4 43'
+*Salina
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -97.6 38.76'
+*DSM
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -93.63 41.56'
+*Columbia
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -92.3 38.96'
+*Alexandria
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -92.4 31.3'
+*Jackson
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -88.82 35.66'
+*BMX
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -86.78 33.5'
+*Orlando
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -81.32 28.4'
+*Columbia
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -80.8 34.0'
+*Raleigh
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -78.78 35.87'
+*Nashville
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -86.72 36.16'
+*Fayetteville
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -78.9 35.05'
+*Richmond
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -77.3 37.5'
+*Columbus
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -82.97 40'
+*StateCollege
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -77.86 40.79'
+*Syracuse
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -76.15 43.05'
+*Worcester
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -71.80 42.26'
+*Montpelier
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -72.58 44.26'
+*Bangor
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -68.78 44.79'
+*SAT
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -98.4 29.5'
+*ABQ
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -106.6 35.2'
+*PHX
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -112.02 33.4'
+*Sacramento
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -121.29 38.55'
+*Winnemucca
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -117.8 40.89'
+*SLC
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -111.97 40.78'
+*Deschutes
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -121.15 44.25'
+*Yakima
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -120.5 46.57'
+*Missoula
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -114.09 46.92'
+*Casper
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -106.45 42.91'
+*BIS
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -100.74 46.77'
+*MSP
+ 'run /home/scripts/grads/functions/plotXYtemp.gs -93.28 45.03'
+endif
 if sector = FLT
 *WXC
  'run /home/scripts/grads/functions/plotXYgust.gs -85.5853 44.7388'
