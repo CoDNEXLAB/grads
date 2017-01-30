@@ -49,7 +49,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 		end
 	endif
 	if ($FHour == 084) then
-		nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
+		#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 		csh $Runner $dateForDir $modtime NAM $FHour
 		php /home/scripts/models/blister.php NAM $dateForDir $FHour
 		echo `date` ": ${modtime}Z NAM Finished" >> /home/apache/climate/data/forecast/text/namtimes.txt
