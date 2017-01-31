@@ -65,6 +65,10 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 		endif			
 		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $dateForDir $FHour
 	endif
+	#wgrib2ms is using 5 cores as we have found it optimal
+	/home/scripts/fsonde/wgrib2ms 5 ${filename}.sound -set_grib_type c3 -grib_out ${filename}.tmp
+	rm ${filename}.sound
+	mv ${filename}.tmp ${filename}.sound
 end	
 exit
 
