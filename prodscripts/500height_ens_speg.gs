@@ -47,6 +47,8 @@ while (e<=20)
  'd HGT500mb'
  e=e+1
 endwhile
+'set clab on'
+'set clopts -1 -1 0.15'
 'set e 21'
 'set ccolor 99'
 'set cstyle 7'
