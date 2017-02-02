@@ -29,7 +29,6 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 		#/home/scripts/fsonde/wgrib2ms 32 ${filepathname} -set_grib_type c3 -grib_out ${filepathname}
 		#wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_nam_conusnest.pl?file=nam.t${ModRunTime}z.conusnest.hiresf${FHour}.tm00.grib2&lev_1000_mb=on&lev_100_mb=on&lev_10_m_above_ground=on&lev_150_mb=on&lev_200_mb=on&lev_250_mb=on&lev_2_m_above_ground=on&lev_300_mb=on&lev_400_mb=on&lev_500_mb=on&lev_600_mb=on&lev_700_mb=on&lev_750_mb=on&lev_800_mb=on&lev_850_mb=on&lev_875_mb=on&lev_900_mb=on&lev_925_mb=on&lev_950_mb=on&lev_975_mb=on&lev_surface=on&var_HGT=on&var_PRES=on&var_RH=on&var_TMP=on&var_UGRD=on&var_VGRD=on&var_VVEL=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fnam.${dtstr}" -O ${filepathnamesnd}
 		wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_nam_conusnest.pl?file=nam.t${ModRunTime}z.conusnest.hiresf${FHour}.tm00.grib2&lev_1000_mb=on&lev_100_mb=on&lev_10_m_above_ground=on&lev_125_mb=on&lev_150_mb=on&lev_175_mb=on&lev_200_mb=on&lev_225_mb=on&lev_250_mb=on&lev_275_mb=on&lev_2_m_above_ground=on&lev_300_mb=on&lev_325_mb=on&lev_350_mb=on&lev_375_mb=on&lev_400_mb=on&lev_425_mb=on&lev_450_mb=on&lev_475_mb=on&lev_500_mb=on&lev_525_mb=on&lev_550_mb=on&lev_575_mb=on&lev_600_mb=on&lev_625_mb=on&lev_650_mb=on&lev_675_mb=on&lev_700_mb=on&lev_725_mb=on&lev_750_mb=on&lev_775_mb=on&lev_800_mb=on&lev_825_mb=on&lev_850_mb=on&lev_875_mb=on&lev_900_mb=on&lev_925_mb=on&lev_950_mb=on&lev_975_mb=on&lev_surface=on&var_HGT=on&var_PRES=on&var_RH=on&var_TMP=on&var_UGRD=on&var_VGRD=on&var_VVEL=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fnam.${dtstr}" -O ${filepathnamesnd}.temp
-		rm ${filepathnamesnd}.temp
 		set filesize = `stat -c %s ${filepathname}`
 		if ($filesize < 17000000) then
 			sleep 15
@@ -38,6 +37,7 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 	end
 	#wgrib2ms is using 13 cores as we have found it optimal
 	/home/scripts/fsonde/wgrib2ms 13 ${filepathnamesnd}.temp -set_grib_type c3 -grib_out ${filepathnamesnd}
+	rm ${filepathnamesnd}.temp
 	#decode
 	echo ${filstr}/${ModRunTime}00F0${FHour} > /home/apache/climate/data/forecast/text/nam4kmstatus.txt
 	echo 0${FHour} >> /home/apache/climate/data/forecast/text/nam4kmstatus.txt
