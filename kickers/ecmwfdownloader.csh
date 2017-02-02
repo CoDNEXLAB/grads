@@ -16,8 +16,8 @@ set filstr = `date -u +%y%m%d`
 #SET WORKING DIRECTORY FOR GFS MODEL DATA
 set DIR = /home/data/models/ecmwf
 cd $DIR
-echo ${filstr}/${ModRunTime}00F000 > /home/apache/climate/data/forecast/text/ecmwfstatus.txt
-echo -1 >> /home/apache/climate/data/forecast/text/ecmwfstatus.txt
+echo ${filstr}/${ModRunTime}00F000 > /home/apache/servername/data/forecast/text/ecmwfstatus.txt
+echo -1 >> /home/apache/servername/data/forecast/text/ecmwfstatus.txt
 #BEGIN LOOP
 foreach FHour (000 024 048 072 096 120 144 168 192 216 240)
     switch ($FHour)
@@ -64,13 +64,13 @@ foreach FHour (000 024 048 072 096 120 144 168 192 216 240)
 	set filesize = 0
 	while (($filesize < 750000) && ($count < 100))
 		#wget -v -rnc "http://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.${dtstr}${ModRunTime}/gfs.t${ModRunTime}z.pgrb2.0p50.f${FHour}" -O ${filepathname}
-		wget -v -r -A "*??ECMF*_ECMF_*_${namehr}_*" "ftp://wmo:essential@data-portal.ecmwf.int/${dtstr}${ModRunTime}0000/" -O ${filepathname}
+		wget -r -A "*??ECMF*_ECMF_*_${namehr}_*" "ftp://wmo:essential@data-portal.ecmwf.int/${dtstr}${ModRunTime}0000/" -O ${filepathname}
 		set filesize = `stat -c %s ${filepathname}`
 		if ($filesize < 750000) then
 			sleep 10
 			@ count = $count + 1	
 		endif
 	end
-	echo ${filstr}/${ModRunTime}00F${FHour} > /home/apache/climate/data/forecast/text/ecmwfstatus.txt
-	echo ${FHour} >> /home/apache/climate/data/forecast/text/ecmwfstatus.txt
+	echo ${filstr}/${ModRunTime}00F${FHour} > /home/apache/servername/data/forecast/text/ecmwfstatus.txt
+	echo ${FHour} >> /home/apache/servername/data/forecast/text/ecmwfstatus.txt
 end
