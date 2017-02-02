@@ -67,6 +67,8 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 		endif			
 		php /home/scripts/models/blister.php NAM $dateForDir $FHour
 	endif
+	#wgrib2ms is using 16 cores as we have found it optimal
+	/home/scripts/fsonde/wgrib2ms 16 ${filename} -set_grib_type c3 -grib_out ${filename}.sound
 end	
 exit
 
