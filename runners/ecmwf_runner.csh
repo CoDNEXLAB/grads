@@ -16,7 +16,7 @@ endsw
 if (($FHour == 000) || ($FHour == 024)) then
 	set dataFile = `find ${dataDir}/${modDir}/*${ModInit}00F${FHour}.* ! -name '*c' ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
-	perl /home/scripts/grads/functions/g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl	
+	perl /home/scripts/grads/functions/ecmwf_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl	
 endif
 gribmap -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
 foreach Sector (US PO AO NA WLD)
