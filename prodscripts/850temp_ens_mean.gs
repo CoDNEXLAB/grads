@@ -34,7 +34,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout contour'
 'set ccolor 99'
 'set cthick 4'
-'set cint 60'
+'set cint 30'
 'd ave(HGT850mb, e=1, e=20)'
 'define u10 = ave(skip(UGRD850mb,2,2)*2, e=1, e=20)'
 'define v10 = ave(skip(VGRD850mb,2,2)*2, e=1, e=20)'
