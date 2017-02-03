@@ -36,7 +36,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 radius=1000
 cint=300
 *   ******************************DRAW L's******************************
-'mfhilo HGT850mb CL L 1000,300'
+'mfhilo HGT850mb CL L 1000 300'
 
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector

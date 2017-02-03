@@ -26,7 +26,7 @@ ctlext = '.ctl'
 *give the image a product title
 'draw string 0.1 8.3 `nProb. SBCAPE>1000 J kg`a-1`n | Avg. 500mb Wind (kts.) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _con_probcape_ fhour
+prodname = modname sector _con_cape1000_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *'run /home/scripts/grads/colorbars/color.gs -levs 50 75 100 250 500 750 1000 1250 1500 1750 2000 2500 3000 4000 5000 6000 7000 8000 -kind white->indigo->magenta->mediumblue->green->yellow->orange->maroon->red->dimgray->powderblue'
 *'run /home/scripts/grads/colorbars/color.gs 0 100 2 -kind white-(0)->indigo->magenta->mediumblue->aqua->springgreen->olive->yellow->orange->maroon->red->dimgray->powderblue'
