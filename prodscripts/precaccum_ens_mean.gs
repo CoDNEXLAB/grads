@@ -24,7 +24,7 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nMean Precipitation Accumulation (in.) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nPrecip. Accumulation (Mean All Members) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_meanprec_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext

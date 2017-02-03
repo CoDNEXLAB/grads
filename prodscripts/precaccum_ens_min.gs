@@ -24,29 +24,30 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nSnowfall 10:1 Ratio (Mean All Members) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nPrecip. Accumulation (MIN All Members) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _prec_meansnacc_ fhour
+prodname = modname sector _prec_minprec_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
+*pick a colorbar
+'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs -levs 0 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
 if fhour = 006
- 'define snaccum = ave(APCPsfc/2.54*CSNOWsfc, e=1, e=20)'
+ 'define paccum = min(APCPsfc/25.4, e=1, e=20)'
 else
- 'define snaccum = sum(ave(APCPsfc/2.54*CSNOWsfc, e=1, e=20),t=1,t='fhour/6+1',1)'
+ 'define paccum = sum(min(APCPsfc/25.4, e=1, e=20),t=1,t='fhour/6+1',1)'
 endif
-'d snaccum'
+'d paccum'
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *start_readout
 if modname = GEFS
  'set gxout print'
- 'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
- 'd snaccum'
+ 'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
+ 'd paccum'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
-'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 0 -edge triangle -fc 0'
+'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 3 -fh .1 -fw .1 -lc 0 -edge triangle -fc 0'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
