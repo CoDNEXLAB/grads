@@ -61,7 +61,7 @@ if sector = AO
 endif
 if sector = PO
  'set lat 0 74'
- 'set lon -225 -100'
+ 'set lon 135 260'
 endif
 if sector = AK
  'set lat 43 78'
@@ -73,7 +73,7 @@ if sector = AUS
 endif
 if sector = NA
  'set lat 8.5 78'
- 'set lon -165 -48'
+ 'set lon 195 312'
 endif
 if sector = WLD
  'set lat -100 100'

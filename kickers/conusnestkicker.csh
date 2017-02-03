@@ -1,8 +1,7 @@
 #!/bin/csh -f
-#DESCRIPTION: THIS SCRIPT DOWNLOADS NAM CONUS NEST
-#from the NCEP NOMADS server	
-#LAST EDIT:  01-15-2015  GENSINI									
-#LAST EDIT: 01-20-2015 GENSINI
+#DESCRIPTION: THIS SCRIPT KICKS OFF NAM CONUS NEST	
+#LAST EDIT:  1-15-2015  GENSINI									
+#LAST EDIT: 2-3-2017 GENSINI
 #####################################################
 #PASS THE VALID RUN HOUR
 set ModRunTime = $1
@@ -33,7 +32,7 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 		echo `date` ": ${ModRunTime}Z NAM4KM Starting" >> /home/apache/climate/data/forecast/text/nam4kmtimes.txt
 		python /home/scripts/stats/modtimes/nam4km.py
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
-		perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime NAM4KM
+		#perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime NAM4KM
 		
 	else if ($FHour == 60) then
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
