@@ -41,7 +41,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 			echo "filegrids='${filegrids}'"
 		end
 	else
-		while (($count < 150) && ($filegrids < 420))
+		while (($count < 90) && ($filegrids < 420))
 			sleep 5
 			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
