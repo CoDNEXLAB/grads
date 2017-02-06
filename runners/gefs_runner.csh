@@ -17,8 +17,8 @@ foreach Sector (US PO NA)
 	grads -bxcl "run /home/scripts/grads/runners/gefs_grads_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
 end
 wait
-set idxFile = `find ${dataDir}/${modDir}/*${ModInit}00*.idx | tail -n1`
-rm ${idxFile}
+#set idxFile = `find ${dataDir}/${modDir}/*${ModInit}00*.idx | tail -n1`
+#rm ${idxFile}
 cd /home/apache/servername/data/forecast/$ModName/$ModRunTime/
 set FilesToFind="*_${FHour}.png"
 find . -name "${FilesToFind}" -print0 | xargs -0 -P32 -L1 pngquant --ext .png --force 256
