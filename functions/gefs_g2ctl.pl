@@ -1190,7 +1190,7 @@ sub tdef {
    else { 
       if ($ntime == 1) {
          if ($timestep) { $dt=$timestep }
-         else { $dt="1hr"; }
+         else { $dt="3hr"; }
       }
       elsif ( ($minute != $minute1) || ($hour != $hour1)) {
          $tmp= (&jday($year1,$mo1,$day1) - &jday($year,$mo,$day)) * 24 * 60 + ($hour1 - $hour)*60 
