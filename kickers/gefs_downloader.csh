@@ -10,8 +10,8 @@ set dtstr = `date -u +%Y%m%d`
 #STRING VARIABLE FORMATTED YYMMDD
 set filstr = `date -u +%y%m%d`
 #MANUAL OVERRIDE OF DATE AND TIME STRING
-#set dtstr = "20150114" 
-#set filstr = "150114"
+#set dtstr = "20170206" 
+#set filstr = "170206"
 #SET WORKING DIRECTORY FOR DATA
 set DIR = /home/data/models/gefs
 echo ${filstr}/${ModRunTime}00F000 > /home/apache/climate/data/forecast/text/gefsstatus.txt
@@ -24,15 +24,16 @@ foreach FHour (00 06 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 12
 		set filepathname = ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs_${member}
 		set count = 0
 		set filesize = 0
-		while (($filesize < 500000) && ($count < 50))
+		while (($filesize < 900000) && ($count < 75))
 			wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_gens.pl?file=ge${member}.t${ModRunTime}z.pgrb2f${FHour}&lev_10_m_above_ground=on&lev_3000-0_m_above_ground=on&lev_500_mb=on&lev_850_mb=on&lev_mean_sea_level=on&lev_surface=on&var_ACPCP=on&var_CFRZR=on&var_PRES=on&lev_2_m_above_ground=on&var_CICEP=on&var_APCP=on&var_CAPE=on&var_CIN=on&var_CRAIN=on&var_CSNOW=on&var_DPT=on&var_HLCY=on&var_PRMSL=on&var_PWAT=on&var_UGRD=on&var_VGRD=on&var_HGT=on&var_TMP=on&subregion=&leftlon=0&rightlon=360&toplat=80&bottomlat=-5&dir=%2Fgefs.${dtstr}%2F${ModRunTime}%2Fpgrb2" -O ${filepathname}
 			set filesize = `stat -c %s ${filepathname}`
-			if ($filesize < 500000) then
-				sleep 15
+			if ($filesize < 900000) then
+				sleep 10
 				@ count = $count + 1	
 			endif
 		end
 	end
+	#cat /home/data
 	echo ${filstr}/${ModRunTime}00F${strFHour} > /home/apache/climate/data/forecast/text/gefsstatus.txt
 	echo ${strFHour} >> /home/apache/climate/data/forecast/text/gefsstatus.txt
 end
