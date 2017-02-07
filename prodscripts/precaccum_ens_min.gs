@@ -29,8 +29,10 @@ ctlext = '.ctl'
 prodname = modname sector _prec_minprec_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
-'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
 'set gxout shade2'
+'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
+'d TMP2m*0'
+'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
 if fhour = 006
  'define paccum = min(APCPsfc/25.4, e=1, e=20)'
 else

@@ -24,7 +24,7 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nSupercell Composite Parameter (Mean All Members) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nSupercell Composite Parameter (MEAN All Members) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_meanscp_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
@@ -32,7 +32,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
 'set e 1 20'
 'define scp = (CAPEsfc/1000)*(HLCY3000_0m/100)*(mag(UGRD500mb,VGRD500mb)*2/35)'
-'define scp1 = const( const( maskout( scp, scp - 1), 1), 0.0, -u)'
+'define scp1 = const(maskout( scp, scp - 1), 0.0, -u)'
 'define maxscp = ave(scp1, e=1, e=20)'
 'set e 1'
 'd maxscp'
