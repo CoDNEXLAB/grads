@@ -33,16 +33,19 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	if ($FHour == 000) then
 		while (($count < 60) && ($filegrids < 79 ))
 			sleep 10
-			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			@ count = $count + 1
 		end
 	else
 		while (($count < 60) && ($filegrids < 81 ))
 			sleep 5
-			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			@ count = $count + 1
 		end
 	endif
+	#wgrib2ms is using 16 cores as we have found it optimal
+	/home/scripts/fsonde/wgrib2ms 16 ${filename}.temp -set_grib_type c3 -grib_out ${filename}
+	rm ${filename}.temp
 	if ($FHour == 018) then
 		csh $Runner $dateForDir $modtime HRRR $FHour
 		php /home/scripts/models/blister.php HRRR $dateForDir $FHour
