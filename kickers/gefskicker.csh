@@ -22,8 +22,8 @@ sleep 15
 foreach FHour (000 006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120 126 132 138 144 150 156 162 168 174 180 186 192 198 204 210 216 222 228 234 240 246 252 258 264 270 276 282 288 294 300 306 312 318 324 330 336 342 348 354 360 366 372 378 384)
 	set valid = `awk '{if (NR==2) print}' /home/apache/climate/data/forecast/text/gefsstatus.txt`
 	set count = 0
-	while (($valid < $FHour) && ($count < 85))
-		sleep 20
+	while (($valid < $FHour) && ($count < 25))
+		sleep 25
 		@ count = $count + 1	
 		set valid = `awk '{if (NR==2) print}' /home/apache/climate/data/forecast/text/gefsstatus.txt`
 	end	
