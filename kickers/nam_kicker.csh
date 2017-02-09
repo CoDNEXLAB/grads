@@ -21,11 +21,11 @@ else
 endif
 set datadir = "/home/data/models/nam_218"
 ###############################################
-#BEGIN SNAKE LOOP TO CHECK FOR AVAILABLE TIMES#
+#BEGIN LOOP TO CHECK FOR AVAILABLE TIMES#
 ###############################################
 foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 048 051 054 057 060 063 066 069 072 075 078 081 084)
 	set filename = ${datadir}/${dtstr}${modtime}00F${FHour}.nam218
-	set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+	set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 	set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
 	@ count = 0
@@ -34,7 +34,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 	if ($FHour == 000) then
 		while (($count < 200) && ($filegrids < 420))
 			sleep 10
-			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 			@ count = $count + 1
 			echo "count='${count}'"
@@ -43,11 +43,14 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 	else
 		while (($count < 90) && ($filegrids < 420))
 			sleep 5
-			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 			@ count = $count + 1
 		end
 	endif
+	#wgrib2ms is using 16 cores as we have found it optimal
+	/home/scripts/fsonde/wgrib2ms 16 ${filename}.temp -set_grib_type c3 -grib_out ${filename}
+	rm ${filename}.temp
 	if ($FHour == 084) then
 		#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 		csh $Runner $dateForDir $modtime NAM $FHour

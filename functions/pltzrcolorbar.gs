@@ -11,8 +11,8 @@ function xcbar( args )
   endif
 
 ***** Default value *****
-  xmin = '7.95'
-  xmax = '10.8'
+  xmin = '8.25'
+  xmax = '11.0'
   ymin = '0.03'
   ymax = '0.12'
   direction = 'horizontal'
