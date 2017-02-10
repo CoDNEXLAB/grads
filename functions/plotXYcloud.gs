@@ -15,7 +15,7 @@ few = 'FEW'
 sct = 'SCT'
 bkn = 'BKN'
 ovc = 'OVC'
-'set string 2 c 2 0'
+'set string 99 c 1 0'
 'set strsiz .09'
 if v2 = 100
  'draw string 'xval' 'yval' 'ovc
