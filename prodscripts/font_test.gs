@@ -8,11 +8,11 @@ function main(args)
  fhour=subwrd(args,3)
  sector=subwrd(args,4)
  runtime=subwrd(args,5)
- 'run /home/scripts/grads/functions/pltdefaults_new.gs'
+ 'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
 filext = '.png'
 txtext = '.txt'
-basedir = '/home/apache/servername/data/forecast'
+basedir = '/home/apache/climate/gensini'
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
@@ -33,7 +33,7 @@ endif
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `2m Temp (`3.`F) | 10m Wind (kts) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `42m Temp (`3.`4F) | 10m Wind (kts) | College of DuPage NeXLaB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_temp_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
@@ -41,12 +41,13 @@ level = surface
 'run /home/scripts/grads/functions/isotherms.gs 'level
 if sector != WLD
  'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
- 'run /home/scripts/grads/functions/temp_stations.gs 'sector
+*'run /home/scripts/grads/functions/temp_stations.gs 'sector
  'set cint 2'
  'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
  'run /home/scripts/grads/functions/counties.gs 'sector
 endif
 'run /home/scripts/grads/functions/states.gs 'sector
+'run /home/scripts/grads/functions/plotHL_new.gs 'sector
 ************************
 *shapefile output
 *'set shp -pt rap_wcan'
@@ -54,12 +55,12 @@ endif
 *'d (TMP2m-273.16)*9/5+32'
 ************************
 *start_readout
-if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP | modname = HRRR
- 'set gxout print'
- 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
- 'd (TMP2m-273.16)*9/5+32'
- dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
-endif
+*if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP | modname = HRRR
+* 'set gxout print'
+* 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+* 'd (TMP2m-273.16)*9/5+32'
+* dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
+*endif
 *end_readout
 ************************
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

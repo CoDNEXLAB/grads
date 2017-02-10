@@ -10,6 +10,6 @@ v2=subwrd(result,3)
 'q w2xy 'lon' 'lat
 xval=subwrd(result,3)
 yval=subwrd(result,6)
-'set string 99 c 2 0'
+'set string 99 c 1 0'
 'set strsiz .09'
 'draw string 'xval' 'yval' 'math_nint(v2)
