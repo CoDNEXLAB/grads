@@ -33,7 +33,7 @@ switch ($ModName)
 endsw
 # Find the data file we are looking for:
 if (($FHour == 000) || ($FHour == 001)) then
-	set dataFile = `find ${dataDir}/${modDir}/*${ModInit}00F${FHour}.* ! -name '*c' ! -name '*.idx'| tail -n1`
+	set dataFile = `find ${dataDir}/${modDir}/*${ModInit}00F${FHour}.* ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
 	perl /home/scripts/grads/functions/hrrr_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl	
 endif
