@@ -50,7 +50,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'd u10;v10'
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
-'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 0 -edge triangle -fc 99'
+'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
