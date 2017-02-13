@@ -45,7 +45,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 		echo `date` ": ${ModRunTime}Z GFS Starting" >> /home/apache/climate/data/forecast/text/gfstimes.txt
         python /home/scripts/stats/modtimes/gfs.py
 		csh $Runner $dateForDir $ModRunTime GFS $FHour
-		perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime GFS
+		#perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime GFS
 		
 	else if ($FHour == 384) then
 		csh $Runner $dateForDir $ModRunTime GFS $FHour
