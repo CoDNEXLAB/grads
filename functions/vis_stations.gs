@@ -2313,5 +2313,5 @@ if sector = US
 endif
 if sector = FLT
 *WXC
- 'run /home/scripts/grads/functions/plotXYvis.gs -122.3117 47.449'
+ 'run /home/scripts/grads/functions/plotXYvis.gs -90.077 32.319'
 endif
