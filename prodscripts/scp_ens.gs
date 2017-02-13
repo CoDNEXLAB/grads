@@ -48,6 +48,14 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set cthick 1'
 'set digsize 0.05'
 'd u10;v10'
+*begin readout
+if modname = GEFS
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd smth9(probscp)'
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
+endif
+*end_readout
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'

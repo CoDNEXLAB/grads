@@ -25,10 +25,11 @@ if modname = GFS | modname = NAM | modname = GEM
 else
  'set t 'fhour+1
 endif
+'set t 'fhour/6+1
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors.gs 'sector
+'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 'run /home/scripts/grads/colorbars/color.gs -30 115 2.5 -kind darkseagreen->lightgray->lightsteelblue->magenta->mediumblue->cyan->green->yellow->orange->red->maroon->magenta->white'
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,22 +38,22 @@ endif
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_temp_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
-level = surface
-'run /home/scripts/grads/functions/isotherms.gs 'level
-if sector != WLD
- 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
+*level = surface
+*'run /home/scripts/grads/functions/isotherms.gs 'level
+*if sector != WLD
+* 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 *'run /home/scripts/grads/functions/temp_stations.gs 'sector
- 'set cint 2'
- 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
- 'run /home/scripts/grads/functions/counties.gs 'sector
-endif
-'run /home/scripts/grads/functions/states.gs 'sector
-'run /home/scripts/grads/functions/plotHL_new.gs 'sector
+* 'set cint 2'
+* 'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
+* 'run /home/scripts/grads/functions/counties.gs 'sector
+*endif
+*'run /home/scripts/grads/functions/states.gs 'sector
+*'run /home/scripts/grads/functions/plotHL_new.gs 'sector
 ************************
 *shapefile output
-*'set shp -pt rap_wcan'
-*'set gxout shp'
-*'d (TMP2m-273.16)*9/5+32'
+'set shp -pt gefs_na'
+'set gxout shp'
+'d (TMP2m-273.16)*9/5+32'
 ************************
 *start_readout
 *if modname = GFS | modname = NAM | modname = NAM4KM | modname = RAP | modname = HRRR
