@@ -7,6 +7,7 @@ function barb_spacing(args)
 'set ccolor 6'
 'set cthick 1'
 'set digsize 0.05'
+'set barbopts filled'
 if model = GFS
  'define xskip = skip(UGRDprs,2,2)*2'
  'define yskip = skip(VGRDprs,2,2)*2'
