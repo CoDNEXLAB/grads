@@ -7,6 +7,7 @@ function abarb_spacing(args)
 'set ccolor 99'
 'set cthick 1'
 'set digsize 0.05'
+'set barbopts filled'
 if level = 75delta
  'define u=ave(UGRDprs,lev=700,lev=500)'
  'define v=ave(VGRDprs,lev=700,lev=500)'

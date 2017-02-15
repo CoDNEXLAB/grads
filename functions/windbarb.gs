@@ -7,6 +7,7 @@ function barb_spacing(args)
 'set ccolor 99'
 'set cthick 1'
 'set digsize 0.05'
+'set barbopts filled'
 if (model = GFS & sector != AK)
  'define xskip = UGRDprs*2'
  'define yskip = VGRDprs*2'
