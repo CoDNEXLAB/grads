@@ -14,7 +14,7 @@ function gradsrunner(args)
 *'run /home/scripts/grads/prodscripts/ptype.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 *'run /home/scripts/grads/prodscripts/irsat.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 *'run /home/scripts/grads/prodscripts/windgust.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
-'run /home/scripts/grads/prodscripts/font_test.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+'run /home/scripts/grads/prodscripts/panels.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 if fhour != 000
 * 'run /home/scripts/grads/prodscripts/uphlcy_swath.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 * 'run /home/scripts/grads/prodscripts/snowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
