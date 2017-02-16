@@ -34,7 +34,7 @@ endif
 
 *give the image a product title
 
-'draw string 0.1 8.3 1000mb Absolute Vorticity (s`a-1`n) | Height (m) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 1000mb Absolute Vorticity (s`a-1`n) | Height (m) | College of DuPage NEXLAB'
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _1000_avort_ fhour

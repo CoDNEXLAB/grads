@@ -27,7 +27,7 @@ ctlext = '.ctl'
 
 *give the image a product title
 'set string 100 l 1 0'
-'draw string 0.1 8.3 Snowfall Accumulation (AF/Kuchera Method) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 Snowfall Accumulation (AF/Kuchera Method) | College of DuPage NEXLAB'
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_kuchsnow_ fhour

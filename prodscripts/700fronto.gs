@@ -33,7 +33,7 @@ endif
 'run /home/scripts/grads/colorbars/color.gs -20 60 2.5 -kind dimgray-(7)->white-(0)->(0,150,0,111)->yellow->orange->red->maroon->magenta->indigo->blue->darkturquoise'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `4700mb Frontogenesis (`3.`4C 100km`a-1`n 3hr`a-1`n) | Wind (kts) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `4700mb Frontogenesis (`3.`4C 100km`a-1`n 3hr`a-1`n) | Wind (kts) | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _700_fronto_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext

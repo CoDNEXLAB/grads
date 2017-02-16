@@ -31,7 +31,7 @@ endif
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 
-'draw string 0.1 8.3 Surface Haines Index | 10m Wind (kts) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 Surface Haines Index | 10m Wind (kts) | College of DuPage NEXLAB'
 'd HINDEXsfc'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_haines_ fhour

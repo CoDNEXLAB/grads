@@ -26,9 +26,9 @@ ctlext = '.ctl'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 if modname = HRRR15
- 'draw string 0.1 8.3 `nMax 2-5km Updraft Helicity Swath (m`a2`n s`a-2`n) | College of DuPage NeXLaB'
+ 'draw string 0.1 8.3 `nMax 2-5km Updraft Helicity Swath (m`a2`n s`a-2`n) | College of DuPage NEXLAB'
 else
- 'draw string 0.1 8.3 `nHourly-Max 2-5km Updraft Helicity Swath (m`a2`n s`a-2`n) | College of DuPage NeXLaB'
+ 'draw string 0.1 8.3 `nHourly-Max 2-5km Updraft Helicity Swath (m`a2`n s`a-2`n) | College of DuPage NEXLAB'
 endif
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_uphlysw_ fhour

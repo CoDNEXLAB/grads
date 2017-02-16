@@ -28,7 +28,7 @@ endif
 'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nFLT Map Select | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nFLT Map Select | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _blank_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext

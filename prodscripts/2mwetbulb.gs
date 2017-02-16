@@ -33,7 +33,7 @@ endif
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `42m Wetbulb Temperature | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `42m Wetbulb Temperature | College of DuPage NEXLAB'
 level=surface
 *'set lev 'level
 't = TMP2m'
