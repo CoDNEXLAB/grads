@@ -14,7 +14,7 @@ perl /home/scripts/grads/functions/gefs_g2ctl.pl -ens "p01,p02,p03,p04,p05,p06,p
 #perl /home/scripts/grads/functions/gefs_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl	
 endif
 gribmap -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
-foreach Sector (US PO NA)
+foreach Sector (US PO NA MW SGP NGP)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout
 	grads -bxcl "run /home/scripts/grads/runners/gefs_grads_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
 end

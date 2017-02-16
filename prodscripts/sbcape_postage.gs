@@ -40,7 +40,6 @@ while(e<=20)
  'set e 'e
  if(j>cols);i=i+1;j=1;endif
  'run /home/scripts/grads/functions/set_parea.gs 'rows' 'cols' 'i' 'j' -m 0.1'
- 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
  'set mpdraw on'
  'set mpdset mres'
  'set rgb 92 0 0 0 150'
@@ -55,7 +54,7 @@ while(e<=20)
  'set ccolor 92'
  'set cthick 3'
  'd HGT500mb'
- if sector = US
+ if sector = US | sector = NGP | sector = SGP | sector = MW
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'

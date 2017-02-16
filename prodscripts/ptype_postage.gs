@@ -24,9 +24,9 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 500mb Geopotential Height (gpm) | College of DuPage NEXLAB'
+'draw string 0.1 8.3 Precip. Type | MSLP (mb) | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _con_capeens_ fhour
+prodname = modname sector _prec_ptypens_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 level = 500
 'set lev 'level
@@ -47,15 +47,27 @@ while(e<=20)
  'set mpt 2 off'
  'set map 99 1 1'
  'draw map'
- 'run /home/scripts/grads/colorbars/color.gs 0 6000 100 -kind white-(0)->white-(0)->indigo-(7)->magenta-(0)->mediumblue-(8)->aqua-(0)->springgreen-(8)->olive-(0)->yellow-(8)->orange-(0)->maroon-(8)->red-(0)->dimgray->powderblue'
- 'd CAPEsfc'
- 'set cint 60'
+ 'run /home/scripts/grads/colorbars/color.gs -levs .01 .02 .03 .04 .05 .06 .07 .08 .09 .1 .125 .15 .175 .2 .25 .3 .35 .4 .5 .6 -kind (111,111,111,0)-(0)->white-(0)->(148,227,141)-(10)->darkgreen-(0)->yellow->orange'
+ 'set gxout shade2'
+ 'd PRATEsfc*CRAINsfc*141.7323'
+ 'run /home/scripts/grads/functions/pltraincolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -fc 99'
+ 'run /home/scripts/grads/colorbars/color.gs -levs .01 .02 .03 .04 .05 .06 .07 .08 .09 .1 .125 .15 .175 .2 .25 .3 .35 .4 .5 .6 -kind (111,111,111,0)-(0)->white-(0)->lightblue-(10)->darkslateblue-(0)->darkorchid->plum'
+ 'd PRATEsfc*CSNOWsfc*141.7323'
+ 'run /home/scripts/grads/functions/pltsnowcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -fc 99'
+ 'run /home/scripts/grads/colorbars/color.gs -levs .01 .02 .03 .04 .05 .06 .07 .08 .09 .1 .125 .15 .175 .2 .25 .3 .35 .4 .5 .6 -kind (111,111,111,0)-(0)->white-(0)->lightpink->maroon'
+ 'd PRATEsfc*CICEPsfc*141.7323'
+ 'run /home/scripts/grads/functions/pltipcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -fc 99'
+ 'run /home/scripts/grads/colorbars/color.gs -levs .01 .02 .03 .04 .05 .06 .07 .08 .09 .1 .125 .15 .175 .2 .25 .3 .35 .4 .5 .6 -kind (111,111,111,0)-(0)->white-(0)->lightpink->indigo'
+ 'd PRATEsfc*CFRZRsfc*141.7323'
+ 'run /home/scripts/grads/functions/pltzrcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -fc 99'
+ 'set rgb 92 0 0 0 150'
+ 'set cint 4'
  'set clab off'
  'set gxout contour'
  'set ccolor 92'
  'set cthick 3'
- 'd HGT500mb'
- if sector = US
+ 'd PRMSLmsl/100'
+ if sector = US | sector = NGP | sector = SGP | sector = MW
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'
@@ -86,7 +98,7 @@ endwhile
 
 *'run /home/scripts/grads/functions/states.gs 'sector
 *'run /home/scripts/grads/functions/interstates.gs 'sector
-'run /home/scripts/grads/functions/plt_enscolorbar.gs -ft 1 -fy 0.28 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
+'run /home/scripts/grads/functions/plt_enscolorbar.gs -ft 1 -fy 0.28 -line on -fskip 3 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

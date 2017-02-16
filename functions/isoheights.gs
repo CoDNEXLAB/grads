@@ -13,10 +13,13 @@ endif
 if (level = surface & model != HRRR & model != RAP)
  'd MSLETmsl/100'
 endif
-if (level != surface)
+if (level != surface & model != GEFS)
  'd HGTprs'
 endif
 if (model = CFS & level != surface)
+ 'd HGT 'level' mb'
+endif
+if (model = GEFS & level != surface)
  'd HGT 'level' mb'
 endif
 if (model = ECMWF & level != surface)
