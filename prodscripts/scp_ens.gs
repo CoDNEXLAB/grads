@@ -24,7 +24,7 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nProb. SCP > 1 (All Members) | Avg. 10m Wind (kts.) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `nProb. SCP > 1 (All Members) | Avg. 10m Wind (kts.) | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _con_probscp_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext

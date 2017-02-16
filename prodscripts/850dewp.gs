@@ -33,7 +33,7 @@ endif
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `4850mb Dewpoint (`3.`4C) | Wind | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `4850mb Dewpoint (`3.`4C) | Wind | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _850_dewp_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext

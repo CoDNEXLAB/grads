@@ -34,7 +34,7 @@ endif
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `40-30mb AGL Dewpoint (F) | Wind (kts) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `40-30mb AGL Dewpoint (F) | Wind (kts) | College of DuPage NEXLAB'
 't = TMP30_0mb'
 'tc=(t-273.16)'
 'rh = RH30_0mb'

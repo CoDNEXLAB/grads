@@ -24,7 +24,7 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `n500mb Height (gpm) Spaghetti Plot | College of DuPage NeXLaB'
+'draw string 0.1 8.3 `n500mb Height (gpm) Spaghetti Plot | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _500_hghtens_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext

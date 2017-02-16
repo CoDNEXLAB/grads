@@ -34,13 +34,13 @@ endsw
 if (($FHour == 000) || ($FHour == 003)) then
 	set dataFile = `find ${dataDir}/${modDir}/*${ModInit}00F${FHour}.* ! -name '*.sound' ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
-	perl /home/scripts/grads/functions/nam_mpi_g2ctl.pl -nthreads 32 ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
+	perl /home/scripts/grads/functions/nam_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
 	set dataFile = `find ${dataDir}/nam_242/*${ModInit}00F${FHour}.* ! -name '*c' ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
-	perl /home/scripts/grads/functions/nam_mpi_g2ctl.pl -nthreads 32 ${ctlFile} > /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
+	perl /home/scripts/grads/functions/nam_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
 endif
-perl /home/scripts/grads/functions/mpi_gribmap.pl -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
-perl /home/scripts/grads/functions/mpi_gribmap.pl -i /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
+gribmap -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
+gribmap -i /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
 foreach Sector (US MW SGP CGP NGP SW NW SE MA NE FLT WCAN AK)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout
 	if ($Sector == AK) then

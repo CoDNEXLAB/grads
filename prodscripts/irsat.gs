@@ -27,7 +27,7 @@ ctlext = '.ctl'
 
 *give the image a product title
 
-'draw string 0.1 8.3 Simulated IR Satellite (`3.`4C) | College of DuPage NeXLaB'
+'draw string 0.1 8.3 Simulated IR Satellite (`3.`4C) | College of DuPage NEXLAB'
 
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_irsat_ fhour
