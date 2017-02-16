@@ -36,7 +36,7 @@ foreach FHour (000 006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 0
 		
 	else if ($FHour == 384) then
 		csh $Runner $dateForDir $ModRunTime GEFS $FHour
-		echo `date` ": ${ModRunTime}Z NAM4KM Finished" >> /home/apache/climate/data/forecast/text/gefstimes.txt
+		echo `date` ": ${ModRunTime}Z GEFS Finished" >> /home/apache/climate/data/forecast/text/gefstimes.txt
 		#python /home/scripts/stats/modtimes/nam4km.py
 	else
 		csh $Runner $dateForDir $ModRunTime GEFS $FHour

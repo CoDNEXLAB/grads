@@ -24,9 +24,9 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 500mb Geopotential Height (gpm) | College of DuPage NEXLAB'
+'draw string 0.1 8.3 Precipitation Accumulation (in.) | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _con_capeens_ fhour
+prodname = modname sector _prec_paccens_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 level = 500
 'set lev 'level
@@ -47,15 +47,13 @@ while(e<=20)
  'set mpt 2 off'
  'set map 99 1 1'
  'draw map'
- 'run /home/scripts/grads/colorbars/color.gs 0 6000 100 -kind white-(0)->white-(0)->indigo-(7)->magenta-(0)->mediumblue-(8)->aqua-(0)->springgreen-(8)->olive-(0)->yellow-(8)->orange-(0)->maroon-(8)->red-(0)->dimgray->powderblue'
- 'd CAPEsfc'
- 'set cint 60'
- 'set clab off'
- 'set gxout contour'
- 'set ccolor 92'
- 'set cthick 3'
- 'd HGT500mb'
- if sector = US
+ if fhour = 006
+  'define paccum = APCPsfc/25.4'
+ else
+  'define paccum = sum(APCPsfc/25.4,t=1,t='fhour/6+1',1)'
+ endif
+ 'd paccum'
+ if sector = US | sector = NGP | sector = SGP | sector = MW
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'
@@ -86,7 +84,7 @@ endwhile
 
 *'run /home/scripts/grads/functions/states.gs 'sector
 *'run /home/scripts/grads/functions/interstates.gs 'sector
-'run /home/scripts/grads/functions/plt_enscolorbar.gs -ft 1 -fy 0.28 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
+'run /home/scripts/grads/functions/plt_enscolorbar.gs -ft 1 -fy 0.28 -line on -fskip 3 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

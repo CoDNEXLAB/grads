@@ -47,7 +47,7 @@ if modname = RAP
  'd (coriol+vort)*100000'
 endif
 if modname = NAM
- 'd ABSV700mb*100000'
+ 'd ABSVprs*100000'
 endif
 if modname != NAM & modname != RAP
  'd ABSVprs*100000'
@@ -57,7 +57,7 @@ if modname = RAP
  'd maskout((coriol+vort)*-100000,lat*-1)'
 endif
 if modname = NAM
- 'd maskout(ABSV700mb*-100000,lat*-1)'
+ 'd maskout(ABSVprs*-100000,lat*-1)'
 endif
 if modname != NAM & modname != RAP
  'd maskout(ABSVprs*-100000,lat*-1)'
@@ -70,7 +70,7 @@ endif
 if modname = NAM
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
- 'd ABSV700mb*100000'
+ 'd ABSVprs*100000'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 if modname = GFS

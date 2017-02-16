@@ -24,9 +24,9 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 500mb Geopotential Height (gpm) | College of DuPage NEXLAB'
+'draw string 0.1 8.3 Supercell Composite Parameter | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _con_capeens_ fhour
+prodname = modname sector _con_scpens_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 level = 500
 'set lev 'level
@@ -40,22 +40,16 @@ while(e<=20)
  'set e 'e
  if(j>cols);i=i+1;j=1;endif
  'run /home/scripts/grads/functions/set_parea.gs 'rows' 'cols' 'i' 'j' -m 0.1'
- 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
+ 'run /home/scripts/grads/colorbars/color.gs -levs .25 .5 1 2 4 7 10 15 20 25 30 35 -kind white->(210,210,210)->(50,255,31)->(151,253,23)->(252,245,15)->(251,128,7)->(249,5,0)->(249,0,80)->(249,0,167)->(245,0,249)->(158,0,249)->(180,100,225)->cyan'
  'set mpdraw on'
  'set mpdset mres'
  'set rgb 92 0 0 0 150'
  'set mpt 2 off'
  'set map 99 1 1'
  'draw map'
- 'run /home/scripts/grads/colorbars/color.gs 0 6000 100 -kind white-(0)->white-(0)->indigo-(7)->magenta-(0)->mediumblue-(8)->aqua-(0)->springgreen-(8)->olive-(0)->yellow-(8)->orange-(0)->maroon-(8)->red-(0)->dimgray->powderblue'
- 'd CAPEsfc'
- 'set cint 60'
- 'set clab off'
- 'set gxout contour'
- 'set ccolor 92'
- 'set cthick 3'
- 'd HGT500mb'
- if sector = US
+ 'define scp = (CAPEsfc/1000)*(HLCY3000_0m/100)*(mag(UGRD500mb,VGRD500mb)*2/35)'
+ 'd scp'
+ if sector = US | sector = NGP | sector = SGP | sector = MW
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'
@@ -86,7 +80,7 @@ endwhile
 
 *'run /home/scripts/grads/functions/states.gs 'sector
 *'run /home/scripts/grads/functions/interstates.gs 'sector
-'run /home/scripts/grads/functions/plt_enscolorbar.gs -ft 1 -fy 0.28 -line on -fskip 5 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
+'run /home/scripts/grads/functions/plt_enscolorbar.gs -ft 1 -fy 0.28 -line on -fskip 1 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
