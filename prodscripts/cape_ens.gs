@@ -48,6 +48,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'define u500 = ave(skip(UGRD500mb,2,2)*2, e=1, e=20)'
 'define v500 = ave(skip(VGRD500mb,2,2)*2, e=1, e=20)'
 'set gxout barb'
+'set barbopts filled'
 'set rgb 99 0 0 0'
 'set ccolor 99'
 'set cthick 1'
