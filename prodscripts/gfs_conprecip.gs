@@ -25,7 +25,11 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors.gs 'sector
+if modname = HRRR
+ 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+else
+ 'run /home/scripts/grads/functions/sectors.gs 'sector
+endif
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_cprec_ fhour
