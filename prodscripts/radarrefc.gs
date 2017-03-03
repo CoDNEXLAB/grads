@@ -28,7 +28,11 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors.gs 'sector
+if modname = HRRR
+ 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+else
+ 'run /home/scripts/grads/functions/sectors.gs 'sector
+endif
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 Composite RADAR Reflectivity Factor (dBZ) | College of DuPage NEXLAB'

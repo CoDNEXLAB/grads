@@ -4,7 +4,7 @@
 #########################################################
 #PURPOSE: RUN MODELS PROMPTLY!							#
 #DESCRIPTION: THIS SCRIPT KICKS OFF MODEL RUNNERS		#
-#LAST EDIT:  01/20/2016  GENSINI						#
+#LAST EDIT:  03/03/2017  GENSINI						#
 #########################################################
 #CHANGE TO WORKING DIRECTORY
 cd /home/scripts/grads/kickers
@@ -30,10 +30,12 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
 	@ count = 0
+	#79
+	#81
 	if ($FHour == 000) then
 		while (($count < 60) && ($filegrids < 79 ))
 			sleep 10
-			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp| tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			@ count = $count + 1
 		end
 	else
@@ -43,8 +45,8 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 			@ count = $count + 1
 		end
 	endif
-	#wgrib2ms is using 16 cores as we have found it optimal
-	/home/scripts/fsonde/wgrib2ms 16 ${filename}.temp -set_grib_type c3 -grib_out ${filename}
+	#wgrib2mv is using 16 cores as we have found it optimal
+	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid latlon 238.445999:2145:0.0246001009814572 20.191999:1377:0.0230882090909091 ${filename}
 	rm ${filename}.temp
 	if ($FHour == 018) then
 		csh $Runner $dateForDir $modtime HRRR $FHour
