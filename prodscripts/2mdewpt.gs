@@ -28,7 +28,7 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-if modname = HRRR
+if modname = HRRR | modname = NAM4KM
  'run /home/scripts/grads/functions/sectors_positive.gs 'sector
 else
  'run /home/scripts/grads/functions/sectors.gs 'sector
@@ -62,10 +62,7 @@ endif
 if modname = HRRR
  'd smth9(lftxl100_100)'
 endif
-if modname = NAM4KM
- 'd no4LFTX180_0mb-273.16'
-endif
-if modname = RAP
+if modname = RAP | modname = NAM4KM
  'd no4LFTX180_0mb'
 endif
 if modname = NAM
