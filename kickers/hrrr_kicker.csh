@@ -46,7 +46,8 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 		end
 	endif
 	#wgrib2mv is using 16 cores as we have found it optimal
-	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 238.445999:2145:0.0246001009814572 20.191999:1377:0.0230882090909091 ${filename}
+	#/usr/local/bin/wgrib2 ${filename}.temp | sed -e 's/:UGRD:/:UGRDa:/' -e 's/:VGRD:/:UGRDb:/' | sort -t: -k3,3 -k5,8 -k4,4 | /home/scripts/fsonde/wgrib2ms 16 -i ${filename}.temp -grib_out ${filename}.temp1
+	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -new_grid_winds earth -new_grid_vectors none -new_grid latlon 229.896613:2814:0.0246001009814572 20.196426:1413:0.0230882090909091 ${filename}
 	rm ${filename}.temp
 	if ($FHour == 018) then
 		csh $Runner $dateForDir $modtime HRRR $FHour
