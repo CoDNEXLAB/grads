@@ -31,8 +31,10 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	@ count = 0
 	#echo "count='${count}'"
 	#echo "filegrids='${filegrids}'"
+	#280
+	#275
 	if ($FHour == 000) then
-		while (($count < 222) && ($filegrids < 280))
+		while (($count < 222) && ($filegrids < 240))
 			sleep 10
 			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
@@ -41,14 +43,14 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 			echo "filegrids='${filegrids}'"
 		end
 	else
-		while (($count < 150) && ($filegrids < 275))
+		while (($count < 150) && ($filegrids < 245))
 			sleep 3
 			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 			@ count = $count + 1
 		end
 	endif
-	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon -139.856122:643:0.128280633608062 16.308366:342:0.123136363636364 ${filename}
+	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 220.143878:643:0.128280633608062 16.308366:342:0.123136363636364 ${filename}
 	rm ${filename}.temp
 	if ($FHour == 021) then
 		#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
