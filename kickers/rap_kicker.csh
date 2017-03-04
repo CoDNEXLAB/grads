@@ -25,7 +25,7 @@ set datadir = "/home/data/models/rap"
 ###############################################
 foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 016 017 018 019 020 021)
 	set filename = ${datadir}/${dtstr}${modtime}00F${FHour}.rap
-	set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+	set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 	set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
 	@ count = 0
@@ -34,7 +34,7 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	if ($FHour == 000) then
 		while (($count < 222) && ($filegrids < 280))
 			sleep 10
-			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 			@ count = $count + 1
 			echo "count='${count}'"
@@ -43,11 +43,13 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	else
 		while (($count < 150) && ($filegrids < 275))
 			sleep 3
-			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
+			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 			@ count = $count + 1
 		end
 	endif
+	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon -139.856122:643:0.128280633608062 16.308366:342:0.123136363636364 ${filename}
+	rm ${filename}.temp
 	if ($FHour == 021) then
 		#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
 		csh $Runner $dateForDir $modtime RAP $FHour
@@ -66,8 +68,7 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 		ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php RAP $dateForDir $FHour
 	endif
 	#wgrib2ms is using 5 cores as we have found it optimal
-	/home/scripts/fsonde/wgrib2ms 5 ${filename}.sound -set_grib_type c3 -grib_out ${filename}.tmp
-	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon -139.856122:643:0.128280633608062 16.308366:342:0.123136363636364 ${filename}
+	/home/scripts/fsonde/wgrib2ms 5 ${filename}.sound -set_grib_type c3 -grib_out ${filename}.tmp	
 	rm ${filename}.sound
 	mv ${filename}.tmp ${filename}.sound
 end	
