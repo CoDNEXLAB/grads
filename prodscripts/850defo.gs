@@ -28,11 +28,7 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-if modname = HRRR | modname = NAM4KM
- 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
-else
- 'run /home/scripts/grads/functions/sectors.gs 'sector
-endif
+'run /home/scripts/grads/functions/sectors.gs 'sector
 *'run /home/scripts/grads/colorbars/color.gs -levs -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 -.5 -.25 0 .25 .5 1 2 3 4 5 6 7 8 9 10 -kind blue->white->red'
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

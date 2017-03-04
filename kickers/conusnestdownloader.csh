@@ -37,7 +37,7 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 	end
 	#wgrib2ms is using 13 cores as we have found it optimal
 	/home/scripts/fsonde/wgrib2ms 13 ${filepathnamesnd}.temp -set_grib_type c3 -grib_out ${filepathnamesnd}
-	/home/scripts/fsonde/wgrib2mv 13 ${filepathname}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 207.147003:2191:0.0472378093784381 12.202469:1063:0.04617272727273 ${filename}
+	/home/scripts/fsonde/wgrib2mv 13 ${filepathname}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon -152.852997:2191:0.0472378093784381 12.202469:1063:0.04617272727273 ${filename}
 	rm ${filepathnamesnd}.temp
 	rm ${filepathname}.temp
 	#decode

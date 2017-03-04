@@ -22,11 +22,7 @@ ctlext = '.ctl'
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-if modname = HRRR | modname = NAM4KM
- 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
-else
- 'run /home/scripts/grads/functions/sectors.gs 'sector
-endif
+'run /home/scripts/grads/functions/sectors.gs 'sector
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 if modname = HRRR15
