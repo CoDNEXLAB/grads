@@ -25,7 +25,11 @@ if modname = GFS | modname = NAM
 else
  'set t 'fhour+1
 endif
-'run /home/scripts/grads/functions/sectors.gs 'sector
+if modname = GFS
+ 'run /home/scripts/grads/functions/sectors.gs 'sector
+else
+ 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+endif
 ************************
 *shapefile output
 'set shp -pt /home/scripts/grads/runners/shapefiles/flt_'modname
