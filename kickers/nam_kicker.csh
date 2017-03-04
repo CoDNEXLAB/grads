@@ -48,7 +48,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 			@ count = $count + 1
 		end
 	endif
-	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon -152.878623:913:0.113383763365335 12.219908:443:0.110827272727273 ${filename}
+	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 207.121377:913:0.113383763365335 12.219908:443:0.110827272727273 ${filename}
 	rm ${filename}.temp
 	if ($FHour == 084) then
 		#nice +10 /usr/local/bin/wgrib2 ${filename} -small_grib -140:-55 17:60 ${filename}c
