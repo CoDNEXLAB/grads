@@ -81,5 +81,6 @@ if sector = WLD
 endif
 if sector = FLT
  'set lat 38.87 44.79'
- 'set lon -93.98 -83.9'
+ 'set lon 266.02 276.1'
 endif
+*
