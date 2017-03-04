@@ -28,7 +28,11 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors.gs 'sector
+if modname = GFS
+ 'run /home/scripts/grads/functions/sectors.gs 'sector
+else
+ 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+endif
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 0-3km Storm Relative Helicity (m`a2`n s`a-2`n) | College of DuPage NEXLAB'
