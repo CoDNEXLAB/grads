@@ -29,8 +29,8 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
 	@ count = 0
-	echo "count='${count}'"
-	echo "filegrids='${filegrids}'"
+	#echo "count='${count}'"
+	#echo "filegrids='${filegrids}'"
 	if ($FHour == 000) then
 		while (($count < 222) && ($filegrids < 280))
 			sleep 10
@@ -67,6 +67,7 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	endif
 	#wgrib2ms is using 5 cores as we have found it optimal
 	/home/scripts/fsonde/wgrib2ms 5 ${filename}.sound -set_grib_type c3 -grib_out ${filename}.tmp
+	/home/scripts/fsonde/wgrib2mv 16 ${filename}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon -139.856122:643:0.128280633608062 16.308366:342:0.123136363636364 ${filename}
 	rm ${filename}.sound
 	mv ${filename}.tmp ${filename}.sound
 end	
