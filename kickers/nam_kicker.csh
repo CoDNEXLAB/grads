@@ -29,8 +29,8 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 	set filegrids = `/usr/bin/printf '%.0f' ${filegrids}` # To make sure it's an integer
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
 	@ count = 0
-	echo "count='${count}'"
-	echo "filegrids='${filegrids}'"
+	#echo "count='${count}'"
+	#echo "filegrids='${filegrids}'"
 	if ($FHour == 000) then
 		while (($count < 200) && ($filegrids < 425))
 			sleep 10
