@@ -20,8 +20,8 @@ ctlext = '.ctl'
 'set t 'fhour/6+1
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
-*set domain based on sector input argument GEFS!!!!
-'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+*set domain based on sector input argument
+'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 `nSnowfall 10:1 Ratio (Mean All Members) | College of DuPage NEXLAB'

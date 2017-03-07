@@ -20,8 +20,8 @@ ctlext = '.ctl'
 'set t 'fhour/6+1
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
-*set domain based on sector input argument GEFS!!!!
-'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+*set domain based on sector input argument
+'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 `nSupercell Composite Parameter (MAX All Members) | College of DuPage NEXLAB'
@@ -32,12 +32,12 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
 'set e 1 20'
 'define scp = (CAPEsfc/1000)*(HLCY3000_0m/100)*(mag(UGRD500mb,VGRD500mb)*2/35)'
-'define scp1 = const(maskout( scp, scp - 1), 0.0, -u)'
-'define maxscp = max(scp1, e=1, e=20)'
+*'define scp1 = const(maskout( scp, scp - 1), 0.0, -u)'
+'define maxscp = max(scp, e=1, e=21)'
 'set e 1'
 'd smth9(maxscp)'
-'define u10 = ave(skip(UGRD10m,2,2)*2, e=1, e=20)'
-'define v10 = ave(skip(VGRD10m,2,2)*2, e=1, e=20)'
+'define u10 = ave(skip(UGRD10m,2,2)*2, e=1, e=21)'
+'define v10 = ave(skip(VGRD10m,2,2)*2, e=1, e=21)'
 'set gxout barb'
 'set rgb 99 0 0 0'
 'set ccolor 99'
