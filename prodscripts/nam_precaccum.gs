@@ -28,11 +28,7 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-if modname = GFS
- 'run /home/scripts/grads/functions/sectors.gs 'sector
-else
- 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
-endif
+'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 Precipitation Accumulation (in.) | College of DuPage NEXLAB'
@@ -52,7 +48,7 @@ endif
 'd paccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
-'run /home/scripts/grads/functions/precip_stations.gs 'sector
+'run /home/scripts/grads/functions/precip_stations.gs 'sector' 'modname
 *start_readout
 if modname = GFS | modname = NAM
  'set gxout print'

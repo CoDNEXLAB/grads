@@ -28,11 +28,7 @@ endif
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-if modname = GFS
- 'run /home/scripts/grads/functions/sectors.gs 'sector
-else
- 'run /home/scripts/grads/functions/sectors_positive.gs 'sector
-endif
+'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 'run /home/scripts/grads/colorbars/color.gs -30 115 2.5 -kind darkseagreen->lightgray->lightsteelblue->magenta->mediumblue->cyan->green->yellow->orange->red->maroon->magenta->white'
 'set gxout shade2'
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,7 +41,7 @@ level = surface
 'run /home/scripts/grads/functions/isotherms.gs 'level
 if sector != WLD
  'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
- 'run /home/scripts/grads/functions/temp_stations.gs 'sector
+ 'run /home/scripts/grads/functions/temp_stations.gs 'sector' 'modname
  'set cint 2'
  'run /home/scripts/grads/functions/isoheights.gs 'level' 'modname
  'run /home/scripts/grads/functions/counties.gs 'sector
