@@ -36,7 +36,8 @@ endif
 prodname = modname sector _prec_radar_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs 0 80 2.5 -kind white-(0)->white-(0)->lightgray-(5)->(4,70,28)-(5)->(4,234,28)-(0)->(252,238,4)-(4)->(236,130,4)-(0)->(244,46,4)-(4)->maroon-(0)->magenta->gray->lightgray'
+*'run /home/scripts/grads/colorbars/color.gs 0 80 2.5 -kind white-(0)->white-(0)->lightgray-(5)->(4,70,28)-(5)->(4,234,28)-(0)->(252,238,4)-(4)->(236,130,4)-(0)->(244,46,4)-(4)->maroon-(0)->magenta->gray->lightgray'
+'run /home/scripts/grads/colorbars/color.gs 0 80 2 -kind white-(0)->white-(0)->lightgray-(6)->(4,70,28)-(6)->(4,234,28)-(0)->(252,238,4)-(6)->(236,130,4)-(0)->(244,46,4)-(4)->maroon-(0)->magenta->gray->lightgray'
 if modname = HRRR15
  'd var016196clm'
 else
@@ -61,6 +62,6 @@ endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *plot the colorbar on the image
-'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
+'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 3 -fh .1 -fw .1 -lc 99 -edge triangle -fc 99'
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename
