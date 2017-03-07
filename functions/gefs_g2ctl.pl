@@ -59,7 +59,7 @@ $pdef_nearest=1;
 $raw="no";
 $thinned_grid_msg=0;
 $time_info=0;
-$old_ens_name=0;
+$old_ens_name=1;
 
 # set pdef_offset = 0 for old code, 1 for new code
 $pdef_offset=0;

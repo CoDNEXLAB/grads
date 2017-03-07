@@ -21,7 +21,7 @@ ctlext = '.ctl'
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
 *set domain based on sector input argument
-'run /home/scripts/grads/functions/sectors_positive.gs 'sector
+'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
 'draw string 0.1 8.3 `nSBCAPE (J kg`a-1`n) | 500mb Geopotential Height (gpm) | College of DuPage NEXLAB'
@@ -37,7 +37,7 @@ j=1
 e=1
 'set gxout shade2'
 while(e<=20)
- 'set e 'e
+ 'set e Ep 'e
  if(j>cols);i=i+1;j=1;endif
  'run /home/scripts/grads/functions/set_parea.gs 'rows' 'cols' 'i' 'j' -m 0.1'
  'set mpdraw on'
