@@ -37,7 +37,7 @@ j=1
 e=1
 'set gxout shade2'
 while(e<=20)
- 'set e Ep 'e
+ 'set e 'e
  if(j>cols);i=i+1;j=1;endif
  'run /home/scripts/grads/functions/set_parea.gs 'rows' 'cols' 'i' 'j' -m 0.1'
  'run /home/scripts/grads/colorbars/color.gs 30 170 5 -kind white-(0)->darkgreen-(2)->lime-(0)->olive-(2)->yellow-(0)->maroon-(4)->red-(0)->darkmagenta-(4)->magenta-(0)->mediumblue-(4)->cyan-(0)->gray-(4)->white'
