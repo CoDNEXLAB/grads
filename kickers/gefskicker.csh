@@ -8,7 +8,7 @@ set ModRunTime = $1
 #LOCATION OF RUNNER SCRIPT
 set Runner = "/home/scripts/grads/runners/gefs_runner.csh"
 #Launch downloader script
-csh /home/scripts/grads/kickers/gefs_downloader.csh $ModRunTime &
+#csh /home/scripts/grads/kickers/gefs_downloader.csh $ModRunTime &
 #DATE VARIABLE formatted YYYYMMDD
 set dtstr = `date -u +%Y%m%d`
 set dateForDir = `date -u +%Y%m%d`${ModRunTime}
@@ -18,7 +18,7 @@ set filstr = `date -u +%y%m%d`
 #set dtstr = "20170307" 
 #set filstr = "170307"
 set datadir = "/home/data/models/gefs"
-sleep 22
+#sleep 22
 #BEGIN LOOP
 foreach FHour (000 006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120 126 132 138 144 150 156 162 168 174 180 186 192 198 204 210 216 222 228 234 240 246 252 258 264 270 276 282 288 294 300 306 312 318 324 330 336 342 348 354 360 366 372 378 384)
 	set filename = ${datadir}/${filstr}${ModRunTime}00F${FHour}.gefs
