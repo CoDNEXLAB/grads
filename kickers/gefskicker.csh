@@ -15,8 +15,8 @@ set dateForDir = `date -u +%Y%m%d`${ModRunTime}
 #STRING VARIABLE FORMATTED YYMMDD
 set filstr = `date -u +%y%m%d`
 #MANUAL OVERRIDE OF DATE AND TIME STRING
-#set dtstr = "20150114" 
-#set filstr = "150114"
+#set dtstr = "20170307" 
+#set filstr = "170307"
 set datadir = "/home/data/models/gefs"
 sleep 22
 #BEGIN LOOP
