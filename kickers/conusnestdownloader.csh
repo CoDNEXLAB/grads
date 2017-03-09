@@ -15,8 +15,8 @@ set filstr = `date -u +%y%m%d`
 #set filstr = "150114"
 #SET WORKING DIRECTORY FOR NAM MODEL DATA
 set DIR = /home/data/models/nam_conus_nest
-echo ${filstr}/${ModRunTime}00F000 > /home/apache/climate/data/forecast/text/nam4kmstatus.txt
-echo -1 >> /home/apache/climate/data/forecast/text/nam4kmstatus.txt
+echo ${filstr}/${ModRunTime}00F000 > /home/apache/servername/data/forecast/text/nam4kmstatus.txt
+echo -1 >> /home/apache/servername/data/forecast/text/nam4kmstatus.txt
 #BEGIN LOOP
 foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 39 42 45 48 51 54 57 60)
 	# Full grib file path and name: (Z)
@@ -41,6 +41,6 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 	rm ${filepathnamesnd}.temp
 	rm ${filepathname}.temp
 	#decode
-	echo ${filstr}/${ModRunTime}00F0${FHour} > /home/apache/climate/data/forecast/text/nam4kmstatus.txt
-	echo 0${FHour} >> /home/apache/climate/data/forecast/text/nam4kmstatus.txt
+	echo ${filstr}/${ModRunTime}00F0${FHour} > /home/apache/servername/data/forecast/text/nam4kmstatus.txt
+	echo 0${FHour} >> /home/apache/servername/data/forecast/text/nam4kmstatus.txt
 end

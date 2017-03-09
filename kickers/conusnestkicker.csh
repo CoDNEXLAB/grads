@@ -20,28 +20,28 @@ set filstr = `date -u +%y%m%d`
 sleep 15
 #BEGIN LOOP
 foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 39 42 45 48 51 54 57 60)
-	set valid = `awk '{if (NR==2) print}' /home/apache/climate/data/forecast/text/nam4kmstatus.txt`
+	set valid = `awk '{if (NR==2) print}' /home/apache/servername/data/forecast/text/nam4kmstatus.txt`
 	set count = 0
 	while (($valid < $FHour) && ($count < 85))
 		sleep 20
 		@ count = $count + 1	
-		set valid = `awk '{if (NR==2) print}' /home/apache/climate/data/forecast/text/nam4kmstatus.txt`
+		set valid = `awk '{if (NR==2) print}' /home/apache/servername/data/forecast/text/nam4kmstatus.txt`
 	end	
 	#process
 	if ($FHour == 00) then
-		echo `date` ": ${ModRunTime}Z NAM4KM Starting" >> /home/apache/climate/data/forecast/text/nam4kmtimes.txt
+		echo `date` ": ${ModRunTime}Z NAM4KM Starting" >> /home/apache/servername/data/forecast/text/nam4kmtimes.txt
 		python /home/scripts/stats/modtimes/nam4km.py
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 		#perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime NAM4KM
 		
 	else if ($FHour == 60) then
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
-		echo `date` ": ${ModRunTime}Z NAM4KM Finished" >> /home/apache/climate/data/forecast/text/nam4kmtimes.txt
+		echo `date` ": ${ModRunTime}Z NAM4KM Finished" >> /home/apache/servername/data/forecast/text/nam4kmtimes.txt
 		python /home/scripts/stats/modtimes/nam4km.py
 	else
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 	endif
 	#perl /home/scripts/models/blister.pl $ModRunTime NAM4KM $FHour 87
-	php /home/scripts/models/blister.php NAM4KM $dateForDir $FHour
+	ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php NAM4KM $dateForDir $FHour
 end
 wait
