@@ -37,7 +37,7 @@ j=1
 e=1
 'set gxout shade2'
 while(e<=20)
- 'set e Ep 'e
+ 'set e 'e
  if(j>cols);i=i+1;j=1;endif
  'run /home/scripts/grads/functions/set_parea.gs 'rows' 'cols' 'i' 'j' -m 0.1'
  'set mpdraw on'
