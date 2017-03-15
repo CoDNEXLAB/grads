@@ -30,14 +30,14 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 	#process
 	if ($FHour == 00) then
 		echo `date` ": ${ModRunTime}Z NAM4KM Starting" >> /home/apache/servername/data/forecast/text/nam4kmtimes.txt
-		python /home/scripts/stats/modtimes/nam4km.py
+		# python /home/scripts/stats/modtimes/nam4km.py
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 		#perl /home/scripts/models/clearmodeldirpng.pl $ModRunTime NAM4KM
 		
 	else if ($FHour == 60) then
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 		echo `date` ": ${ModRunTime}Z NAM4KM Finished" >> /home/apache/servername/data/forecast/text/nam4kmtimes.txt
-		python /home/scripts/stats/modtimes/nam4km.py
+		# python /home/scripts/stats/modtimes/nam4km.py
 	else
 		csh $Runner $dateForDir $ModRunTime NAM4KM 0$FHour
 	endif
