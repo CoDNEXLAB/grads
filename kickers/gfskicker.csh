@@ -7,6 +7,9 @@
 #LAST EDIT: 09-09-2015 & 09-10-2015 ZURANSKI
 #LAST EDIT TO reenable downloader script, and to sleep on -1 in status file because that's what the downloader does. /shrug
 #####################################################
+# START TIME added by DaveBB for debugging
+echo __STARTTIME__
+/bin/date
 #PASS THE VALID RUN HOUR
 set ModRunTime = $1
 #LOCATION OF RUNNER SCRIPT
@@ -58,5 +61,7 @@ foreach FHour (000 003 006 009 012 015 018 021 024 027 030 033 036 039 042 045 0
 end
 wait
 #Added by DaveBB on 20151016 for monitoring download speeds from the wget downloader script.  This data will be used for graphing the download speeds over time
-#/bin/grep saved /home/ldm/model_logs/gfskicker$ModRunTime.log >> /home/apache/climate/tmp1/gfsdownloadlogs.txt
-
+/bin/grep saved /home/ldm/model_logs/gfskicker$ModRunTime.log >> /home/apache/climate/tmp1/gfsdownloadlogs.txt
+# END TIME
+echo __ENDTIME__
+/bin/date
