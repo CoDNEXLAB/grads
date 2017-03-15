@@ -46,8 +46,9 @@ foreach FHour (00 06 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 12
 			end
 		endif
 	end
-	cat ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs_??? > ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs
-	rm ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs_???
+	#cat ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs_??? > ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs
+	#rm ${DIR}/${filstr}${ModRunTime}00F${strFHour}.gefs_???
 	echo ${filstr}/${ModRunTime}00F${strFHour} > /home/apache/climate/data/forecast/text/gefsstatus.txt
 	echo ${strFHour} >> /home/apache/climate/data/forecast/text/gefsstatus.txt
 end
+
