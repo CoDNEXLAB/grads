@@ -44,7 +44,7 @@ $wgrib2='wgrib2';
 # local defn of developement version
 
 
-$wgrib2_flags='-npts -set_ext_name 1 -end_FT -ext_name -lev';
+$wgrib2_flags='-d 20 -npts -set_ext_name 1 -end_FT -ext_name -lev';
 $wgrib2_inv=".invd01";
 
 $file="";
