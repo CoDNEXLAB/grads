@@ -39,7 +39,7 @@ if (($FHour == 000) || ($FHour == 003)) then
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
 	perl /home/scripts/grads/functions/nam_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
 endif
-gribmap -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
+gribmap -h2500 -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl 
 gribmap -i /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
 foreach Sector (US MW SGP CGP NGP SW NW SE MA NE FLT WCAN AK)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout

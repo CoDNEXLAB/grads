@@ -379,7 +379,7 @@ print "* command line options: @ARGV\n";
 
 
 # ------------------- grid -----------------------
-$griddef = `$wgrib2 $wflag \"$file\" -one_line -d 5 -nxny -grid -vector_dir`;
+$griddef = `$wgrib2 $wflag \"$file\" -one_line -d 20 -nxny -grid -vector_dir`;
 $_=$griddef;
 
 $_ = $griddef;
