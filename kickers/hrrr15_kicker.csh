@@ -57,6 +57,7 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 		endif			
 		#php /home/scripts/models/blister.php HRRR15 $dateForDir $FHour
 	endif
+	ssh -p31950 climate /usr/bin/php /home/scripts/models/blister.php HRRR15 $dateForDir $FHour
 end	
 exit
 
