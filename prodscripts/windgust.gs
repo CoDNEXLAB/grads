@@ -50,7 +50,7 @@ endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/gust_stations.gs 'sector' 'modname
 *start_readout
-if modname = NAM4KM | modname = HRRR
+if modname = NAMNST | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd GUSTsfc*1.94384'
