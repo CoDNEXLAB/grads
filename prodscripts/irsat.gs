@@ -39,7 +39,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/redstates.gs 'sector
 *start_readout
-if modname = NAM4KM
+if modname = NAMNST
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd BRTMPtoa-273.15'

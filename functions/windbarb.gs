@@ -66,19 +66,19 @@ if (model = NAM & sector = US)
  'define strmu = skip(USTM6000_0m,12,12)*2'
  'define strmv = skip(VSTM6000_0m,12,12)*2'
 endif
-if model = NAM4KM
- 'define xskip = skip(UGRDprs,10,10)*2'
- 'define yskip = skip(VGRDprs,10,10)*2'
- 'define iskip = skip(UGRD10m,10,10)*2'
- 'define jskip = skip(VGRD10m,10,10)*2'
+if model = NAMNST
+ 'define xskip = skip(UGRDprs,11,11)*2'
+ 'define yskip = skip(VGRDprs,11,11)*2'
+ 'define iskip = skip(UGRD10m,11,11)*2'
+ 'define jskip = skip(VGRD10m,11,11)*2'
 endif
-if model = NAM4KM & sector = FLT
+if model = NAMNST & sector = FLT
  'define xskip = skip(UGRDprs,5,5)*2'
  'define yskip = skip(VGRDprs,5,5)*2'
  'define iskip = skip(UGRD10m,5,5)*2'
  'define jskip = skip(VGRD10m,5,5)*2'
 endif
-if model = NAM4KM & sector = US
+if model = NAMNST & sector = US
  'define xskip = skip(UGRDprs,20,20)*2'
  'define yskip = skip(VGRDprs,20,20)*2'
  'define iskip = skip(UGRD10m,20,20)*2'

@@ -47,7 +47,7 @@ endif
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *start_readout
-if modname = HRRR | modname = NAM4KM
+if modname = HRRR | modname = NAMNST
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd max(mxuphl5000_2000(offt+0),t=1,t='fhour')'

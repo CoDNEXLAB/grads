@@ -10,15 +10,14 @@ function main(args)
  runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
-'set grads off'
 filext = '.png'
 txtext = '.txt'
 basedir = '/home/apache/servername/data/forecast'
 *************************************************************************
+*************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'
 'open /home/scripts/grads/grads_ctl/'modname'/'modinit''modname%ctlext
-'set datawarn off'
 'set t 'fhour+1
 *get some time parameters
 'run /home/scripts/grads/functions/timelabel.gs 'modinit' 'modname' 'fhour
@@ -26,34 +25,46 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 Freezing Rain Accumulation | College of DuPage NEXLAB'
+'draw string 0.1 8.3 Snowfall Accumulation (AF/Kuchera Method) | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _prec_frzra_ fhour
+prodname = modname sector _prec_kuchsnow_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'set gxout shade2'
-'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
-'d TMP2m*0'
-*pick a colorbar
-'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 -kind white->gray->orchid->mediumvioletred->orange->yellow'
-if fhour = 001
- 'define fzraccum = APCPsfc*CFRZRsfc/25.4'
-else
- 'define fzraccum = sum((APCPsfc*CFRZRsfc/25.4),t=1,t='fhour+1',1)'
-endif
-'d fzraccum'
+'run /home/scripts/grads/colorbars/color.gs 0 1000 500 -kind white->white'
+'d TMP2m'
+'run /home/scripts/grads/colorbars/color.gs -levs 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
+while count <= fhour
+ 'set t 'count+1
+ 'define maxT = max(TMPprs,lev=1000,lev=500)'
+ 'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
+ if maxT > 271.16
+  'define ratio = 12 + 2*(271.16-finmaxT)'
+ else
+  'define ratio = 12 + (271.16-finmaxT)'
+ endif
+ 'define ratio = const(maskout(ratio,ratio+1),10,-u)'
+ 'define snowCurrent = APCPsfc * CSNOWsfc * ratio / 25.4 '
+ if count = 1
+  'define snaccum = snowCurrent'
+ else
+  'define snaccum = snaccum + snowCurrent'
+ endif
+ count = count + 1
+endwhile
+'d snaccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
-'run /home/scripts/grads/functions/frzra_stations.gs 'sector' 'modname
+'run /home/scripts/grads/functions/snow_stations.gs 'sector' 'modname
 *start_readout
-if modname = NAM4KM
+if modname = NAMNST
  'set gxout print'
- 'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
- 'd fzraccum'
+ 'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
+ 'd snaccum'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
 *END: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *plot the colorbar on the image
-'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 1 -fh .1 -fw .1 -lc 99 -fc 99'
+'run /home/scripts/grads/functions/pltcolorbar.gs -ft 1 -fy 0.33 -line on -fskip 2 -fh .1 -fw .1 -lc 99 -fc 99'
 *generate the image
 'run /home/scripts/grads/functions/make_image.gs 'filename

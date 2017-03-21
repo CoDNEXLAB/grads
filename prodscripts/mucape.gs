@@ -49,7 +49,7 @@ level = shear500
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/states.gs 'sector
-if modname = GFS | modname = NAM | modname = NAM4KM
+if modname = GFS | modname = NAM | modname = NAMNST
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd CAPE180_0mb'

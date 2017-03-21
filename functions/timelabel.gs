@@ -38,7 +38,7 @@ if modname != HRRR15 | fhour = 0 | fhour = 4 | fhour = 8 | fhour = 12 | fhour = 
  if modname = HRRR | modname = ECMWF | modname = GEFS
   'draw string 6.9 8.3 'modinit'Z 'modname' | F'fhour' Valid: 'vhour'Z 'pvdow' 'vmonth' 'vday' 'vyear
  endif
- if modname = NAM4KM
+ if modname = NAMNST
   'draw string 6.8 8.3 'modinit'Z 'modname' | F'fhour' Valid: 'vhour'Z 'pvdow' 'vmonth' 'vday' 'vyear
  endif
  if modname = HRRR15

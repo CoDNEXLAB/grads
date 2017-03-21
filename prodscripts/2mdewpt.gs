@@ -58,8 +58,8 @@ endif
 if modname = HRRR
  'd smth9(lftxl100_100)'
 endif
-if modname = RAP | modname = NAM4KM
- 'd no4LFTX180_0mb'
+if modname = RAP | modname = NAMNST
+ 'd smth9(no4LFTX180_0mb)'
 endif
 if modname = NAM
  'd PLI30_0mb'
@@ -76,10 +76,7 @@ endif
 if modname = HRRR
  'd smth9(lftxl100_100)'
 endif
-if modname = NAM4KM
- 'd no4LFTX180_0mb-273.16'
-endif
-if modname = RAP
+if modname = RAP | modname = NAMNST
  'd no4LFTX180_0mb'
 endif
 if modname = NAM
@@ -96,7 +93,7 @@ else
  'run /home/scripts/grads/functions/rap_dewp_stations.gs 'sector' 'modname
 endif
 *start_readout
-if modname = GFS | modname = NAM | modname = NAM4KM | modname = HRRR
+if modname = GFS | modname = NAM | modname = NAMNST | modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd (DPT2m-273.16)*9/5+32'
