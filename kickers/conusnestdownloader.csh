@@ -18,7 +18,7 @@ set DIR = /home/data/models/nam_conus_nest
 echo ${filstr}/${ModRunTime}00F000 > /home/apache/servername/data/forecast/text/nam4kmstatus.txt
 echo -1 >> /home/apache/servername/data/forecast/text/nam4kmstatus.txt
 #BEGIN LOOP
-foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 39 42 45 48 51 54 57 60)
+foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60)
 	# Full grib file path and name: (Z)
 	set filepathname = ${DIR}/${filstr}${ModRunTime}00F0${FHour}.nam4km	
 	set filepathnamesnd = ${DIR}/${filstr}${ModRunTime}00F0${FHour}.nam4km.sound
@@ -37,7 +37,8 @@ foreach FHour (00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21
 	end
 	#wgrib2ms is using 13 cores as we have found it optimal
 	/home/scripts/fsonde/wgrib2ms 13 ${filepathnamesnd}.temp -set_grib_type c3 -grib_out ${filepathnamesnd}
-	/home/scripts/fsonde/wgrib2mv 13 ${filepathname}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 207.147003:2191:0.0472378093784381 12.202469:1063:0.04617272727273 ${filepathname}
+	#/home/scripts/fsonde/wgrib2mv 13 ${filepathname}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 207.147003:2191:0.0472378093784381 12.202469:1063:0.04617272727273 ${filepathname}
+	/home/scripts/fsonde/wgrib2mv 13 ${filepathname}.temp -set_grib_type c3 -new_grid_winds earth -new_grid_vectors none -new_grid latlon 225.903873:2503:0.0292401642786411 21.140671:1155:0.0272727272727273 ${filepathname}
 	rm ${filepathnamesnd}.temp
 	rm ${filepathname}.temp
 	#decode
