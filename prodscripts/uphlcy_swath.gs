@@ -40,17 +40,27 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs 0 400 10 -kind white-(0)->silver->green->yellow->orange->red->maroon->magenta->powderblue->aqua'
 if modname = HRRR15
  'd max(var071975000_20(offt+0),t=1,t='fhour')'
-else
+endif
+if modname = HRRR
  'd max(mxuphl5000_2000(offt+0),t=1,t='fhour')'
+endif
+if modname = NAM4KM
+ 'd max(UPHL5000_2000m(offt+0),t=1,t='fhour')'
 endif
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
 'run /home/scripts/grads/functions/interstates.gs 'sector
 *start_readout
-if modname = NAM4KM | modname = HRRR
+if modname = HRRR
  'set gxout print'
  'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
  'd max(mxuphl5000_2000(offt+0),t=1,t='fhour')'
+ dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
+endif
+if modname = NAM4KM
+ 'set gxout print'
+ 'run /home/scripts/grads/functions/readout.gs 'modname' 'sector
+ 'd max(UPHL5000_2000m(offt+0),t=1,t='fhour')'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout
