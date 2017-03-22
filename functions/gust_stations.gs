@@ -6002,3 +6002,4 @@ else
   'run /home/scripts/grads/functions/plotXYgust.gs 292.98 44.92'
  endif
 endif
+*

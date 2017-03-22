@@ -1228,8 +1228,8 @@ sub tdef {
    if ($calendar eq "365") {
        print "options 365_day_calendar\n";
    }
-   if ($minute == 0) { print "tdef 72 linear ${hour}Z$day$month$year 15mn\n"; }
-   else { print "tdef 72 linear ${hour}:${minute}Z$day$month$year 15mn\n"; }
+   if ($minute == 0) { print "tdef 73 linear ${hour}Z$day$month$year 15mn\n"; }
+   else { print "tdef 73 linear ${hour}:${minute}Z$day$month$year 15mn\n"; }
    $tdef_n = $n;
 }
 
