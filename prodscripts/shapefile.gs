@@ -32,7 +32,7 @@ endif
 
 ************************
 *shapefile output
-'set shp -pt nest_mw'
+'set shp -pt nest_ne'
 'set gxout shp'
 'd (TMP2m-273.16)*9/5+32'
 ************************
