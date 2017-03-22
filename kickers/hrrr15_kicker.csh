@@ -31,8 +31,8 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	#CHECK TO SEE IF FILE EXISTS AND IT IS GREATER THAN xx SIZE. IF NO NEW, SLEEP FOR 10s
 	@ count = 0
 	if ($FHour == 000) then
-		while (($count < 70) && ($filegrids < 2 ))
-			sleep 10
+		while (($count < 90) && ($filegrids < 2 ))
+			sleep 20
 			set filegrids = `/usr/local/bin/wgrib2 ${filename} | tail -n1 | sed 's/ *:.*//'`
 			@ count = $count + 1
 		end
@@ -43,7 +43,7 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 			@ count = $count + 1
 		end
 	endif
-	if ($FHour == 059) then
+	if ($FHour == 072) then
 		csh $Runner $dateForDir $modtime HRRR15 $FHour
 		#php /home/scripts/models/blister.php HRRR $dateForDir $FHour
 		echo `date` ": ${modtime}Z HRRR15 Finished" >> /home/apache/atlas/data/forecast/text/hrrr15times.txt
