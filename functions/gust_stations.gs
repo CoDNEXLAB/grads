@@ -6000,4 +6000,5 @@ else
   'run /home/scripts/grads/functions/plotXYgust.gs 291.98 46.87'
   'run /home/scripts/grads/functions/plotXYgust.gs 292.2 46.12'
   'run /home/scripts/grads/functions/plotXYgust.gs 292.98 44.92'
- en
+ endif
+endif
