@@ -39,7 +39,7 @@ if modname != HRRR15 | fhour = 0 | fhour = 4 | fhour = 8 | fhour = 12 | fhour = 
   'draw string 6.9 8.3 'modinit'Z 'modname' | F'fhour' Valid: 'vhour'Z 'pvdow' 'vmonth' 'vday' 'vyear
  endif
  if modname = NAMNST
-  'draw string 6.8 8.3 'modinit'Z 'modname' | F'fhour' Valid: 'vhour'Z 'pvdow' 'vmonth' 'vday' 'vyear
+  'draw string 6.75 8.3 'modinit'Z NAMNEST | F'fhour' Valid: 'vhour'Z 'pvdow' 'vmonth' 'vday' 'vyear
  endif
  if modname = HRRR15
   'draw string 6.75 8.3 'modinit'Z HRRR | F'fhour' Valid: 'vhour':00Z 'pvdow' 'vmonth' 'vday' 'vyear
