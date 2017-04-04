@@ -42,8 +42,11 @@ foreach FHour (000 006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 0
 			@ count = $count + 1	
 		endif
 	end
-	#decode
-	/home/ldm/decoders/dcgrib2 -d /home/data/gempak/logs/dcgrib2_cfs.log /home/data/gempak/model/cfs/${dtstr}${ModRunTime}F${FHour}_cfs.gem < ${filepathname}
+	wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_cfs_pgb.pl?file=pgbf${ftime}.01.${dtstr}${ModRunTime}.grb2&all_lev=on&var_UGRD=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fcfs.${dtstr}%2F${ModRunTime}%2F6hrly_grib_01" -O /home/data/models/cfs_aam/${filstr}${ModRunTime}00F${FHour}.cfs1
+	wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_cfs_pgb.pl?file=pgbf${ftime}.02.${dtstr}${ModRunTime}.grb2&all_lev=on&var_UGRD=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fcfs.${dtstr}%2F${ModRunTime}%2F6hrly_grib_02" -O /home/data/models/cfs_aam/${filstr}${ModRunTime}00F${FHour}.cfs2
+	wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_cfs_pgb.pl?file=pgbf${ftime}.03.${dtstr}${ModRunTime}.grb2&all_lev=on&var_UGRD=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fcfs.${dtstr}%2F${ModRunTime}%2F6hrly_grib_03" -O /home/data/models/cfs_aam/${filstr}${ModRunTime}00F${FHour}.cfs3
+	wget -nv -c "http://nomads.ncep.noaa.gov/cgi-bin/filter_cfs_pgb.pl?file=pgbf${ftime}.04.${dtstr}${ModRunTime}.grb2&all_lev=on&var_UGRD=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fcfs.${dtstr}%2F${ModRunTime}%2F6hrly_grib_04" -O /home/data/models/cfs_aam/${filstr}${ModRunTime}00F${FHour}.cfs4
+
 	echo ${filstr}/${ModRunTime}00F${FHour} > /home/apache/climate/data/forecast/text/cfsstatus.txt
 	echo ${FHour} >> /home/apache/climate/data/forecast/text/cfsstatus.txt
 end

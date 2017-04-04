@@ -33,6 +33,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs 0 1000 500 -kind white->white'
 'd TMP2m'
 'run /home/scripts/grads/colorbars/color.gs -levs 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
+count = 1
 while count <= fhour
  'set t 'count+1
  'define maxT = max(TMPprs,lev=1000,lev=500)'
@@ -43,13 +44,13 @@ while count <= fhour
   'define ratio = 12 + (271.16-finmaxT)'
  endif
  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
- 'define snowCurrent = APCPsfc * CSNOWsfc * ratio / 25.4 '
- if count = 1
-  'define snaccum = snowCurrent'
+ if t = 1
+  'define snowhrly = APCPsfc * CSNOWsfc * ratio / 25.4 '
+  'define snaccum = snowhrly'
  else
-  'define snaccum = snaccum + snowCurrent'
- endif
- count = count + 1
+  'define snowbuck = ratio*CSNOWsfc*APCPsfc/25.4'
+  'define snowhrly = snowbuck - snaccum'
+  'define snaccum = snaccum + snowhrly' 
 endwhile
 'd snaccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
