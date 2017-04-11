@@ -53,16 +53,16 @@ if (model = NAM & sector = US)
  'define jskip = skip(VGRD10m,12,12)*2'
 endif
 if model = NAMNST
- 'define xskip = skip(UGRDprs,11,11)*2'
- 'define yskip = skip(VGRDprs,11,11)*2'
- 'define iskip = skip(UGRD10m,11,11)*2'
- 'define jskip = skip(VGRD10m,11,11)*2'
+ 'define xskip = skip(UGRDprs,14,14)*2'
+ 'define yskip = skip(VGRDprs,14,14)*2'
+ 'define iskip = skip(UGRD10m,14,14)*2'
+ 'define jskip = skip(VGRD10m,14,14)*2'
 endif
 if model = NAMNST & sector = FLT
- 'define xskip = skip(UGRDprs,5,5)*2'
- 'define yskip = skip(VGRDprs,5,5)*2'
- 'define iskip = skip(UGRD10m,5,5)*2'
- 'define jskip = skip(VGRD10m,5,5)*2'
+ 'define xskip = skip(UGRDprs,9,9)*2'
+ 'define yskip = skip(VGRDprs,9,9)*2'
+ 'define iskip = skip(UGRD10m,9,9)*2'
+ 'define jskip = skip(VGRD10m,9,9)*2'
 endif
 if model = NAMNST & sector = US
  'define xskip = skip(UGRDprs,20,20)*2'
