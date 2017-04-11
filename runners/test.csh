@@ -40,7 +40,7 @@ endif
 #setenv GADDIR /home/ldm/opengrads/data
 #setenv GA2UDXT /home/ldm/opengrads/gex/udxt
 #setenv LD_LIBRARY_PATH /home/ldm/opengrads/gex
-foreach Sector (NE)
+foreach Sector (CGP)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout
 	#/home/ldm/opengrads/grads -bxcl "run /home/scripts/grads/runners/test_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
 	grads -bxcl "run /home/scripts/grads/runners/test_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
