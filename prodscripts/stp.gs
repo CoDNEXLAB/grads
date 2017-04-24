@@ -59,7 +59,7 @@ endif
 if modname != RAP
  'define stp = (CAPEsfc/1500)*((2000-(125*(TMP2m-DPT2m)))/1000)*(HLCY1000_0m/150)*term4'
 endif
-'d maskout(stp,CINsfc+75)'
+'d maskout(stp,CINsfc+50)'
 level = surface
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/windbarb.gs 'sector' 'modname' 'level

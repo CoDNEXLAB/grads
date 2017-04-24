@@ -80,6 +80,17 @@ while level >= 500
 endwhile
 'define lsi = finmaxw - sfthtw'
 'd lsi'
+'set gxout contour'
+'set cthick 8'
+'set cstyle 1'
+'set clevs -1 0 2 4'
+'set rgb 996 255 179 102'
+'set rgb 997 255 0 0'
+'set rgb 997 255 0 0'
+'set rgb 998 255 255 0'
+'set rgb 999 102 255 102'
+'set ccols 997 996 998 999'
+'d lsi'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _sfc_lsi_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
