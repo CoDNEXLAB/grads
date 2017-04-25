@@ -43,6 +43,7 @@ function gradsrunner(args)
 'run /home/scripts/grads/prodscripts/03ehi.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 'run /home/scripts/grads/prodscripts/radarrefc.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 'run /home/scripts/grads/prodscripts/mdiverg.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+'run /home/scripts/grads/prodscripts/lsi.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 'run /home/scripts/grads/prodscripts/ptype.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 if fhour != 000
  'run /home/scripts/grads/prodscripts/rap_precaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
