@@ -99,6 +99,7 @@ if sector = US | sector = AK | sector = SW | sector = NW | sector = SGP | sector
  'run /home/scripts/grads/prodscripts/03hlcy.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  'run /home/scripts/grads/prodscripts/clouds.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  'run /home/scripts/grads/prodscripts/crithick.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+ 'run /home/scripts/grads/prodscripts/lsi.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  'run /home/scripts/grads/prodscripts/mdiverg.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  if fhour != 000
   'run /home/scripts/grads/prodscripts/gfs_ptype.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
