@@ -92,7 +92,7 @@ endwhile
 'set ccols 997 996 998 999'
 'd lsi'
 *give the product a name between sector and fhour variables and combo into filename variables
-prodname = modname sector _sfc_lsi_ fhour
+prodname = modname sector _con_lsi_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 level = surface
 'run /home/scripts/grads/functions/counties.gs 'sector
