@@ -43,6 +43,11 @@ if modname = HRRR15
 else
  'd REFCclm'
 endif
+'set gxout contour'
+'set rgb 88 0 0 0'
+'set clevs 45'
+'set ccols 88'
+'d mxuphl5000_2000'
 level = surface
 'run /home/scripts/grads/functions/windvector.gs 'sector' 'modname' 'level
 'run /home/scripts/grads/functions/counties.gs 'sector
