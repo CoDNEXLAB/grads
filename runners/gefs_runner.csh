@@ -22,7 +22,7 @@ sleep 2
 perl /home/scripts/grads/functions/gefs_g2ctl.pl -ens "p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,c00" ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
 gribmap -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
 #perl /home/scripts/grads/functions/mpi_gribmap.pl -i /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
-foreach Sector (US PO NA MW SGP NGP NE SE)
+foreach Sector (US PO NA MW SGP NGP CGP NE SE)
 	mkdir -p /home/apache/servername/data/forecast/${ModName}/${ModRunTime}/${Sector}/readout
 	grads -bxcl "run /home/scripts/grads/runners/gefs_grads_prodlist.gs ${ModInit} ${ModName} ${FHour} ${Sector} ${ModRunTime}" &
 end
