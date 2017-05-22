@@ -49,7 +49,7 @@ while(e<=20)
  'draw map'
  'define scp = (CAPEsfc/1000)*(HLCY3000_0m/100)*(mag(UGRD500mb,VGRD500mb)*2/35)'
  'd scp'
- if sector = US | sector = NGP | sector = SGP | sector = MW
+ if sector = US | sector = NGP | sector = SGP | sector = MW | sector = CGP
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'
