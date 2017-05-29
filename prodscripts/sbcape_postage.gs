@@ -54,7 +54,7 @@ while(e<=20)
  'set ccolor 92'
  'set cthick 3'
  'd HGT500mb'
- if sector = US | sector = NGP | sector = SGP | sector = MW
+ if sector = US | sector = NGP | sector = SGP | sector = MW | sector = CGP
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'
