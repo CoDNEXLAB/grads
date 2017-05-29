@@ -53,7 +53,7 @@ while(e<=20)
   'define paccum = sum(APCPsfc/25.4,t=1,t='fhour/6+1',1)'
  endif
  'd paccum'
- if sector = US | sector = NGP | sector = SGP | sector = MW
+ if sector = US | sector = NGP | sector = SGP | sector = MW | sector = CGP
   'set rgb 92 0 0 0 100'
   'set line 92 1 1'
   'draw shp /home/scripts/grads/shapefiles/states.shp'
