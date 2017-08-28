@@ -33,7 +33,8 @@ foreach FHour (000 001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 0
 	#79
 	#81
 	if ($FHour == 000) then
-		while (($count < 60) && ($filegrids < 79 ))
+		# Bumping count from 60 to 120 in attempt to fix blank HRRR runs (~Z 8/17/2017)
+		while (($count < 120) && ($filegrids < 79 ))
 			sleep 10
 			set filegrids = `/usr/local/bin/wgrib2 ${filename}.temp | tail -n1 | sed 's/ *:.*//'`
 			@ count = $count + 1
