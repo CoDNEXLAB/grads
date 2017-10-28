@@ -50,7 +50,8 @@ while count <= fhour
  else
   'define snowbuck = ratio*CSNOWsfc*APCPsfc/25.4'
   'define snowhrly = snowbuck - snaccum'
-  'define snaccum = snaccum + snowhrly' 
+  'define snaccum = snaccum + snowhrly'
+ endif 
 endwhile
 'd snaccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
