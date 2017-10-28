@@ -44,7 +44,7 @@ while count <= fhour
   'define ratio = 12 + (271.16-finmaxT)'
  endif
  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
- if t = 1
+ if count = 1
   'define snowhrly = APCPsfc * CSNOWsfc * ratio / 25.4 '
   'define snaccum = snowhrly'
  else

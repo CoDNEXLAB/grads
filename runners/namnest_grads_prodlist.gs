@@ -16,7 +16,7 @@ function gradsrunner(args)
 'run /home/scripts/grads/prodscripts/windgust.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 if fhour != 000
  'run /home/scripts/grads/prodscripts/uphlcy_swath.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
- 'run /home/scripts/grads/prodscripts/namnst_kuchsnowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+ 'run /home/scripts/grads/prodscripts/namnst_snowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  'run /home/scripts/grads/prodscripts/namnst_precaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  'run /home/scripts/grads/prodscripts/namnst_zraccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 endif
