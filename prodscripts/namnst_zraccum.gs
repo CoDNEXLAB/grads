@@ -26,7 +26,7 @@ ctlext = '.ctl'
 'run /home/scripts/grads/functions/sectors.gs 'sector' 'modname
 *START: PRODUCT SPECIFIC ACTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *give the image a product title
-'draw string 0.1 8.3 Freezing Rain Accumulation | College of DuPage NEXLAB'
+'draw string 0.1 8.3 Freezing Rain Accumulation (in.) | College of DuPage NEXLAB'
 *give the product a name between sector and fhour variables and combo into filename variables
 prodname = modname sector _prec_frzra_ fhour
 filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
@@ -36,7 +36,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 -kind white->gray->orchid->mediumvioletred->orange->yellow'
 if fhour = 001 | fhour = 002 | fhour = 003
- 'define fzraccum = CSNOWsfc*APCPsfc/2.54'
+ 'define fzraccum = CFRZRsfc*APCPsfc/2.54'
 endif
 if fhour = 004 | fhour = 007 | fhour = 010 | fhour = 013 | fhour = 016 | fhour = 019 | fhour = 022 | fhour = 025 | fhour = 028 | fhour = 031 | fhour = 034 | fhour = 037 | fhour = 040 | fhour = 043 | fhour = 046 | fhour = 049 | fhour = 052 | fhour = 055 | fhour = 058
  'define fzraccum1 = sum((CFRZRsfc*APCPsfc/2.54),t=1,t='fhour',3)'
@@ -44,7 +44,7 @@ if fhour = 004 | fhour = 007 | fhour = 010 | fhour = 013 | fhour = 016 | fhour =
  'define fzraccum = fzraccum1+fzraccum2'
 endif
 if fhour = 005 | fhour = 008 | fhour = 011 | fhour = 014 | fhour = 017 | fhour = 020 | fhour = 023 | fhour = 026 | fhour = 029 | fhour = 032 | fhour = 035 | fhour = 038 | fhour = 041 | fhour = 044 | fhour = 047 | fhour = 050 | fhour = 053 | fhour = 056 | fhour = 059
- 'define fzraccum1 = sum((CFRZRfc*APCPsfc/2.54),t=1,t='fhour-1',3)'
+ 'define fzraccum1 = sum((CFRZRsfc*APCPsfc/2.54),t=1,t='fhour-1',3)'
  'define fzraccum2 = CFRZRsfc*APCPsfc/2.54'
  'define fzraccum = fzraccum1+fzraccum2'
 endif

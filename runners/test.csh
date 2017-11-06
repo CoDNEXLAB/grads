@@ -8,7 +8,7 @@ switch ($ModName)
 	case 'NAM':
 		set modDir = 'nam_218'
 		breaksw
-	case 'NAM4KM':
+	case 'NAMNST':
 		set modDir = 'nam_conus_nest'
 		breaksw
 	case 'GFS':

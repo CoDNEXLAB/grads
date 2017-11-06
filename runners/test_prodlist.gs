@@ -22,5 +22,5 @@ if fhour != 000
 * 'run /home/scripts/grads/prodscripts/sfc_lows_ens.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 * 'run /home/scripts/grads/prodscripts/gfs_ptype.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 * 'run /home/scripts/grads/prodscripts/shapefile.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
- 'run /home/scripts/grads/prodscripts/namnst_kuchsnowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
+ 'run /home/scripts/grads/prodscripts/namnst_precaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
 endif
