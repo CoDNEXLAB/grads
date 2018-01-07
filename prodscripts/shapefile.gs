@@ -32,7 +32,7 @@ endif
 
 ************************
 *shapefile output
-'set shp -pt nam_conus'
+'set shp -pt gefs_sgp'
 'set gxout shp'
 'd (TMP2m-273.16)*9/5+32'
 ************************
