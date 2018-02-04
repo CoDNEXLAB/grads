@@ -36,9 +36,9 @@ count = 1
 while count <= fhour/3
  'set t 'count+1
  if count = 1 | count = 3 | count = 5 | count = 7 | count = 9 | count = 11 | count = 13 | count = 15 | count = 17 | count = 19 | count = 21 | count = 23 | count = 25 | count = 27 | count = 29 | count = 31 | count = 33 | count = 35 | count = 37 | count = 39 | count = 41 | count = 43 | count = 45 | count = 47 | count = 49 | count = 51 | count = 53 | count = 55 | count = 57 | count = 59 | count = 61 | count = 63 | count = 65 | count = 67 | count = 69 | count = 71 | count = 73 | count = 75 | count = 77 | count = 79
-  'define maxT = max(TMPprs,lev=975,lev=500)'
+  'define maxT = max(TMPprs,lev=1000,lev=500)'
   'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
-  if maxT > 271.16
+  if finmaxT > 271.16
    'define ratio = 12 + 2*(271.16-finmaxT)'
   else
    'define ratio = 12 + (271.16-finmaxT)'

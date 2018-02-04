@@ -45,7 +45,7 @@ while count <= fhour/3
  'set t 'count+1
  'define maxT = max(TMPprs,lev=1000,lev=500)'
  'run /home/scripts/grads/functions/max.gs maxT TMP2m finmaxT'
- if maxT > 271.16
+ if finmaxT > 271.16
   'define ratio = 12 + 2*(271.16-finmaxT)'
  else
   'define ratio = 12 + (271.16-finmaxT)'
