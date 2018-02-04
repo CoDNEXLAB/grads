@@ -43,7 +43,7 @@ while count <= fhour/3
   else
    'define ratio = 12 + (271.16-finmaxT)'
   endif
-  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
+*  'define ratio = const(maskout(ratio,ratio+1),10,-u)'
   'define prec03 = APCPsfc'
   if count = 1
    'define snaccum = (prec03*CSNOWsfc*ratio)/25.4+0'
