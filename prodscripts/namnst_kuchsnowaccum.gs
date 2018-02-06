@@ -10,10 +10,10 @@ function main(args)
  runtime=subwrd(args,5)
  'run /home/scripts/grads/functions/pltdefaults.gs'
 *GLOBAL VARIABLES
+'set grads off'
 filext = '.png'
 txtext = '.txt'
 basedir = '/home/apache/servername/data/forecast'
-*************************************************************************
 *************************************************************************
 *open the GrADS .ctl file made in the prodrunner script
 ctlext = '.ctl'

@@ -35,22 +35,29 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'd TMP2m*0'
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .05 .1 .25 .5 .75 1 1.25 1.5 1.75 2 -kind white->gray->orchid->mediumvioletred->orange->yellow'
-if fhour = 001 | fhour = 002 | fhour = 003
- 'define fzraccum = CFRZRsfc*APCPsfc/25.4'
-endif
-if fhour = 004 | fhour = 007 | fhour = 010 | fhour = 013 | fhour = 016 | fhour = 019 | fhour = 022 | fhour = 025 | fhour = 028 | fhour = 031 | fhour = 034 | fhour = 037 | fhour = 040 | fhour = 043 | fhour = 046 | fhour = 049 | fhour = 052 | fhour = 055 | fhour = 058
- 'define fzraccum1 = sum((CFRZRsfc*APCPsfc/25.4),t=1,t='fhour',3)'
- 'define fzraccum2 = CFRZRsfc*APCPsfc/25.4'
- 'define fzraccum = fzraccum1+fzraccum2'
-endif
-if fhour = 005 | fhour = 008 | fhour = 011 | fhour = 014 | fhour = 017 | fhour = 020 | fhour = 023 | fhour = 026 | fhour = 029 | fhour = 032 | fhour = 035 | fhour = 038 | fhour = 041 | fhour = 044 | fhour = 047 | fhour = 050 | fhour = 053 | fhour = 056 | fhour = 059
- 'define fzraccum1 = sum((CFRZRsfc*APCPsfc/25.4),t=1,t='fhour-1',3)'
- 'define fzraccum2 = CFRZRsfc*APCPsfc/25.4'
- 'define fzraccum = fzraccum1+fzraccum2'
-endif
-if fhour = 006 | fhour = 009 | fhour = 012 | fhour = 015 | fhour = 018 | fhour = 021 | fhour = 024 | fhour = 027 | fhour = 030 | fhour = 033 | fhour = 036 | fhour = 039 | fhour = 042 | fhour = 045 | fhour = 048 | fhour = 051 | fhour = 054 | fhour = 057 | fhour = 060
- 'define fzraccum = sum((CFRZRsfc*APCPsfc/25.4),t=1,t='fhour+1',3)'
-endif
+count = 1
+while count <= fhour
+ 'set t 'count+1
+ if count = 1 | count = 4 | count = 7 | count = 10 | count = 13 | count = 16 | count = 19 | count = 22 | count = 25 | count = 28 | count = 31 | count = 34 | count = 37 | count = 40 | count = 43 | count = 46 | count = 49 | count = 52 | count = 55 | count = 58
+  'define prec01 = APCPsfc'
+  if count = 1
+   'define fzraccum = (prec01*CFRZRsfc)/2.54'
+  else
+   'define fzraccum = fzraccum + (prec01*CFRZRsfc/2.54)'
+  endif
+ endif
+ if count = 2 | count = 5 | count = 8 | count = 11 | count = 14 | count = 17 | count = 20 | count = 23 | count = 26 | count = 29 | count = 32 | count = 35 | count = 38 | count = 41 | count = 44 | count = 47 | count = 50 | count = 53 | count = 56 | count = 59
+  'define prec02 = APCPsfc'
+  'define pcurrent = prec02 - prec01'
+  'define fzraccum = fzraccum + (pcurrent * CFRZRsfc/ 2.54)'
+ endif
+ if count = 3 | count = 6 | count = 9 | count = 12 | count = 15 | count = 18 | count = 21 | count = 24 | count = 27 | count = 30 | count = 33 | count = 36 | count = 39 | count = 42 | count = 45 | count = 48 | count = 51 | count = 54 | count = 57 | count = 60
+  'define prec03 = APCPsfc'
+  'define pcurrent = prec03 - pcurrent'
+  'define fzraccum = fzraccum + (pcurrent * CFRZRsfc/ 2.54)'
+ endif
+ count = count + 1
+endwhile
 'd fzraccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
