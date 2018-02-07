@@ -43,7 +43,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *start_readout
 if modname = NAM4KM | modname = HRRR
  'set gxout print'
- 'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
+ 'run /home/scripts/grads/functions/readout1.gs 'modname' 'sector
  'd snaccum'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
