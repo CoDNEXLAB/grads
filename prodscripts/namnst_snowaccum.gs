@@ -33,22 +33,30 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 'run /home/scripts/grads/colorbars/color.gs -1 2 1 -kind white->white'
 'd TMP2m*0'
 'run /home/scripts/grads/colorbars/color.gs -levs 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
-if fhour = 001 | fhour = 002 | fhour = 003
- 'define snaccum = CSNOWsfc*APCPsfc/2.54'
-endif
-if fhour = 004 | fhour = 007 | fhour = 010 | fhour = 013 | fhour = 016 | fhour = 019 | fhour = 022 | fhour = 025 | fhour = 028 | fhour = 031 | fhour = 034 | fhour = 037 | fhour = 040 | fhour = 043 | fhour = 046 | fhour = 049 | fhour = 052 | fhour = 055 | fhour = 058
- 'define snaccum1 = sum((CSNOWsfc*APCPsfc/2.54),t=1,t='fhour',3)'
- 'define snaccum2 = CSNOWsfc*APCPsfc/2.54'
- 'define snaccum = snaccum1+snaccum2'
-endif
-if fhour = 005 | fhour = 008 | fhour = 011 | fhour = 014 | fhour = 017 | fhour = 020 | fhour = 023 | fhour = 026 | fhour = 029 | fhour = 032 | fhour = 035 | fhour = 038 | fhour = 041 | fhour = 044 | fhour = 047 | fhour = 050 | fhour = 053 | fhour = 056 | fhour = 059
- 'define snaccum1 = sum((CSNOWsfc*APCPsfc/2.54),t=1,t='fhour-1',3)'
- 'define snaccum2 = CSNOWsfc*APCPsfc/2.54'
- 'define snaccum = snaccum1+snaccum2'
-endif
-if fhour = 006 | fhour = 009 | fhour = 012 | fhour = 015 | fhour = 018 | fhour = 021 | fhour = 024 | fhour = 027 | fhour = 030 | fhour = 033 | fhour = 036 | fhour = 039 | fhour = 042 | fhour = 045 | fhour = 048 | fhour = 051 | fhour = 054 | fhour = 057 | fhour = 060
- 'define snaccum = sum((CSNOWsfc*APCPsfc/2.54),t=1,t='fhour+1',3)'
-endif
+count = 1
+ratio = 10
+while count <= fhour
+ 'set t 'count+1
+ if count = 1 | count = 4 | count = 7 | count = 10 | count = 13 | count = 16 | count = 19 | count = 22 | count = 25 | count = 28 | count = 31 | count = 34 | count = 37 | count = 40 | count = 43 | count = 46 | count = 49 | count = 52 | count = 55 | count = 58
+  'define pcurrent = APCPsfc'
+  if count = 1
+   'define snaccum = (pcurrent*CSNOWsfc*ratio)/25.4'
+  else
+   'define snaccum = snaccum + (pcurrent*CSNOWsfc*ratio/25.4)'
+  endif
+ endif
+ if count = 2 | count = 5 | count = 8 | count = 11 | count = 14 | count = 17 | count = 20 | count = 23 | count = 26 | count = 29 | count = 32 | count = 35 | count = 38 | count = 41 | count = 44 | count = 47 | count = 50 | count = 53 | count = 56 | count = 59
+  'define prec02 = APCPsfc'
+  'define pcurrent = APCPsfc - pcurrent'
+  'define snaccum = snaccum + (pcurrent * CSNOWsfc*ratio/ 25.4)'
+ endif
+ if count = 3 | count = 6 | count = 9 | count = 12 | count = 15 | count = 18 | count = 21 | count = 24 | count = 27 | count = 30 | count = 33 | count = 36 | count = 39 | count = 42 | count = 45 | count = 48 | count = 51 | count = 54 | count = 57 | count = 60
+  'define prec03 = APCPsfc'
+  'define pcurrent = prec03 - prec02'
+  'define snaccum = snaccum + (pcurrent * CSNOWsfc*ratio/ 25.4)'
+ endif
+ count = count + 1
+endwhile
 'd snaccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
 'run /home/scripts/grads/functions/states.gs 'sector
