@@ -107,7 +107,6 @@ if sector = US | sector = AK | sector = SW | sector = NW | sector = SGP | sector
   'run /home/scripts/grads/prodscripts/gfs_conprecip.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
   'run /home/scripts/grads/prodscripts/gfs_precaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
   'run /home/scripts/grads/prodscripts/gfs_kuchsnowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
-  'run /home/scripts/grads/prodscripts/gfs_snowaccum.gs 'modinit' 'modname' 'fhour' 'sector' 'runtime
  endif
 endif
 *if sector = FLT
