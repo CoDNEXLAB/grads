@@ -5315,178 +5315,178 @@ else
   'run /home/scripts/grads/functions/plotXYfzra.gs 266.72 45.03'
  endif
  if sector = FLT
- *LakeMI
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.98 42.67'
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.82 41.86'
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.84 43.33'
+*LakeMI
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.98 42.67'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.82 41.86'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.84 43.33'
 *IRK
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.45 40.1'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.45 40.1'
 *OTM
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.55 41.1'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.55 41.1'
 *ALO
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.6	42.55'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.6 42.55'
 *CID
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.28 41.88'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.28 41.88'
 *UIN
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.8	39.95'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.8 39.95'
 *BRL
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.86 40.81'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.86 40.81'
 *DBQ
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.28 42.4'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.28 42.4'
 *MLI
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.5	41.45'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.5 41.45'
 *LNR
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.82 43.22'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.82 43.22'
 *PIA
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.32 40.67'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.32 40.67'
 *SPI
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.32 39.85'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.32 39.85'
 *MSN
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.67 43.13'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.67 43.13'
 *RFD
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.9	42.2'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.9 42.2'
 *JVL
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.97 42.62'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.97 42.62'
 *BMI
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.08 40.47'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.08 40.47'
 *DEC
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.13 39.83'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.13 39.83'
 *CMI
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.72 40.03'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.72 40.03'
 *MKE
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.1	42.95'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.1 42.95'
 *DNV
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.4	40.2'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.4 40.2'
 *VPZ
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273 41.45'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273 41.45'
 *LAF
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.07 40.42'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.07 40.42'
 *BEH
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.57 42.13'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.57 42.13'
 *SBN
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.68 41.7'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.68 41.7'
 *IND
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.72 39.72'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.72 39.72'
 *MKG
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.77 43.17'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.77 43.17'
 *COD
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.93 41.84'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.93 41.84'
 *ORD
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.1 41.97'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.1 41.97'
 *MDW
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.25 41.78'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.25 41.78'
 *Victor'sHouse
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.54 41.8'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.54 41.8'
 *DKB
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.3 41.93'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.3 41.93'
 *Greyslake
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.96 42.34'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.96 42.34'
 *Amboy
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.67 41.7'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.67 41.7'
 *Ottawa
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.16 41.33'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.16 41.33'
 *Lacon
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.62 41.09'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.62 41.09'
 *Cambridge
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.82 41.29'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.82 41.29'
 *Freeport
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.42 42.24'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.42 42.24'
 *Kankakee
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.14 41.14'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.14 41.14'
 *Watseka
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.26 40.77'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.26 40.77'
 *Pontiac
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.37 40.87'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.37 40.87'
 *Galesburg
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.63 40.94'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.63 40.94'
 *Morrison
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.04 41.8'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.04 41.8'
 *Princeton
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.52 41.37'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.52 41.37'
 *Woodstock
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.55 42.3'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.55 42.3'
 *Galena
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.57 42.41'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.57 42.41'
 *Aledo
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.26 41.19'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.26 41.19'
 *Monmouth
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.35 40.9'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.35 40.9'
 *MtCarroll
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.03 42.07'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.03 42.07'
 *Oregon
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.67 42.01'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.67 42.01'
 *Wyoming
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.23 41.05'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.23 41.05'
 *Joliet
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.92 41.5'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.92 41.5'
 *Morris
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.58 41.34'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.58 41.34'
 *GibsonCity
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.63 40.45'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.63 40.45'
 *Roanoke
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.81 40.79'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.81 40.79'
 *Clinton
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.04 40.15'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.04 40.15'
 *Delevan
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.45 40.4'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.45 40.4'
 *Ipava
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.68 40.39'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.68 40.39'
 *Hamilton
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.67 40.40'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.67 40.40'
 *Keosauqua
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.04 40.73'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.04 40.73'
 *Manchester
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.55 42.48'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.55 42.48'
 *Moscow
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.15 42.83'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 270.15 42.83'
 *Burlington
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.73 42.67'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.73 42.67'
 *Oxford Junction
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.05 41.98'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.05 41.98'
 *West Union
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.2 42.96'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.2 42.96'
 *Grinnell
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.28 41.74'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.28 41.74'
 *Crown Point
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.64 41.41'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.64 41.41'
 *Rensselaer
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.85 40.93'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 272.85 40.93'
 *Rochester
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.79 41.06'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.79 41.06'
 *Logansport
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.64 40.75'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.64 40.75'
 *Crawfordsville
-  'run /home/scripts/grads/functions/plotXYsnow.gs 273.1 40.04'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 273.1 40.04'
 *Sigourney
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.8 41.33'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.8 41.33'
 *Concord
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.41 43.06'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.41 43.06'
 *Oak Grove
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.26 43.38'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.26 43.38'
 *Newberg
-  'run /home/scripts/grads/functions/plotXYsnow.gs 271.96 43.43'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 271.96 43.43'
 *Fennimore
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.35 42.98'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.35 42.98'
 *Charles City
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.33 43.06'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.33 43.06'
 *Waukon
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.53 42.26'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.53 42.26'
 *Mt Pleasant
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.46 40.97'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.46 40.97'
 *Washington
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.31 41.30'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 268.31 41.30'
 *Camden
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.23 40.15'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.23 40.15'
 *Cresco
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.89 43.38'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.89 43.38'
 *Readstown
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.25 43.44'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 269.25 43.44'
 *Edina
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.83 40.16'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.83 40.16'
 *Pella
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.09 41.41'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.09 41.41'
 *Elberon
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.69 42.00'
+  'run /home/scripts/grads/functions/plotXYfzra.gs 267.69 42.00'
   'run /home/scripts/grads/functions/plotXYfzra.gs 235.43 47.93'
   'run /home/scripts/grads/functions/plotXYfzra.gs 235.72 42.07'
   'run /home/scripts/grads/functions/plotXYfzra.gs 235.75 43.42'

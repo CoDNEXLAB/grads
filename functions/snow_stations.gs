@@ -6000,7 +6000,7 @@ else
   'run /home/scripts/grads/functions/plotXYsnow.gs 291.98 46.87'
   'run /home/scripts/grads/functions/plotXYsnow.gs 292.2 46.12'
   'run /home/scripts/grads/functions/plotXYsnow.gs 292.98 44.92'
-  *LakeMI
+*LakeMI
   'run /home/scripts/grads/functions/plotXYsnow.gs 272.98 42.67'
   'run /home/scripts/grads/functions/plotXYsnow.gs 272.82 41.86'
   'run /home/scripts/grads/functions/plotXYsnow.gs 272.84 43.33'
@@ -6009,17 +6009,17 @@ else
 *OTM
   'run /home/scripts/grads/functions/plotXYsnow.gs 267.55 41.1'
 *ALO
-  'run /home/scripts/grads/functions/plotXYsnow.gs 267.6	42.55'
+  'run /home/scripts/grads/functions/plotXYsnow.gs 267.6 42.55'
 *CID
   'run /home/scripts/grads/functions/plotXYsnow.gs 268.28 41.88'
 *UIN
-  'run /home/scripts/grads/functions/plotXYsnow.gs 268.8	39.95'
+  'run /home/scripts/grads/functions/plotXYsnow.gs 268.8 39.95'
 *BRL
   'run /home/scripts/grads/functions/plotXYsnow.gs 268.86 40.81'
 *DBQ
   'run /home/scripts/grads/functions/plotXYsnow.gs 269.28 42.4'
 *MLI
-  'run /home/scripts/grads/functions/plotXYsnow.gs 269.5	41.45'
+  'run /home/scripts/grads/functions/plotXYsnow.gs 269.5 41.45'
 *LNR
   'run /home/scripts/grads/functions/plotXYsnow.gs 269.82 43.22'
 *PIA
@@ -6029,7 +6029,7 @@ else
 *MSN
   'run /home/scripts/grads/functions/plotXYsnow.gs 270.67 43.13'
 *RFD
-  'run /home/scripts/grads/functions/plotXYsnow.gs 270.9	42.2'
+  'run /home/scripts/grads/functions/plotXYsnow.gs 270.9 42.2'
 *JVL
   'run /home/scripts/grads/functions/plotXYsnow.gs 270.97 42.62'
 *BMI
@@ -6039,9 +6039,9 @@ else
 *CMI
   'run /home/scripts/grads/functions/plotXYsnow.gs 271.72 40.03'
 *MKE
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.1	42.95'
+  'run /home/scripts/grads/functions/plotXYsnow.gs 272.1 42.95'
 *DNV
-  'run /home/scripts/grads/functions/plotXYsnow.gs 272.4	40.2'
+  'run /home/scripts/grads/functions/plotXYsnow.gs 272.4 40.2'
 *VPZ
   'run /home/scripts/grads/functions/plotXYsnow.gs 273 41.45'
 *LAF
