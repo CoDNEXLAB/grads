@@ -34,8 +34,8 @@ endsw
 if (($FHour == 000) || ($FHour == 003)) then
 	set dataFile = `find ${dataDir}/${modDir}/*${ModInit}00F${FHour}.* ! -name '*.sound' ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
-	perl /home/scripts/grads/functions/nam_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
-	# /usr/bin/php /home/scripts/grads/functions/nam_cpctl.php ${ModRunTime}
+	# perl /home/scripts/grads/functions/nam_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/${ModName}/${ModInit}${ModName}.ctl
+	/usr/bin/php /home/scripts/grads/functions/nam_cpctl.php ${ModRunTime}
 	set dataFile = `find ${dataDir}/nam_242/*${ModInit}00F${FHour}.* ! -name '*c' ! -name '*.idx'| tail -n1`
 	set ctlFile = `echo ${dataFile} | sed -e "s/00F[^ ]../00F%f3/"`
 	perl /home/scripts/grads/functions/nam_g2ctl.pl ${ctlFile} > /home/scripts/grads/grads_ctl/NAMAK/${ModInit}NAMAK.ctl
