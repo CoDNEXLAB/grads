@@ -35,7 +35,7 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'set gxout shade2'
 'run /home/scripts/grads/colorbars/color.gs -levs .01 .05 .1 .15 .25 .35 .5 .75 1 1.5 2 3 4 -kind black->dodgerblue->blue->lime->forestgreen->darkgreen->yellow->orange->orangered->red->deeppink->magenta->orchid->plum'
-'d (ACPCPsfc+NCPCPsfc)/25.4'
+'d (APCPsfc)/25.4'
 'define thick15 = (HGTprs(lev=500) - HGTprs(lev=1000))'
 'set gxout contour'
 if sector != WLD
@@ -60,7 +60,7 @@ endif
 if modname = RAP
  'set gxout print'
  'run /home/scripts/grads/functions/readout2.gs 'modname' 'sector
- 'd (ACPCPsfc+NCPCPsfc)/25.4'
+ 'd (APCPsfc)/25.4'
  dummy=write(basedir'/'modname'/'runtime'/'sector'/readout/'prodname%txtext,result)
 endif
 *end_readout

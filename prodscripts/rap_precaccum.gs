@@ -38,9 +38,9 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 .01 .025 .05 .075 .1 .25 .5 .75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.5 5 5.5 6 6.5 7 7.5 8 9 10 11 12 -kind white->gray->green->yellow->orange->red->maroon->magenta->cyan->gray->lightgray'
 if fhour = 001
- 'define paccum = (ACPCPsfc+NCPCPsfc)/25.4'
+ 'define paccum = (APCPsfc)/25.4'
 else
- 'define paccum = sum(((ACPCPsfc+NCPCPsfc)/25.4),t=1,t='fhour+1',1)'
+ 'define paccum = sum(((APCPsfc)/25.4),t=1,t='fhour+1',1)'
 endif
 'd paccum'
 'run /home/scripts/grads/functions/counties.gs 'sector

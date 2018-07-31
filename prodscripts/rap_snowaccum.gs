@@ -41,9 +41,9 @@ filename = basedir'/'modname'/'runtime'/'sector'/'prodname%filext
 *pick a colorbar
 'run /home/scripts/grads/colorbars/color.gs -levs 0 0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 27 29 31 33 35 37 39 -kind white-(4)->gray-(0)->paleturquoise-(6)->blue-(0)->indigo-(8)->mediumorchid-(0)->orchid->mediumvioletred->darksalmon->papayawhip'
 if fhour = 001
- 'define snaccum = (ACPCPsfc+NCPCPsfc)/2.54*CSNOWsfc'
+ 'define snaccum = (APCPsfc)/2.54*CSNOWsfc'
 else
- 'define snaccum = sum(((ACPCPsfc+NCPCPsfc)/2.54*CSNOWsfc),t=1,t='fhour+1',1)'
+ 'define snaccum = sum(((APCPsfc)/2.54*CSNOWsfc),t=1,t='fhour+1',1)'
 endif
 'd snaccum'
 'run /home/scripts/grads/functions/counties.gs 'sector
